@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TaskOptions>
+  <TaskOptions>
+    <option name="arguments" value="run doc" />
+    <option name="checkSyntaxErrors" value="true" />
+    <option name="description" value="runs &quot;npm run doc&quot; task on every change of the given jsdoc js file." />
+    <option name="exitCodeBehavior" value="ERROR" />
+    <option name="fileExtension" value="js" />
+    <option name="immediateSync" value="true" />
+    <option name="name" value="jsdoc" />
+    <option name="output" value="" />
+    <option name="outputFilters">
+      <array />
+    </option>
+    <option name="outputFromStdout" value="false" />
+    <option name="program" value="/Users/macbookpro/.nvm/versions/node/v6.10.2/bin/npm" />
+    <option name="scopeName" value="Unnamed" />
+    <option name="trackOnlyRoot" value="false" />
+    <option name="workingDir" value="/Users/macbookpro/Repositories/benutech/ttbsandbox" />
+    <envs />
+  </TaskOptions>
+</TaskOptions>
+
