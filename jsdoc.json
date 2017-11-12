@@ -15,7 +15,8 @@
     }
   },
   "opts": {
-    "template": "templates/default",
+    "template": "jaguarjs-jsdoc",
+    "template1": "templates/default",
     "encoding": "utf8",
     "destination": "./out/",
     "recurse": true
