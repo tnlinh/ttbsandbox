@@ -53,9 +53,21 @@
             
             <span class="subtitle">Methods</span>
             
-                <li data-name="TTB#getPropertyProfile"><a href="TTB.html#getPropertyProfile">getPropertyProfile</a></li>
+                <li data-name="TTB#login"><a href="TTB.html#login">login</a></li>
             
-                <li data-name="TTB#propertySearch"><a href="TTB.html#propertySearch">propertySearch</a></li>
+                <li data-name="TTB#logout"><a href="TTB.html#logout">logout</a></li>
+            
+                <li data-name="TTB#orderReport"><a href="TTB.html#orderReport">orderReport</a></li>
+            
+                <li data-name="TTB#propertyComps"><a href="TTB.html#propertyComps">propertyComps</a></li>
+            
+                <li data-name="TTB#propertyDetails"><a href="TTB.html#propertyDetails">propertyDetails</a></li>
+            
+                <li data-name="TTB#searchByOwnerName"><a href="TTB.html#searchByOwnerName">searchByOwnerName</a></li>
+            
+                <li data-name="TTB#searchByParcelNumber"><a href="TTB.html#searchByParcelNumber">searchByParcelNumber</a></li>
+            
+                <li data-name="TTB#searchBySiteAddress"><a href="TTB.html#searchBySiteAddress">searchBySiteAddress</a></li>
             
             </ul>
             <ul class="events itemMembers">
@@ -95,7 +107,7 @@
     
         
         <div class="tag-source">
-            <a href="-_Users_macbookpro_Repositories_benutech_ttbsandbox_lib_ttbsdk.js.html">/Users/macbookpro/Repositories/benutech/ttbsandbox/lib/ttbsdk.js</a>, <a href="-_Users_macbookpro_Repositories_benutech_ttbsandbox_lib_ttbsdk.js.html#line22">line 22</a>
+            <a href="-_Users_macbookpro_Repositories_benutech_ttbsandbox_lib_ttbsdk.js.html">/Users/macbookpro/Repositories/benutech/ttbsandbox/lib/ttbsdk.js</a>, <a href="-_Users_macbookpro_Repositories_benutech_ttbsandbox_lib_ttbsdk.js.html#line38">line 38</a>
         </div>
         
     </div>
@@ -184,7 +196,7 @@
             <td class="type">
             
                 
-<span class="param-type">string</span>
+<span class="param-type">String</span>
 
 
             
@@ -216,7 +228,7 @@
             <td class="type">
             
                 
-<span class="param-type">string</span>
+<span class="param-type">String</span>
 
 
             
@@ -240,6 +252,42 @@
                     
                 
                 The Base URL to be used for APIs calls</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>debug</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                    true
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                SDK debug mode flag useful for logs, etc.</td>
         </tr>
 	
 	
@@ -310,7 +358,7 @@
                         
                     
             </td>
-            <td class="description last">ttb - The instance associated with the provide vertical info</td>
+            <td class="description last">ttb - The instance associated with the provided configuration.</td>
         </tr>
     
     </tbody>
@@ -319,14 +367,26 @@
     
     
     
-        <h5>Example</h5>
+        <h5>Examples</h5>
         
 
     
-    <pre class="prettyprint"><code>var ttb = new TTB({
-  baseURL: 'https://direct.api.titletoolbox.com/',
-  partnerKey: '{your partner key}',
-});</code></pre>
+    <pre class="prettyprint"><code>// With basic and minimum requirement.
+ var ttb = new TTB({
+   partnerKey: '{your partner key}',
+ });
+
+ </code></pre>
+    
+
+
+    
+    <pre class="prettyprint"><code>// With advanced configuration for custom URL, and logs for debug mode.
+ var ttb = new TTB({
+   partnerKey: '{your partner key}',
+   baseURL: 'https://direct.api.titletoolbox.com/',
+   debug: true
+ });</code></pre>
     
 
     
@@ -403,14 +463,14 @@
             
 <dt>
     <div class="nameContainer">
-        <h4 class="name" id="getPropertyProfile">
+        <h4 class="name" id="login">
             
-            getPropertyProfile<span class="signature">(propertyId)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{Object}</span>
+            login<span class="signature">(payload)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{Object}</span>
         </h4>
     
         
         <div class="tag-source">
-            <a href="-_Users_macbookpro_Repositories_benutech_ttbsandbox_lib_ttbsdk.js.html">/Users/macbookpro/Repositories/benutech/ttbsandbox/lib/ttbsdk.js</a>, <a href="-_Users_macbookpro_Repositories_benutech_ttbsandbox_lib_ttbsdk.js.html#line67">line 67</a>
+            <a href="-_Users_macbookpro_Repositories_benutech_ttbsandbox_lib_ttbsdk.js.html">/Users/macbookpro/Repositories/benutech/ttbsandbox/lib/ttbsdk.js</a>, <a href="-_Users_macbookpro_Repositories_benutech_ttbsandbox_lib_ttbsdk.js.html#line116">line 116</a>
         </div>
         
     </div>
@@ -421,7 +481,7 @@
     
     
     <div class="description">
-        Retrieves the PDF profile link against the given `property_id`
+        This method is used to log the user in and maintain a session for the user throughout the App.
     </div>
     
 
@@ -452,13 +512,13 @@
 	
         <tr>
             
-                <td class="name"><code>propertyId</code></td>
+                <td class="name"><code>payload</code></td>
             
             
             <td class="type">
             
                 
-<span class="param-type">string</span>
+<span class="param-type">Object</span>
 
 
             
@@ -468,7 +528,75 @@
             
             <td class="description last">
                 
-                The unique id returned for the address via `propertySearch()`</td>
+                The payload object containing required info
+                
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>username</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                </td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>password</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                </td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+            </td>
         </tr>
 	
 	
@@ -548,14 +676,14 @@
             
 <dt>
     <div class="nameContainer">
-        <h4 class="name" id="propertySearch">
+        <h4 class="name" id="logout">
             
-            propertySearch<span class="signature">(address)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{Object}</span>
+            logout<span class="signature">()</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{Object}</span>
         </h4>
     
         
         <div class="tag-source">
-            <a href="-_Users_macbookpro_Repositories_benutech_ttbsandbox_lib_ttbsdk.js.html">/Users/macbookpro/Repositories/benutech/ttbsandbox/lib/ttbsdk.js</a>, <a href="-_Users_macbookpro_Repositories_benutech_ttbsandbox_lib_ttbsdk.js.html#line56">line 56</a>
+            <a href="-_Users_macbookpro_Repositories_benutech_ttbsandbox_lib_ttbsdk.js.html">/Users/macbookpro/Repositories/benutech/ttbsandbox/lib/ttbsdk.js</a>, <a href="-_Users_macbookpro_Repositories_benutech_ttbsandbox_lib_ttbsdk.js.html#line132">line 132</a>
         </div>
         
     </div>
@@ -566,7 +694,107 @@
     
     
     <div class="description">
-        Retrieves the `property_id` against given input address
+        Logs out from the TTB webservices server
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Type</th>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    
+        <tr>
+            
+            <td class="type">
+            
+                        Object
+                        
+                    
+            </td>
+            <td class="description last">promise - Jquery AJAX deferred promise is returned which on-success returns the required info.</td>
+        </tr>
+    
+    </tbody>
+</table>
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="orderReport">
+            
+            orderReport<span class="signature">(payload)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{Object}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="-_Users_macbookpro_Repositories_benutech_ttbsandbox_lib_ttbsdk.js.html">/Users/macbookpro/Repositories/benutech/ttbsandbox/lib/ttbsdk.js</a>, <a href="-_Users_macbookpro_Repositories_benutech_ttbsandbox_lib_ttbsdk.js.html#line215">line 215</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        This will allow you to order a report from the service. The available reports will depend on your account set up.
     </div>
     
 
@@ -597,7 +825,1483 @@
 	
         <tr>
             
-                <td class="name"><code>address</code></td>
+                <td class="name"><code>payload</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                The payload object containing required info.
+                
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		<th>Default</th>
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>sa_property_id</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                    
+                        
+                    
+                
+                Unique ID of the property</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>state_county_fips</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                    
+                        
+                    
+                
+                State FIPS of the property</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>output</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                    "link"
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                Format of output, supported types are "link", etc.</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>report_type</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                    "property_profile"
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                The report type, supported types are "property_profile", etc.</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+            </td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Type</th>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    
+        <tr>
+            
+            <td class="type">
+            
+                        Object
+                        
+                    
+            </td>
+            <td class="description last">promise - Jquery AJAX deferred promise is returned which on-success returns the required info.</td>
+        </tr>
+    
+    </tbody>
+</table>
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="propertyComps">
+            
+            propertyComps<span class="signature">(payload)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{Object}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="-_Users_macbookpro_Repositories_benutech_ttbsandbox_lib_ttbsdk.js.html">/Users/macbookpro/Repositories/benutech/ttbsandbox/lib/ttbsdk.js</a>, <a href="-_Users_macbookpro_Repositories_benutech_ttbsandbox_lib_ttbsdk.js.html#line245">line 245</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        This method is used to return a list of sales around a subject property PLUS offer a series of statistics based on the response results.
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>payload</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                The payload object containing required info.
+                
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		<th>Default</th>
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>sa_property_id</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                    
+                        
+                    
+                
+                Unique ID of the property</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>mm_fips_state_code</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                    
+                        
+                    
+                
+                State FIPS of the property</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>date_transfer(+/-)</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                    "{default-value}"
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                </td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>distance_in_km</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                    "{default-value}"
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                </td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>nbr_bath(+/-)</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                    "{default-value}"
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                </td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>nbr_bedrms(+/-)</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                    "{default-value}"
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                </td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>sqft(+/-)</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                    "{default-value}"
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                </td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>yr_blt(+/-)</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                    "{default-value}"
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                </td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+            </td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Type</th>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    
+        <tr>
+            
+            <td class="type">
+            
+                        Object
+                        
+                    
+            </td>
+            <td class="description last">promise - Jquery AJAX deferred promise is returned which on-success returns the required info.</td>
+        </tr>
+    
+    </tbody>
+</table>
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="propertyDetails">
+            
+            propertyDetails<span class="signature">(payload)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{Object}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="-_Users_macbookpro_Repositories_benutech_ttbsandbox_lib_ttbsdk.js.html">/Users/macbookpro/Repositories/benutech/ttbsandbox/lib/ttbsdk.js</a>, <a href="-_Users_macbookpro_Repositories_benutech_ttbsandbox_lib_ttbsdk.js.html#line264">line 264</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        This method is used to pull details of a property specified by property_id
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>payload</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                The payload object containing required info.
+                
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>property_id</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                Unique ID of the property</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>state_fips</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                State FIPS of the property</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+            </td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Type</th>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    
+        <tr>
+            
+            <td class="type">
+            
+                        Object
+                        
+                    
+            </td>
+            <td class="description last">promise - Jquery AJAX deferred promise is returned which on-success returns the required info.</td>
+        </tr>
+    
+    </tbody>
+</table>
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="searchByOwnerName">
+            
+            searchByOwnerName<span class="signature">(payload)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{Object}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="-_Users_macbookpro_Repositories_benutech_ttbsandbox_lib_ttbsdk.js.html">/Users/macbookpro/Repositories/benutech/ttbsandbox/lib/ttbsdk.js</a>, <a href="-_Users_macbookpro_Repositories_benutech_ttbsandbox_lib_ttbsdk.js.html#line193">line 193</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Search a property by owners name.
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>payload</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                The payload object containing required info - (At least any of the following is required)
+                
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>first_name</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                Owner's First Name</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>last_name</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                Owner's Last Name</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>state_county_fips</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                State County FIPS of the property</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+            </td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Type</th>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    
+        <tr>
+            
+            <td class="type">
+            
+                        Object
+                        
+                    
+            </td>
+            <td class="description last">promise - Jquery AJAX deferred promise is returned which on-success returns the required info.</td>
+        </tr>
+    
+    </tbody>
+</table>
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="searchByParcelNumber">
+            
+            searchByParcelNumber<span class="signature">(payload)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{Object}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="-_Users_macbookpro_Repositories_benutech_ttbsandbox_lib_ttbsdk.js.html">/Users/macbookpro/Repositories/benutech/ttbsandbox/lib/ttbsdk.js</a>, <a href="-_Users_macbookpro_Repositories_benutech_ttbsandbox_lib_ttbsdk.js.html#line150">line 150</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Search a property by APN.
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>payload</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                The payload object containing required info
+                
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>parcel_number</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                The Parcel Number against the property</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>state_county_fips</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                The State County FIPS against the property</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+            </td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Type</th>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    
+        <tr>
+            
+            <td class="type">
+            
+                        Object
+                        
+                    
+            </td>
+            <td class="description last">promise - Jquery AJAX deferred promise is returned which on-success returns the required info.</td>
+        </tr>
+    
+    </tbody>
+</table>
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="searchBySiteAddress">
+            
+            searchBySiteAddress<span class="signature">(payload)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{Object}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="-_Users_macbookpro_Repositories_benutech_ttbsandbox_lib_ttbsdk.js.html">/Users/macbookpro/Repositories/benutech/ttbsandbox/lib/ttbsdk.js</a>, <a href="-_Users_macbookpro_Repositories_benutech_ttbsandbox_lib_ttbsdk.js.html#line173">line 173</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Search a property by site address.
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>payload</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                The payload object containing required info - (At least any of the following is required)
+                
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>site_address</code></td>
             
             
             <td class="type">
@@ -613,7 +2317,170 @@
             
             <td class="description last">
                 
-                The complete address for the property</td>
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                </td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>site_unit</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                </td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>site_city</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                </td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>site_state</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                </td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>site_street_number</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                </td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>site_route</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                </td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+            </td>
         </tr>
 	
 	
@@ -706,7 +2573,7 @@
         
 
         <footer>
-            Documentation generated by <a target="_blank" href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Sun Nov 12 2017 21:23:20 GMT+0500 (PKT)
+            Documentation generated by <a target="_blank" href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Sun Nov 12 2017 23:45:31 GMT+0500 (PKT)
         </footer>
     </div>
 </div>
