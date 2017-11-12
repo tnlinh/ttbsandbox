@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "doc": "rm -R doc & jsdoc lib/ttbsdk.js -r -c jsdoc.json -d doc"
+    "doc": "rm -R doc & jsdoc -c jsdoc.json",
+    "doc2": "rm -R doc & jsdoc lib/ttbsdk.js -r -c jsdoc.json -d doc"
   },
   "repository": {
     "type": "git",
