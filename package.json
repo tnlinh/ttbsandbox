@@ -1,9 +1,10 @@
 {
   "name": "ttbsandbox",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Sample project to consume TitleToolBox web services for 3rd parties.",
   "main": "index.js",
   "scripts": {
+    "start-dev": "supervisor -w index.js index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "doc": "rm -R doc & jsdoc -c jsdoc.json",
     "doc2": "rm -R doc & jsdoc lib/ttbsdk.js -r -c jsdoc.json -d doc"
@@ -20,7 +21,11 @@
   "author": "Benutech Inc.",
   "license": "-",
   "homepage": "https://bitbucket.org/shahzadns/ttbsandbox#readme",
+  "dependencies": {
+    "express": "^4.11.0"
+  },
   "devDependencies": {
-    "jsdoc": "~3.5.5"
+    "jsdoc": "~3.5.5",
+    "supervisor": "^0.12.0"
   }
 }
