@@ -93,7 +93,14 @@ function shortenPaths(files, commonPrefix) {
 
     Object.keys(files).forEach(function(file) {
         files[file].shortened = files[file].resolved.replace(commonPrefix, '')
-            .replace(regexp, '/');
+          .replace(regexp, '/');
+
+        // --- custom - long-dirname-filename fix - starts -
+        //var sourceOutfile = helper.getUniqueFilename(sourceFiles[file].shortened);
+        files[file].shortened = (function (fileName) {
+            return fileName.substr(fileName.lastIndexOf(env.conf.customOptions.rootDir));
+        })(files[file].shortened);
+        // --- custom - long-dirname-filename fix - ends -
     });
 
     return files;

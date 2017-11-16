@@ -3,18 +3,18 @@
     "allowUnknownTags": true
   },
   "source": {
-    "include": ["lib/ttbsdk.js"],
-    "exclude": ["src/sandbox.js"]
+    "include": ["lib/ttbsdk.js"]
   },
   "plugins": [],
   "templates": {
     "cleverLinks": false,
     "monospaceLinks": false,
     "default": {
-      "outputSourceFiles": false
+      "outputSourceFiles": true
     }
   },
   "customOptions": {
+    "rootDir": "ttbsandbox",
     "footer": "Copyright © 2017 <a href=\"http://www.benutech.com/\" target=\"_blank\" title=\"Benutech official website\">Benutech Inc.</a> All rights reserved."
   },
   "opts": {
