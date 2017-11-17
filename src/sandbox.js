@@ -17,8 +17,8 @@
 
     var payload = {
       TbUser: {
-        username: 'ttbhelp@benutech.com',
-        password: 'ttb12345'
+        username: $('[name="login__username"]').val(),
+        password: $('[name="login__password"]').val()
       }
     };
 
@@ -28,6 +28,13 @@
           // user is successfully logged-in !!
           // your success code here to consume res.response.data for logged-in user info
           alert('login response - ' + JSON.stringify(res.response.data));
+
+          // empty the password field
+          //$('[name="login__password"]').val('');
+
+          // show the logged-in status bar
+          $('#logged-in').slideDown();
+
         } else {
           // your failure code here to consume res.response.data for validation errors info
           alert('login response - ' + JSON.stringify(res));
@@ -49,6 +56,8 @@
           // your success code here to clear any cached info etc from the web page
           alert('logout response - ' + JSON.stringify(res.response.data));
 
+          // hide the logged-in status bar
+          $('#logged-in').hide();
         } else {
           // your failure code here to consume res.response.data
           console.log(res.response.data);
