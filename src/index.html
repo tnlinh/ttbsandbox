@@ -2,9 +2,14 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
   <title>TTB Sandbox</title>
 
   <!--Dep Styles-->
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <!--<link rel="stylesheet" href="main.css">-->
 
   <!--Main App Style-->
@@ -15,11 +20,63 @@
 <!--App Markup Content-->
 <div class="container">
   <h1>TTB Sandbox</h1>
-  <p>Lorem ipsums dolar sit amet</p>
+  <p>
+    Playground for consuming TTB SDk methods. Check out complete official documentation
+    <a href="https://ttbsandbox.herokuapp.com/TTB.html">here</a>.
+  </p>
+
+  <div class="row">
+    <div class="col-xs-12">
+
+      <div class="page-header">
+        <h2>Login</h2>
+        <div>
+          <strong>Documentation link: </strong> <a target="_blank" href="https://ttbsandbox.herokuapp.com/TTB.html#login">here</a>.
+        </div>
+        <div class="playground">
+          <button class="btn btn-primary" onclick="login()">Login</button>
+        </div>
+      </div>
+
+      <div class="page-header">
+        <h2>Logout</h2>
+        <div>
+          <strong>Documentation link: </strong> <a target="_blank" href="https://ttbsandbox.herokuapp.com/TTB.html#logout">here</a>.
+        </div>
+        <div class="playground">
+          <button class="btn btn-primary" onclick="logout()">Logout</button>
+        </div>
+      </div>
+
+      <div class="page-header">
+        <h2>Get Search Fields</h2>
+        <div>
+          <strong>Documentation link: </strong> <a target="_blank" href="https://ttbsandbox.herokuapp.com/TTB.html#getSearchFields">here</a>.
+        </div>
+        <div class="playground">
+          <button class="btn btn-primary" onclick="getSearchFields()">Get Search Fields</button>
+        </div>
+      </div>
+
+      <div class="page-header">
+        <h2>Get Type Report</h2>
+        <div>
+          <strong>Documentation link: </strong> <a target="_blank" href="https://ttbsandbox.herokuapp.com/TTB.html#getTypesReport">here</a>.
+        </div>
+        <div class="playground">
+          <button class="btn btn-primary" onclick="getTypesReport()">Get Type Report</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
 </div>
 
 <!--Dep Scripts-->
-<!--<script src="sandbox.js"></script>-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<!--TTB SDK files-->
+<script src="../lib/ttbsdk.js"></script>
 
 <!--Main App Script-->
 <script src="sandbox.js"></script>
