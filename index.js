@@ -7,7 +7,7 @@
 // -- App specific - Fill this one and all good --
 var CONFIG = {
   PORT: 8000,
-  SERVE_DIR: '/doc',
+  SERVE_DIR: '/dist',
   HOME_PAGE_REDIRECT: '/TTB.html',
   APP_NAME: 'TTBSandbox'
 };
