@@ -6,8 +6,8 @@
   "scripts": {
     "start-dev": "supervisor -w index.js index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "doc": "rm -R doc & jsdoc -c jsdoc.json",
-    "doc2": "rm -R doc & jsdoc lib/ttbsdk.js -r -c jsdoc.json -d doc"
+    "doc": "rm -R dist & jsdoc -c jsdoc.json",
+    "doc2": "rm -R dist & jsdoc lib/ttbsdk.js -r -c jsdoc.json -d dist"
   },
   "repository": {
     "type": "git",
@@ -25,6 +25,9 @@
     "express": "^4.11.0"
   },
   "devDependencies": {
+    "del": "^3.0.0",
+    "gulp": "^3.9.1",
+    "gulp-jsdoc3": "^1.0.1",
     "jsdoc": "~3.5.5",
     "supervisor": "^0.12.0"
   }

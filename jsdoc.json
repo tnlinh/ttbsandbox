@@ -21,7 +21,7 @@
     "template": "jaguarjs-jsdoc",
     "template1": "templates/default",
     "encoding": "utf8",
-    "destination": "./doc/",
+    "destination": "./dist/",
     "recurse": true
   }
 }
