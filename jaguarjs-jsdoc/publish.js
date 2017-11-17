@@ -96,7 +96,6 @@ function shortenPaths(files, commonPrefix) {
           .replace(regexp, '/');
 
         // --- custom - long-dirname-filename fix - starts -
-        //var sourceOutfile = helper.getUniqueFilename(sourceFiles[file].shortened);
         files[file].shortened = (function (fileName) {
             return fileName.substr(fileName.lastIndexOf(env.conf.customOptions.rootDir));
         })(files[file].shortened);
