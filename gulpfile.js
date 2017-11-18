@@ -11,17 +11,17 @@ gulp.task('del', function (cb) {
 
 gulp.task('doc', ['del'], function (cb) {
   //console.log('task: doc');
-  gulp.src(['lib/ttbsdk.js'])
-    .pipe(jsdoc(config, cb));
+  return gulp.src(['lib/invalidfile.js'])
+    .pipe(jsdoc(config));
 });
 
-gulp.task('copy-lib', ['del'], function () {
+gulp.task('copy-lib', ['doc'], function () {
   //console.log('task: copy-lib');
   return gulp.src(['lib/**/*.*'])
     .pipe(gulp.dest('dist/lib'));
 });
 
-gulp.task('copy-sandbox', ['del'], function () {
+gulp.task('copy-sandbox', ['doc'], function () {
   //console.log('task: copy-sandbox');
   return gulp.src(['src/**/*.*'])
     .pipe(gulp.dest('dist/'));

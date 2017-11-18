@@ -30,7 +30,7 @@
           alert('login response - ' + JSON.stringify(res.response.data));
 
           // empty the password field
-          $('[name="login__password"]').val('');
+          //$('[name="login__password"]').val('');
 
           // show the logged-in status bar
           $('#logged-in').slideDown();
