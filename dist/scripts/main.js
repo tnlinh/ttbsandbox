@@ -18,10 +18,7 @@ $(function () {
                 }
             });
         } else {
-            // --- custom - empty search fix - starts -
-            //$el.find('.item, .itemMembers').show();
-            $el.find('li, .itemMembers').show();
-            // --- custom - empty search fix - ends -
+            $el.find('.item, .itemMembers').show();
         }
 
         $el.find('.list').scrollTop(0);

@@ -255,13 +255,13 @@
      * var ttb = new TTB({ ... }); // skip if already instantiated.
      *
      * var payload = {
-     *   site_address: "18721 Paseo Picasso",
+     *   site_address: "317 2nd St",
      *   site_unit: "",
-     *   site_city: "Irvine",
+     *   site_city: "Huntington Beach",
      *   site_state: "CA",
-     *   site_zip:" 92603",
-     *   site_street_number: "18721",
-     *   site_route: "Paseo Picasso"
+     *   site_zip: "92648",
+     *   site_street_number: "317",
+     *   site_route: "2nd St"
      * };
      *
      * ttb.searchBySiteAddress(payload)
@@ -353,7 +353,7 @@
      *
      * var payload = {
      *   sa_property_id: "0039025849",
-     *   state_county_fips: "06059"
+     *   state_county_fips: "06059",
      *   report_type: "property_profile",
      *   output: "link",
      * };
