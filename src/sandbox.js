@@ -160,8 +160,6 @@
       }
     };
 
-    payload = JSON.stringify(payload);
-
     ttb.globalSearch(payload, params)
         .done(function(res) {
           if (res.response.status === 'OK') {
