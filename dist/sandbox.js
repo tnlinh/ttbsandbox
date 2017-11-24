@@ -7,7 +7,7 @@
   // setup ttb SDK
   var ttb = new TTB({
     partnerKey: '1-7a32b4f2-62a8-4990-830b-2cf674504875', // official TTB - retrieve yours from support team.
-    baseURL: 'https://direct.api.titletoolbox.com/',
+    vertical: 'direct',
     debug: true
   });
 
