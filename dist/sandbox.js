@@ -70,23 +70,23 @@
   };
 
 
-  window.showSponsorSelector = function () {
-    console.log('showSponsorSelector clicked');
+  window.showSelectSponsor = function () {
+    console.log('showSelectSponsor clicked');
 
     var payload = {
       email: 'agent47@domain.com',
       zipCode: '12345'
     };
 
-    TTB.showSponsorSelector(payload, {
+    TTB.showSelectSponsor(payload, {
       ttb: ttb,
       onSelect: function(info) {
         // your success code here
-        alert('showSponsorSelector select - ' + JSON.stringify(info));
+        alert('showSelectSponsor select - ' + JSON.stringify(info));
       },
       onError: function(reason) {
         // your failure code here
-        alert('showSponsorSelector error - ' + JSON.stringify(reason));
+        alert('showSelectSponsor error - ' + JSON.stringify(reason));
       }
     });
   };
