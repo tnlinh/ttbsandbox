@@ -7,7 +7,7 @@
   // setup ttb SDK
   var ttb = new TTB({
     partnerKey: '1-7a32b4f2-62a8-4990-830b-2cf674504875', // official TTB - retrieve yours from support team.
-    baseURL: 'https://direct.api.titletoolbox.com/',
+    vertical: 'direct',
     debug: true
   });
 
@@ -69,19 +69,38 @@
       });
   };
 
+
+  window.showSelectSponsor = function () {
+    console.log('showSelectSponsor clicked');
+
+    var payload = {
+      email: 'agent47@domain.com',
+      zipCode: '12345'
+    };
+
+    TTB.showSelectSponsor(payload, {
+      ttb: ttb,
+      onSelect: function(info) {
+        // your success code here
+        alert('showSelectSponsor select - ' + JSON.stringify(info));
+      },
+      onError: function(reason) {
+        // your failure code here
+        alert('showSelectSponsor error - ' + JSON.stringify(reason));
+      }
+    });
+  };
+
   window.getSearchFields = function () {
     console.log('getSearchFields clicked');
 
     ttb.getSearchFields()
       .done(function(res) {
         if (res instanceof Array) {
-          if (res instanceof Array) {
-            // your success code here to consume res as fields list.
-            console.log(res);
-          } else {
-            // your failure code here to consume res
-            console.log(res);
-          }
+
+          // your success code here to consume res as fields list.
+          console.log(res);
+
           alert('getSearchFields response - ' + JSON.stringify(res));
         } else {
           // your failure code here to consume res.response.data
@@ -225,7 +244,7 @@
       sa_property_id: "0039025849",
       state_county_fips: "06059",
       report_type: "property_profile",
-      output: "link",
+      output: "link"
     };
 
     ttb.orderReport(payload)

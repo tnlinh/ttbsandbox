@@ -55,6 +55,8 @@
             
                 <li data-name="TTB.getSponsorsList"><a href="TTB.html#.getSponsorsList">getSponsorsList</a></li>
             
+                <li data-name="TTB.showSelectSponsor"><a href="TTB.html#.showSelectSponsor">showSelectSponsor</a></li>
+            
                 <li data-name="TTB#getSearchFields"><a href="TTB.html#getSearchFields">getSearchFields</a></li>
             
                 <li data-name="TTB#getTypesReport"><a href="TTB.html#getTypesReport">getTypesReport</a></li>
@@ -108,7 +110,23 @@
     partnerKey: '233457799',
     sponsor: 'direct',
     baseURLPattern: 'https://{{sponsor}}.api.titletoolbox.com/',
-    debug: false
+    debug: false,
+    sdkPrefix: 'ttb-sdk',
+    modalTemplate: [
+      '&lt;div id={{modalId}} class="ttb-sdk-modal modal " role="dialog">',
+      ' &lt;div class="modal-dialog">',
+      '  &lt;div class="modal-content">',
+      '   &lt;div class="modal-header">',
+      '    &lt;button type="button" class="close" data-dismiss="modal" title="Close">&amp;times;&lt;/button>',
+      '    &lt;h4 class="modal-title">{{title}}&lt;/h4>',
+      '   &lt;/div>',
+      '   &lt;div class="modal-body">',
+      '    {{bodyContent}}',
+      '   &lt;/div>',
+      '  &lt;/div>',
+      ' &lt;/div>',
+      '&lt;/div>'
+    ].join('')
   };
 
   /**
@@ -157,12 +175,57 @@
 
     // setup default baseURL
     this.baseURLPattern = config.baseURLPattern || defaults.baseURLPattern;
-    this.vertical = config.vertical || defaults.vertical;
-    this.baseURL = config.baseURL || this.setVertical(this.vertical);
+    this.sponsor = config.sponsor || defaults.sponsor;
+    this.baseURL = config.baseURL || this.setSponsor(this.sponsor);
     this.debug = config.debug || defaults.debug;
 
-    this._log(['ttbsdk: ', 'TTB SDK instantiated.']);
+    this._log([defaults.sdkPrefix + ': ', 'TTB SDK instantiated.']);
   };
+
+
+  /**
+   * @memberof TTB
+   * @alias _modal
+   * @static
+   *
+   * Shows a modal with given dynamic content.
+   * @private
+   *
+   * @param {Object} options - configuration options for the modal.
+   * @param {Object} options.title - The Title of the modal to be shown inside the modal header - can be plain text or HTML markup.
+   * @param {Object} options.bodyContent - The body content - can be plain text or HTML markup.
+   * @param {Object} [options.id="Dynamically generated number e.g. ttb-sdk-1234567890"] - A unique id to be assigned to the modal
+   * @param {Function} [options.onLoad] - A callback function to be invoked when modal has been loaded into DOM. it uses &lt;code>loaded.bs.modal&lt;/code> bootstrap modal event.
+   * @param {Function} [options.onShown] - A callback function to be invoked when modal has been triggered and shown to user. it uses &lt;code>shown.bs.modal&lt;/code> bootstrap modal event.
+   * @param {Function} [options.onClose] - A callback function to be invoked when modal has been closed by the user. it uses &lt;code>hidden.bs.modal&lt;/code> bootstrap modal event.
+   * @param {Function} [options.onBeforeClose] - A callback function to be invoked when modal is about to be close. it uses &lt;code>hide.bs.modal&lt;/code> bootstrap modal event.
+   *
+   * @return {String} $modal - A JQuery reference to the modal DOMNode Element.
+   *
+   * */
+  window.TTB._modal = function (options) {
+    var $modal, modalTemplate, modalId;
+
+    modalId = options.id || (Date.now() + '');
+
+    // generate the modal template against given info
+    modalTemplate = defaults.modalTemplate
+      .replace('{{id}}', modalId)
+      .replace('{{title}}', options.title)
+      .replace('{{bodyContent}}', options.bodyContent);
+
+    // inject the modal inside the DOM
+    //return $(document.body).append(modalTemplate);
+    $modal = $(modalTemplate).appendTo(document.body);
+
+    options.onLoad &amp;&amp; $modal.on('loaded.bs.modal', options.onLoad);
+    options.onShown &amp;&amp; $modal.on('shown.bs.modal', options.onShown);
+    options.onBeforeClose &amp;&amp; $modal.on('hide.bs.modal', options.onBeforeClose);
+    options.onClose &amp;&amp; $modal.on('hidden.bs.modal', options.onClose);
+
+    return $modal;
+  };
+
 
   /**
    * @memberof TTB
@@ -179,7 +242,12 @@
    * // No ttb instance needed.
    * // var ttb = new TTB({ ... });
    *
-   * TTB.getSponsorsList()
+   * var payload = {
+   *   email: 'agent47@domain.com',
+   *   zipCode: '12345'
+   * };
+   *
+   * TTB.getSponsorsList(payload)
    * .done(function(res) {
    *   if (res.response.status === 'OK') {
    *     // your success code here to consume res.response.data
@@ -202,7 +270,7 @@
   window.TTB.getSponsorsList = function (payload) {
 
     // for static, no existing ttb instance, create new one on the fly
-    var ttb = new ({
+    var ttb = new TTB({
       partnerKey: defaults.partnerKey
     });
 
@@ -211,7 +279,128 @@
       data: JSON.stringify(payload)
     };
 
-    return ttb._ajax(request, 'webservices/get_sponsor_list.json');
+    return ttb._ajax(request, 'webservices/get_sponsors_list.json');
+  };
+
+
+  /**
+   * @memberof TTB
+   * @alias showSelectSponsor
+   * @static
+   *
+   * This static method provides the list of all available sponsors based on given info.
+   *
+   * @param {Object} payload - To be used for &lt;code>getSponsorsList()&lt;/code>. Please see payload information [over here]{@link TTB#.getSponsorsList}.
+
+   * @param {Object} options - The callbacks options to retrieve success and failure info.
+   * @param {Function} [options.onSelect] - The callback to be invoked with &lt;code>selectedSponsor&lt;/code> when user selects it.
+   * @param {Function} [options.onError] - The callback to be invoked with &lt;code>error&lt;/code>.
+   *
+   * @example
+   * // No ttb instance needed.
+   * // var ttb = new TTB({ ... });
+   *
+   * var payload = {
+   *   email: 'agent47@domain.com',
+   *   zipCode: '12345'
+   * };
+   *
+   * TTB.showSponsorSelector(payload, {
+   *   onSelect: function(selectedSponsor) {
+   *    // your success code here to consume "selectedSponsor"
+   *
+   *    // now you can instantiate the TTB sdk against the selected sponsor
+   *    // var ttb = new TTB({
+   *    //  ...
+   *    //  sponsor: selectedSponsor
+   *    //  ...
+   *    // });
+   *
+   *    // OR you can update the sponsor of any existing TTB sdk instance
+   *    // ttb.setSponsor(selectedSponsor);
+   *   },
+   *   onError: function(error) {
+   *    // your failure code here
+   *   }
+   * });
+   *
+   * @return {Object} $modal - JQuery reference to the rendered modal DOMNode.
+   *
+   * */
+  window.TTB.showSelectSponsor = function (payload, options) {
+    var modalId, $modal;
+
+    modalId = 'ttb-sdk-sponsor-selector';
+
+    // remove any previous attempt modal
+    if ($(modalId).length) {
+      $(modalId).remove();
+    }
+
+    // render the sponsors selector content via modal
+    $modal = $(modalId).length ? $(modalId) : this._modal({
+      id: modalId,
+      title: 'Select Sponsor',
+      bodyContent: 'Retrieving list of all available sponsors...'
+    });
+
+    // retrieve the available sponsors
+    TTB.getSponsorsList(payload)
+      .done(function (res) {
+        var bodyContent, sponsors, options;
+
+        if (res.response.status === 'OK') {
+
+          sponsors = res.response.data;
+          options = [];
+
+          // iterate over the list and generate the available options
+          for (var sponsorValue in sponsors) {
+            options.push(
+              '&lt;option value="{{value}}">{{label}}&lt;/option>'
+              .replace('{{value}}', sponsorValue)
+              .replace('{{label}}', sponsors[sponsorValue])
+            );
+          }
+
+          bodyContent = [
+            '&lt;p>Please select sponsor from the following list.&lt;/p>',
+            '&lt;div>',
+            ' &lt;select name="ttb_sdk_sponsor_selected">{{options}}&lt;/select>',
+            '&lt;/div>',
+            '&lt;button id="ttb-sdk-sponsor-select" class="btn btn-default" style="margin-top: 10px;">Select&lt;/button>'
+          ].join('');
+
+          // append the sponsors choices and add the final markup to DOM.
+          bodyContent = bodyContent.replace('{{options}}', options.join(''));
+          $modal.find('.modal-body').html(bodyContent);
+
+          // register the click handler for sponsor selection
+          $('#ttb-sdk-sponsor-select').on('click', function (e) {
+            var selectedSponsor = $modal.find('[name="ttb_sdk_sponsor_selected"]').val();
+
+            // pass the selectedSponsor to on-select callback if provided.
+            options.onSelect &amp;&amp; options.onSelect(selectedSponsor);
+
+            // auto close/hide the modal
+            $modal.modal('hide');
+          });
+
+        } else {
+          // pass the error response to error callback if provided.
+          options.onError &amp;&amp; options.onError(res);
+        }
+      })
+      .fail(function (err) {
+        $modal.find('.modal-body').html('Failed in retrieving list.');
+        // pass the error to error callback if provided.
+        options.onError &amp;&amp; options.onError(err);
+      });
+
+    // triggering .modal() of bootstrap
+    return $modal.modal({
+      //backdrop: 'static'
+    });
   };
 
   /** @lends TTB.prototype */
@@ -260,22 +449,23 @@
         .done(function (res) {
 
           if (typeof res === 'string' || res instanceof Array || res.response.status === 'OK') {
-            self._log(['ttbsdk: ', endpoint, ' : success : ', res]);
+            self._log([defaults.sdkPrefix + ': ', endpoint, ' : success : ', res]);
           } else {
-            self._log(['ttbsdk: ', endpoint, ' : fail : ', res]);
+            self._log([defaults.sdkPrefix + ': ', ' : fail : ', res]);
           }
 
           return res;
         })
         .fail(function (err) {
-          self._log(['ttbsdk: ', endpoint, ' : error : ', err]);
+          self._log([defaults.sdkPrefix + ': ', ' : error : ', err]);
           return err;
         });
         //.always(function(arg) {
-        //  //self._log([endpoint, ' : always : ', arg]);
+        //  //self._log([defaults.sdkPrefix + ': ', ' : always : ', arg]);
         //  return arg;
         //});
     },
+
 
     /**
      * This method is use to switch to a different sponsor (Title Company) and so generates a new &lt;code>baseURL&lt;/code> based on passed &lt;code/>vertical&lt;/code> with existing &lt;code>baseURLPattern&lt;/code>.
@@ -291,7 +481,7 @@
      *
      * */
     setSponsor: function (vertical) {
-      return this.baseURL = this.config.baseURLPattern.replace('{{sponsor}}', vertical);
+      return this.baseURL = this.baseURLPattern.replace('{{sponsor}}', vertical);
     },
 
 
@@ -336,6 +526,7 @@
 
       return this._ajax(request, 'webservices/remote_login.json');
     },
+
 
     /**
      * This method is used to log the user in and maintain a session for the user throughout the App.
@@ -966,7 +1157,7 @@
 
         <footer>
             Copyright © 2017 <a href="http://www.benutech.com/" target="_blank" title="Benutech official website">Benutech Inc.</a> All rights reserved.</a>
-           <!-- Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Sat Nov 25 2017 01:28:54 GMT+0500 (PKT) -->
+           <!-- Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Tue Nov 28 2017 01:36:29 GMT+0500 (PKT) -->
         </footer>
     </div>
 </div>
