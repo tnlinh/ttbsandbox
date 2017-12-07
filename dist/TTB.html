@@ -231,8 +231,7 @@
                         
                     
                 
-                The Partner-Key is a unique ID assigned to you by Company, that to be sent on
-every request from your site.</td>
+                The Partner-Key is a unique ID assigned to you by Company, that to be sent onevery request from your site.</td>
         </tr>
 	
 	
@@ -268,8 +267,7 @@ every request from your site.</td>
                         
                     
                 
-                The Base URL to be used for APIs calls. (note - we can alternatively use <code>sponsor</code>
-and/or <code>baseURLPattern</code> to keep switching to custom <code>baseURL</code> on the fly.)</td>
+                The Base URL to be used for APIs calls. (note - we can alternatively use <code>sponsor</code>and/or <code>baseURLPattern</code> to keep switching to custom <code>baseURL</code> on the fly.)</td>
         </tr>
 	
 	
@@ -305,8 +303,7 @@ and/or <code>baseURLPattern</code> to keep switching to custom <code>baseURL</co
                         
                     
                 
-                The Title Company Sponsor name to be used in generating baseURL.
-(note - It will be ignored if baseURL is already passed.)</td>
+                The Title Company Sponsor name to be used in generating baseURL.(note - It will be ignored if baseURL is already passed.)</td>
         </tr>
 	
 	
@@ -342,9 +339,7 @@ and/or <code>baseURLPattern</code> to keep switching to custom <code>baseURL</co
                         
                     
                 
-                The URL pattern to be used
-to generate the baseURL which includes the <code>sponsor</code> provided. Must contain {{sponsor}} at least once.
-(note - It will be ignored if <code>baseURL</code> is already passed.)</td>
+                The URL pattern to be usedto generate the baseURL which includes the <code>sponsor</code> provided. Must contain {{sponsor}} at least once.(note - It will be ignored if <code>baseURL</code> is already passed.)</td>
         </tr>
 	
 	
@@ -380,11 +375,7 @@ to generate the baseURL which includes the <code>sponsor</code> provided. Must c
                         
                     
                 
-                The attribute to be used for auto-fill input fields when
-<code>options.autoFillContext</code> specified in methods which support auto-fill.
-(Note: the attribute value on those inputs would be used to evaluate to <code>res.response.data</code>
-- For example: &lt;input type="text" <code>data-ttb-field="GeneralInfo.Bedrooms"</code> />
-or &lt;input type="text" <code>data-ttb-field="GeneralInfo['Year Built']"</code> /></td>
+                The attribute to be used for auto-fill input fields when<code>options.autoFillContext</code> specified in methods which support auto-fill.(Note: the attribute value on those inputs would be used to evaluate to <code>res.response.data</code>- For example: &lt;input type="text" <code>data-ttb-field="GeneralInfo.Bedrooms"</code> />or &lt;input type="text" <code>data-ttb-field="GeneralInfo['Year Built']"</code> /></td>
         </tr>
 	
 	
@@ -504,35 +495,17 @@ or &lt;input type="text" <code>data-ttb-field="GeneralInfo['Year Built']"</code>
         
 
     
-    <pre class="prettyprint"><code>// With basic and minimum requirement.
- var ttb = new TTB({
-   partnerKey: '{your partner key}',
- });
-
- </code></pre>
+    <pre class="prettyprint"><code>// With basic and minimum requirement. var ttb = new TTB({   partnerKey: '{your partner key}', }); </code></pre>
     
 
 
     
-    <pre class="prettyprint"><code>// With advanced configuration for custom baseURL, and logs for debug mode.
- var ttb = new TTB({
-   partnerKey: '{your partner key}',
-   baseURL: 'https://direct.api.titletoolbox.com/',
-   debug: true
- });
-
- </code></pre>
+    <pre class="prettyprint"><code>// With advanced configuration for custom baseURL, and logs for debug mode. var ttb = new TTB({   partnerKey: '{your partner key}',   baseURL: 'https://direct.api.titletoolbox.com/',   debug: true }); </code></pre>
     
 
 
     
-    <pre class="prettyprint"><code>// With advanced configuration for custom <code>baseURLPattern</code> and <code>sponsor</code>, and custom auto-fill attributes.
- var ttb = new TTB({
-   partnerKey: '{your partner key}',
-   baseURLPattern: 'https://customdomain.com/api/{{sponsor}}',
-   sponsor: 'abc' // switchable later via ttb.setSponsor(),
-   autoFillAttr: 'data-model'
- });</code></pre>
+    <pre class="prettyprint"><code>// With advanced configuration for custom <code>baseURLPattern</code> and <code>sponsor</code>, and custom auto-fill attributes. var ttb = new TTB({   partnerKey: '{your partner key}',   baseURLPattern: 'https://customdomain.com/api/{{sponsor}}',   sponsor: 'abc' // switchable later via ttb.setSponsor(),   autoFillAttr: 'data-model' });</code></pre>
     
 
     
@@ -830,30 +803,7 @@ or &lt;input type="text" <code>data-ttb-field="GeneralInfo['Year Built']"</code>
         
 
     
-    <pre class="prettyprint"><code>// No ttb instance needed.
-// var ttb = new TTB({ ... });
-
-var payload = {
-  email: 'agent47@domain.com',
-  zipCode: '12345'
-};
-
-TTB.getSponsorsList(payload)
-.done(function(res) {
-  if (res.response.status === 'OK') {
-    // your success code here to consume res.response.data
-    console.log(res.response.data);
-  } else {
-    // your failure code here to consume res.response.data
-    console.log(res.response.data);
-  }
-})
-.fail(function(err) {
-  // your failure code here
-})
-.always(function() {
- // your on-complete code here as common for both success and failure
-});</code></pre>
+    <pre class="prettyprint"><code>// No ttb instance needed.// var ttb = new TTB({ ... });var payload = {  email: 'agent47@domain.com',  zipCode: '12345'};TTB.getSponsorsList(payload).done(function(res) {  if (res.response.status === 'OK') {    // your success code here to consume res.response.data    console.log(res.response.data);  } else {    // your failure code here to consume res.response.data    console.log(res.response.data);  }}).fail(function(err) {  // your failure code here}).always(function() { // your on-complete code here as common for both success and failure});</code></pre>
     
 
     
@@ -1107,32 +1057,7 @@ TTB.getSponsorsList(payload)
         
 
     
-    <pre class="prettyprint"><code>// No ttb instance needed.
-// var ttb = new TTB({ ... });
-
-var payload = {
-  email: 'agent47@domain.com',
-  zipCode: '12345'
-};
-
-TTB.showSponsorSelector(payload, {
-  onSelect: function(selectedSponsor) {
-   // your success code here to consume "selectedSponsor"
-
-   // you can instantiate the TTB sdk against the selected sponsor.
-   // var ttb = new TTB({
-   //  ...
-   //  sponsor: selectedSponsor
-   //  ...
-   // });
-
-   // OR you can update the sponsor of already instantiated TTB sdk
-   // ttb.setSponsor(selectedSponsor);
-  },
-  onError: function(error) {
-   // your failure code here
-  }
-});</code></pre>
+    <pre class="prettyprint"><code>// No ttb instance needed.// var ttb = new TTB({ ... });var payload = {  email: 'agent47@domain.com',  zipCode: '12345'};TTB.showSponsorSelector(payload, {  onSelect: function(selectedSponsor) {   // your success code here to consume "selectedSponsor"   // you can instantiate the TTB sdk against the selected sponsor.   // var ttb = new TTB({   //  ...   //  sponsor: selectedSponsor   //  ...   // });   // OR you can update the sponsor of already instantiated TTB sdk   // ttb.setSponsor(selectedSponsor);  },  onError: function(error) {   // your failure code here  }});</code></pre>
     
 
     
@@ -1160,12 +1085,7 @@ TTB.showSponsorSelector(payload, {
     
     
     <div class="description">
-        This method provides the complete list of all fields that can be used to construct search terms for
-<a href="TTB.html#globalSearch">global_search</a> and <a href="TTB.html#globalSearchCount">global_search_count</a> APIs. <br><br>
-
-To view the complete list of all available search fields and their possible values. <br>
-Please follow this <a target="_blank" href="http://jsoneditoronline.org/?id=ba6b41ee73822c653dae0e2cc8cf6351">JSON presentation</a> -
-The key info you should look for is the <code>field_name</code>, <code>search_type</code> and <code>choices</code>.
+        This method provides the complete list of all fields that can be used to construct search terms for<a href="TTB.html#globalSearch">global_search</a> and <a href="TTB.html#globalSearchCount">global_search_count</a> APIs. <br><br>To view the complete list of all available search fields and their possible values. <br>Please follow this <a target="_blank" href="http://jsoneditoronline.org/?id=ba6b41ee73822c653dae0e2cc8cf6351">JSON presentation</a> -The key info you should look for is the <code>field_name</code>, <code>search_type</code> and <code>choices</code>.
     </div>
     
 
@@ -1245,24 +1165,7 @@ The key info you should look for is the <code>field_name</code>, <code>search_ty
         
 
     
-    <pre class="prettyprint"><code>var ttb = new TTB({ ... }); // skip if already instantiated.
-
-ttb.getSearchFields()
-.done(function(res) {
-  if (res instanceof Array) {
-    // your success code here to consume res as fields list. see example <a target="_blank" href="http://jsoneditoronline.org/?id=ba6b41ee73822c653dae0e2cc8cf6351">< JSON here ></a>
-    console.log(res);
-  } else {
-    // your failure code here to consume res
-    console.log(res);
-  }
-})
-.fail(function(err) {
-  // your failure code here
-})
-.always(function() {
- // your on-complete code here as common for both success and failure
-});</code></pre>
+    <pre class="prettyprint"><code>var ttb = new TTB({ ... }); // skip if already instantiated.ttb.getSearchFields().done(function(res) {  if (res instanceof Array) {    // your success code here to consume res as fields list. see example <a target="_blank" href="http://jsoneditoronline.org/?id=ba6b41ee73822c653dae0e2cc8cf6351">< JSON here ></a>    console.log(res);  } else {    // your failure code here to consume res    console.log(res);  }}).fail(function(err) {  // your failure code here}).always(function() { // your on-complete code here as common for both success and failure});</code></pre>
     
 
     
@@ -1370,24 +1273,7 @@ ttb.getSearchFields()
         
 
     
-    <pre class="prettyprint"><code>var ttb = new TTB({ ... }); // skip if already instantiated.
-
-ttb.getTypesReport()
-.done(function(res) {
-  if (res.response.status === 'OK') {
-    // your success code here to consume res.response.data
-    console.log(res.response.data);
-  } else {
-    // your failure code here to consume res.response.data
-    console.log(res.response.data);
-  }
-})
-.fail(function(err) {
-  // your failure code here
-})
-.always(function() {
- // your on-complete code here as common for both success and failure
-});</code></pre>
+    <pre class="prettyprint"><code>var ttb = new TTB({ ... }); // skip if already instantiated.ttb.getTypesReport().done(function(res) {  if (res.response.status === 'OK') {    // your success code here to consume res.response.data    console.log(res.response.data);  } else {    // your failure code here to consume res.response.data    console.log(res.response.data);  }}).fail(function(err) {  // your failure code here}).always(function() { // your on-complete code here as common for both success and failure});</code></pre>
     
 
     
@@ -1415,8 +1301,7 @@ ttb.getTypesReport()
     
     
     <div class="description">
-        This method is used to search all properties matching a set of criteria.<br>
-There is a vast number of criteria available, see the Available Search Fields and Search Criteria section.
+        This method is used to search all properties matching a set of criteria.<br>There is a vast number of criteria available, see the Available Search Fields and Search Criteria section.
     </div>
     
 
@@ -1977,68 +1862,7 @@ There is a vast number of criteria available, see the Available Search Fields an
         
 
     
-    <pre class="prettyprint"><code>var ttb = new TTB({ ... }); // skip if already instantiated.
-
-var params = { limit: 1000, page: 2 };
-var payload = {
- "mm_fips_state_code": "06", // State FIPS
- "mm_fips_muni_code": "059", // County FIPS
- "sa_site_city": [ // Cities
-   "ANAHEIM"
- ],
- "sa_site_zip": [ // Zip Codes
-   "92801",
-   "92805"
- ],
- "sa_site_mail_same": "Y",
- "sa_owner_1_type": "0",
- "sa_nbr_bedrms": { // Beds
-   "match": "<=",
-   "value": 3
- },
- "sa_nbr_bath": { // Baths
-   "match": "<=",
-   "value": 2
-},
- "use_code_std": [
-   "RSFR",
-   "RCON"
-],
- "sa_yr_blt": { // Year built
-   "match": "From-To",
-   "value": {
-     "from": 1950,
-     "to": 2002
-   }
-},
- "sa_assr_year": {
-   "match": ">",
-   "value": 2000
-},
- "searchOptions": { // Additional Search Options
-   "omit_saved_records": false
-},
- "customFilters": { // Filters
-   "is_site_number_even_search": "Y"
- }
-};
-
-ttb.globalSearch(payload, params)
-.done(function(res) {
-  if (res.response.status === 'OK') {
-    // your success code here to consume res.response.data
-    console.log(res.response.data);
-  } else {
-    // your failure code here to consume res.response.data
-    console.log(res.response.data);
-  }
-})
-.fail(function(err) {
-  // your failure code here
-})
-.always(function() {
- // your on-complete code here as common for both success and failure
-});</code></pre>
+    <pre class="prettyprint"><code>var ttb = new TTB({ ... }); // skip if already instantiated.var params = { limit: 1000, page: 2 };var payload = { "mm_fips_state_code": "06", // State FIPS "mm_fips_muni_code": "059", // County FIPS "sa_site_city": [ // Cities   "ANAHEIM" ], "sa_site_zip": [ // Zip Codes   "92801",   "92805" ], "sa_site_mail_same": "Y", "sa_owner_1_type": "0", "sa_nbr_bedrms": { // Beds   "match": "<=",   "value": 3 }, "sa_nbr_bath": { // Baths   "match": "<=",   "value": 2}, "use_code_std": [   "RSFR",   "RCON"], "sa_yr_blt": { // Year built   "match": "From-To",   "value": {     "from": 1950,     "to": 2002   }}, "sa_assr_year": {   "match": ">",   "value": 2000}, "searchOptions": { // Additional Search Options   "omit_saved_records": false}, "customFilters": { // Filters   "is_site_number_even_search": "Y" }};ttb.globalSearch(payload, params).done(function(res) {  if (res.response.status === 'OK') {    // your success code here to consume res.response.data    console.log(res.response.data);  } else {    // your failure code here to consume res.response.data    console.log(res.response.data);  }}).fail(function(err) {  // your failure code here}).always(function() { // your on-complete code here as common for both success and failure});</code></pre>
     
 
     
@@ -2066,8 +1890,7 @@ ttb.globalSearch(payload, params)
     
     
     <div class="description">
-        This method is to only get the count (as opposed to full set of records) against a certain set of search criteria.<br>
-Note - It accepts the same search criteria input as for <a href="TTB.html#globalSearch">global_search</a> API.
+        This method is to only get the count (as opposed to full set of records) against a certain set of search criteria.<br>Note - It accepts the same search criteria input as for <a href="TTB.html#globalSearch">global_search</a> API.
     </div>
     
 
@@ -2192,46 +2015,7 @@ Note - It accepts the same search criteria input as for <a href="TTB.html#global
         
 
     
-    <pre class="prettyprint"><code>var ttb = new TTB({ ... }); // skip if already instantiated.
-
-var payload = {
- "mm_fips_state_code": "06", // State FIPS
- "mm_fips_muni_code": "059", // County FIPS
- "sa_site_city": [ // Cities
-   "ANAHEIM"
- ],
- "sa_site_zip": [ // Zip Codes
-   "92801",
-   "92805"
- ],
- "sa_nbr_bedrms": { // Beds
-   "match": "<=",
-   "value": 3
- },
- "searchOptions": { // Additional Search Options
-   "omit_saved_records": false
-},
- "customFilters": { // Filters
-   "is_site_number_even_search": "Y"
- }
-};
-
-ttb.globalSearchCount(payload, params)
-.done(function(res) {
-  if (res.response.status === 'OK') {
-    // your success code here to consume res.response.data
-    console.log(res.response.data);
-  } else {
-    // your failure code here to consume res.response.data
-    console.log(res.response.data);
-  }
-})
-.fail(function(err) {
-  // your failure code here
-})
-.always(function() {
- // your on-complete code here as common for both success and failure
-});</code></pre>
+    <pre class="prettyprint"><code>var ttb = new TTB({ ... }); // skip if already instantiated.var payload = { "mm_fips_state_code": "06", // State FIPS "mm_fips_muni_code": "059", // County FIPS "sa_site_city": [ // Cities   "ANAHEIM" ], "sa_site_zip": [ // Zip Codes   "92801",   "92805" ], "sa_nbr_bedrms": { // Beds   "match": "<=",   "value": 3 }, "searchOptions": { // Additional Search Options   "omit_saved_records": false}, "customFilters": { // Filters   "is_site_number_even_search": "Y" }};ttb.globalSearchCount(payload, params).done(function(res) {  if (res.response.status === 'OK') {    // your success code here to consume res.response.data    console.log(res.response.data);  } else {    // your failure code here to consume res.response.data    console.log(res.response.data);  }}).fail(function(err) {  // your failure code here}).always(function() { // your on-complete code here as common for both success and failure});</code></pre>
     
 
     
@@ -2452,32 +2236,7 @@ ttb.globalSearchCount(payload, params)
         
 
     
-    <pre class="prettyprint"><code>var ttb = new TTB({ ... }); // skip if already instantiated.
-
-var payload = {
-  TbUser: {
-    username: "awesomeuser99@domain.com",
-    password: "secret_Password0"
-  }
-};
-
-ttb.login(payload)
-.done(function(res) {
-  if (res.response.status === 'OK') {
-    // user is successfully logged-in !!
-    // your success code here to consume res.response.data for logged-in user info
-    console.log(res.response.data);
-  } else {
-    // your failure code here to consume res.response.data for validation errors info
-    console.log(res.response.data);
-  }
-})
-.fail(function(err) {
-  // your failure code here
-})
-.always(function() {
- // your on-complete code here as common for both success and failure
-});</code></pre>
+    <pre class="prettyprint"><code>var ttb = new TTB({ ... }); // skip if already instantiated.var payload = {  TbUser: {    username: "awesomeuser99@domain.com",    password: "secret_Password0"  }};ttb.login(payload).done(function(res) {  if (res.response.status === 'OK') {    // user is successfully logged-in !!    // your success code here to consume res.response.data for logged-in user info    console.log(res.response.data);  } else {    // your failure code here to consume res.response.data for validation errors info    console.log(res.response.data);  }}).fail(function(err) {  // your failure code here}).always(function() { // your on-complete code here as common for both success and failure});</code></pre>
     
 
     
@@ -2675,29 +2434,7 @@ ttb.login(payload)
         
 
     
-    <pre class="prettyprint"><code>var ttb = new TTB({ ... }); // skip if already instantiated.
-
-var payload = {
-  stk: "unique-token123"
-};
-
-ttb.remoteLogin(payload)
-.done(function(res) {
-  if (res.response.status === 'OK') {
-    // user is successfully logged-in !!
-    // your success code here to consume res.response.data for logged-in user info
-    console.log(res.response.data);
-  } else {
-    // your failure code here to consume res.response.data for validation errors info
-    console.log(res.response.data);
-  }
-})
-.fail(function(err) {
-  // your failure code here
-})
-.always(function() {
- // your on-complete code here as common for both success and failure
-});</code></pre>
+    <pre class="prettyprint"><code>var ttb = new TTB({ ... }); // skip if already instantiated.var payload = {  stk: "unique-token123"};ttb.remoteLogin(payload).done(function(res) {  if (res.response.status === 'OK') {    // user is successfully logged-in !!    // your success code here to consume res.response.data for logged-in user info    console.log(res.response.data);  } else {    // your failure code here to consume res.response.data for validation errors info    console.log(res.response.data);  }}).fail(function(err) {  // your failure code here}).always(function() { // your on-complete code here as common for both success and failure});</code></pre>
     
 
     
@@ -2805,26 +2542,7 @@ ttb.remoteLogin(payload)
         
 
     
-    <pre class="prettyprint"><code>var ttb = new TTB({ ... }); // skip if already instantiated.
-
-ttb.logout()
-.done(function(res) {
-  if (res.response.status === 'OK') {
-   // user is successfully logged-out!!
-   // your success code here to clear any cached info etc from the web page
-   console.log(res.response.data);
-
-  } else {
-    // your failure code here to consume res.response.data
-    console.log(res.response.data);
-  }
-})
-.fail(function(err) {
-  // your failure code here
-})
-.always(function() {
- // your on-complete code here as common for both success and failure
-});</code></pre>
+    <pre class="prettyprint"><code>var ttb = new TTB({ ... }); // skip if already instantiated.ttb.logout().done(function(res) {  if (res.response.status === 'OK') {   // user is successfully logged-out!!   // your success code here to clear any cached info etc from the web page   console.log(res.response.data);  } else {    // your failure code here to consume res.response.data    console.log(res.response.data);  }}).fail(function(err) {  // your failure code here}).always(function() { // your on-complete code here as common for both success and failure});</code></pre>
     
 
     
@@ -3137,31 +2855,7 @@ ttb.logout()
         
 
     
-    <pre class="prettyprint"><code>var ttb = new TTB({ ... }); // skip if already instantiated.
-
-var payload = {
-  sa_property_id: "0039025849",
-  state_county_fips: "06059",
-  report_type: "property_profile",
-  output: "link",
-};
-
-ttb.orderReport(payload)
-.done(function(res) {
-  if (res.response.status === 'OK') {
-    // your success code here to consume res.response.data
-    console.log(res.response.data);
-  } else {
-    // your failure code here to consume res.response.data
-    console.log(res.response.data);
-  }
-})
-.fail(function(err) {
-  // your failure code here
-})
-.always(function() {
- // your on-complete code here as common for both success and failure
-});</code></pre>
+    <pre class="prettyprint"><code>var ttb = new TTB({ ... }); // skip if already instantiated.var payload = {  sa_property_id: "0039025849",  state_county_fips: "06059",  report_type: "property_profile",  output: "link",};ttb.orderReport(payload).done(function(res) {  if (res.response.status === 'OK') {    // your success code here to consume res.response.data    console.log(res.response.data);  } else {    // your failure code here to consume res.response.data    console.log(res.response.data);  }}).fail(function(err) {  // your failure code here}).always(function() { // your on-complete code here as common for both success and failure});</code></pre>
     
 
     
@@ -3572,35 +3266,7 @@ ttb.orderReport(payload)
         
 
     
-    <pre class="prettyprint"><code>var ttb = new TTB({ ... }); // skip if already instantiated.
-
-var payload = {
-  "sa_property_id": "0039025849",
-  "mm_fips_state_code": "06",
-  "date_transfer(+/-)": 12,
-  "distance_in_km": 1.6,
-  "nbr_bath(+/-)": 1,
-  "nbr_bedrms(+/-)": 1,
-  "sqft(+/-)": 0.2,
-  "yr_blt(+/-)": 20
-};
-
-ttb.propertyComps(payload)
-.done(function(res) {
-  if (res.response.status === 'OK') {
-    // your success code here to consume res.response.data
-    console.log(res.response.data);
-  } else {
-    // your failure code here to consume res.response.data
-    console.log(res.response.data);
-  }
-})
-.fail(function(err) {
-  // your failure code here
-})
-.always(function() {
- // your on-complete code here as common for both success and failure
-});</code></pre>
+    <pre class="prettyprint"><code>var ttb = new TTB({ ... }); // skip if already instantiated.var payload = {  "sa_property_id": "0039025849",  "mm_fips_state_code": "06",  "date_transfer(+/-)": 12,  "distance_in_km": 1.6,  "nbr_bath(+/-)": 1,  "nbr_bedrms(+/-)": 1,  "sqft(+/-)": 0.2,  "yr_blt(+/-)": 20};ttb.propertyComps(payload).done(function(res) {  if (res.response.status === 'OK') {    // your success code here to consume res.response.data    console.log(res.response.data);  } else {    // your failure code here to consume res.response.data    console.log(res.response.data);  }}).fail(function(err) {  // your failure code here}).always(function() { // your on-complete code here as common for both success and failure});</code></pre>
     
 
     
@@ -3789,8 +3455,7 @@ ttb.propertyComps(payload)
             
             <td class="description last">
                 
-                A query selector of an element(s) inside which to look for inputs elements
-having <code>data-ttb-field</code>attribute.</td>
+                A query selector of an element(s) inside which to look for inputs elementshaving <code>data-ttb-field</code>attribute.</td>
         </tr>
 	
 	
@@ -3868,33 +3533,7 @@ having <code>data-ttb-field</code>attribute.</td>
         
 
     
-    <pre class="prettyprint"><code>var ttb = new TTB({ ... }); // skip if already instantiated.
-
-var payload = {
-  property_id: 0091683346
-  state_fips: 25,
-};
-
-var options = {
-  autoFillContext: '#propertyDetails__form'
-};
-
-ttb.propertyDetails(payload, options)
-.done(function(res) {
-  if (res.response.status === 'OK') {
-    // your success code here to consume res.response.data for any extra effort other than the auto-fill
-    console.log(res.response.data);
-  } else {
-    // your failure code here to consume res.response.data
-    console.log(res.response.data);
-  }
-})
-.fail(function(err) {
-  // your failure code here
-})
-.always(function() {
- // your on-complete code here as common for both success and failure
-});</code></pre>
+    <pre class="prettyprint"><code>var ttb = new TTB({ ... }); // skip if already instantiated.var payload = {  property_id: 0091683346  state_fips: 25,};var options = {  autoFillContext: '#propertyDetails__form'};ttb.propertyDetails(payload, options).done(function(res) {  if (res.response.status === 'OK') {    // your success code here to consume res.response.data for any extra effort other than the auto-fill    console.log(res.response.data);  } else {    // your failure code here to consume res.response.data    console.log(res.response.data);  }}).fail(function(err) {  // your failure code here}).always(function() { // your on-complete code here as common for both success and failure});</code></pre>
     
 
     
@@ -4159,30 +3798,7 @@ ttb.propertyDetails(payload, options)
         
 
     
-    <pre class="prettyprint"><code>var ttb = new TTB({ ... }); // skip if already instantiated.
-
-var payload = {
-  first_name: "Fariba",
-  last_name: "Siddiqi",
-  state_county_fips: "06059"
-};
-
-ttb.searchByOwnerName(payload)
-.done(function(res) {
-  if (res.response.status === 'OK') {
-    // your success code here to consume res.response.data
-    console.log(res.response.data);
-  } else {
-    // your failure code here to consume res.response.data
-    console.log(res.response.data);
-  }
-})
-.fail(function(err) {
-  // your failure code here
-})
-.always(function() {
- // your on-complete code here as common for both success and failure
-});</code></pre>
+    <pre class="prettyprint"><code>var ttb = new TTB({ ... }); // skip if already instantiated.var payload = {  first_name: "Fariba",  last_name: "Siddiqi",  state_county_fips: "06059"};ttb.searchByOwnerName(payload).done(function(res) {  if (res.response.status === 'OK') {    // your success code here to consume res.response.data    console.log(res.response.data);  } else {    // your failure code here to consume res.response.data    console.log(res.response.data);  }}).fail(function(err) {  // your failure code here}).always(function() { // your on-complete code here as common for both success and failure});</code></pre>
     
 
     
@@ -4403,29 +4019,7 @@ ttb.searchByOwnerName(payload)
         
 
     
-    <pre class="prettyprint"><code>var ttb = new TTB({ ... }); // skip if already instantiated.
-
-var payload = {
-  parcel_number: "46327216",
-  state_county_fips: "06059"
-};
-
-ttb.searchByParcelNumber(payload)
-.done(function(res) {
-  if (res.response.status === 'OK') {
-    // your success code here to consume res.response.data
-    console.log(res.response.data);
-  } else {
-    // your failure code here to consume res.response.data
-    console.log(res.response.data);
-  }
-})
-.fail(function(err) {
-  // your failure code here
-})
-.always(function() {
- // your on-complete code here as common for both success and failure
-});</code></pre>
+    <pre class="prettyprint"><code>var ttb = new TTB({ ... }); // skip if already instantiated.var payload = {  parcel_number: "46327216",  state_county_fips: "06059"};ttb.searchByParcelNumber(payload).done(function(res) {  if (res.response.status === 'OK') {    // your success code here to consume res.response.data    console.log(res.response.data);  } else {    // your failure code here to consume res.response.data    console.log(res.response.data);  }}).fail(function(err) {  // your failure code here}).always(function() { // your on-complete code here as common for both success and failure});</code></pre>
     
 
     
@@ -4780,34 +4374,7 @@ ttb.searchByParcelNumber(payload)
         
 
     
-    <pre class="prettyprint"><code>var ttb = new TTB({ ... }); // skip if already instantiated.
-
-var payload = {
-  site_address: "317 2nd St",
-  site_unit: "",
-  site_city: "Huntington Beach",
-  site_state: "CA",
-  site_zip: "92648",
-  site_street_number: "317",
-  site_route: "2nd St"
-};
-
-ttb.searchBySiteAddress(payload)
-.done(function(res) {
-  if (res.response.status === 'OK') {
-    // your success code here to consume res.response.data
-    console.log(res.response.data);
-  } else {
-    // your failure code here to consume res.response.data
-    console.log(res.response.data);
-  }
-})
-.fail(function(err) {
-  // your failure code here
-})
-.always(function() {
- // your on-complete code here as common for both success and failure
-});</code></pre>
+    <pre class="prettyprint"><code>var ttb = new TTB({ ... }); // skip if already instantiated.var payload = {  site_address: "317 2nd St",  site_unit: "",  site_city: "Huntington Beach",  site_state: "CA",  site_zip: "92648",  site_street_number: "317",  site_route: "2nd St"};ttb.searchBySiteAddress(payload).done(function(res) {  if (res.response.status === 'OK') {    // your success code here to consume res.response.data    console.log(res.response.data);  } else {    // your failure code here to consume res.response.data    console.log(res.response.data);  }}).fail(function(err) {  // your failure code here}).always(function() { // your on-complete code here as common for both success and failure});</code></pre>
     
 
     
@@ -4835,8 +4402,7 @@ ttb.searchBySiteAddress(payload)
     
     
     <div class="description">
-        This method is use to switch to a different sponsor (Title Company) and so generates a new <code>baseURL</code>
-based on passed <code/>vertical</code> with existing <code>baseURLPattern</code>.
+        This method is use to switch to a different sponsor (Title Company) and so generates a new <code>baseURL</code>based on passed <code/>vertical</code> with existing <code>baseURLPattern</code>.
     </div>
     
 
@@ -4883,8 +4449,7 @@ based on passed <code/>vertical</code> with existing <code>baseURLPattern</code>
             
             <td class="description last">
                 
-                The Title Company Sponsor name to be used in generating baseURL. - can retrieve
-from <code>TTB.getSponsorsList()</code></td>
+                The Title Company Sponsor name to be used in generating baseURL. - can retrievefrom <code>TTB.getSponsorsList()</code></td>
         </tr>
 	
 	
@@ -4962,9 +4527,7 @@ from <code>TTB.getSponsorsList()</code></td>
         
 
     
-    <pre class="prettyprint"><code>var ttb = new TTB({ ... }); // skip if already instantiated.
-
-ttb.setVertical('xyz');</code></pre>
+    <pre class="prettyprint"><code>var ttb = new TTB({ ... }); // skip if already instantiated.ttb.setVertical('xyz');</code></pre>
     
 
     
@@ -4988,7 +4551,7 @@ ttb.setVertical('xyz');</code></pre>
 
         <footer>
             Copyright © 2017 <a target="_blank" href="http://www.benutech.com/" target="_blank" title="Benutech official website">Benutech Inc.</a> All rights reserved.</a>
-           <!-- Documentation generated by <a target="_blank" href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Thu Dec 07 2017 22:31:17 GMT+0500 (PKT) -->
+           <!-- Documentation generated by <a target="_blank" href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Fri Dec 08 2017 01:29:31 GMT+0500 (Pakistan Standard Time) -->
         </footer>
     </div>
 </div>
