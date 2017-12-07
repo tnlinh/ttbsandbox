@@ -35,18 +35,20 @@
       <div class="playground row">
         <div class="col-xs-3">
           <div class="form-group">
+            <label for="login__username">Username</label>
             <input type="text" class="form-control" placeholder="Username" value="ttbhelp@benutech.com"
-                   name="login__username">
+                   id="login__username" name="login__username">
           </div>
         </div>
         <div class="col-xs-3">
           <div class="form-group">
+            <label for="propertyDetails__state_fips">Password</label>
             <input type="password" class="form-control" placeholder="Password"
-                   name="login__password">
+                   id="login__password" name="login__password">
           </div>
         </div>
         <div class="col-xs-3">
-          <div class="form-group">
+          <div class="form-group" style="margin-top: 24px;">
             <button id="login__submit" class="btn btn-primary" onclick="login()">Login</button>
           </div>
         </div>
@@ -144,24 +146,26 @@
       <div class="playground row">
         <div class="col-xs-3">
           <div class="form-group">
+            <label for="propertyDetails__property_id">Property ID</label>
             <input type="text" class="form-control" placeholder="Property ID" value="0024172993"
-                   name="propertyDetails__property_id">
+                   id="propertyDetails__property_id" name="propertyDetails__property_id">
           </div>
         </div>
         <div class="col-xs-3">
           <div class="form-group">
+            <label for="propertyDetails__state_fips">State FIPS</label>
             <input type="text" class="form-control" placeholder="State FIPS" value="06"
-                   name="propertyDetails__state_fips">
+                   id="propertyDetails__state_fips" name="propertyDetails__state_fips">
           </div>
         </div>
         <div class="col-xs-3">
-          <div class="form-group">
+          <div class="form-group" style="margin-top: 24px;">
             <button id="propertyDetails__submit" class="btn btn-primary" onclick="propertyDetails()">Property Details</button>
           </div>
         </div>
         <div class="col-xs-12">
           <hr>
-          <h5>Property Details Form (to be auto filled)</h5>
+          <h5>Property Details Form To be auto filled - Hit "Property Details" blue button once login.</h5>
           <form id="propertyDetails__form">
             <fieldset>
               <!--<legend>Property Details Form (to be auto filled)</legend>-->
