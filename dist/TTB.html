@@ -123,7 +123,7 @@
     
         
         <div class="tag-source">
-            <a href="ttbsandbox_lib_ttbsdk.js.html">ttbsandbox/lib/ttbsdk.js</a>, <a href="ttbsandbox_lib_ttbsdk.js.html#line65">line 65</a>
+            <a href="ttbsandbox_lib_ttbsdk.js.html">ttbsandbox/lib/ttbsdk.js</a>, <a href="ttbsandbox_lib_ttbsdk.js.html#line90">line 90</a>
         </div>
         
     </div>
@@ -231,7 +231,8 @@
                         
                     
                 
-                The Partner-Key is a unique ID assigned to your account to be sent on every request.</td>
+                The Partner-Key is a unique ID assigned to you by Company, that to be sent on
+every request from your site.</td>
         </tr>
 	
 	
@@ -253,6 +254,8 @@
             
                 <td class="default">
                 
+                    "https://direct.api.titletoolbox.com/"
+                
                 </td>
             
             
@@ -265,7 +268,8 @@
                         
                     
                 
-                The Base URL to be used for APIs calls. (note - we can alternatively use <code>sponsor</code> and/or <code>baseURLPattern</code> to keep switching to custom <code>baseURL</code> on the fly.)</td>
+                The Base URL to be used for APIs calls. (note - we can alternatively use <code>sponsor</code>
+and/or <code>baseURLPattern</code> to keep switching to custom <code>baseURL</code> on the fly.)</td>
         </tr>
 	
 	
@@ -301,7 +305,8 @@
                         
                     
                 
-                The Title Company Sponsor name to be used in generating baseURL. (note - It will be ignored if baseURL is already passed.)</td>
+                The Title Company Sponsor name to be used in generating baseURL.
+(note - It will be ignored if baseURL is already passed.)</td>
         </tr>
 	
 	
@@ -337,7 +342,49 @@
                         
                     
                 
-                The URL pattern to be used to generate the baseURL which includes the `sponsor` provided. Must contain {{sponsor}} at least once. (note - It will be ignored if <code>baseURL</code> is already passed.)</td>
+                The URL pattern to be used
+to generate the baseURL which includes the <code>sponsor</code> provided. Must contain {{sponsor}} at least once.
+(note - It will be ignored if <code>baseURL</code> is already passed.)</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>autoFillAttr</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                    "data-ttb-field"
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                The attribute to be used for auto-fill input fields when
+<code>options.autoFillContext</code> specified in methods which support auto-fill.
+(Note: the attribute value on those inputs would be used to evaluate to <code>res.response.data</code>
+- For example: &lt;input type="text" <code>data-ttb-field="GeneralInfo.Bedrooms"</code> />
+or &lt;input type="text" <code>data-ttb-field="GeneralInfo['Year Built']"</code> /></td>
         </tr>
 	
 	
@@ -479,11 +526,12 @@
 
 
     
-    <pre class="prettyprint"><code>// With advanced configuration for custom <code>baseURLPattern</code> and <code>sponsor</code>, and logs for debug mode.
+    <pre class="prettyprint"><code>// With advanced configuration for custom <code>baseURLPattern</code> and <code>sponsor</code>, and custom auto-fill attributes.
  var ttb = new TTB({
    partnerKey: '{your partner key}',
    baseURLPattern: 'https://customdomain.com/api/{{sponsor}}',
-   sponsor: 'abc' // switchable later via ttb.setSponsor()
+   sponsor: 'abc' // switchable later via ttb.setSponsor(),
+   autoFillAttr: 'data-model'
  });</code></pre>
     
 
@@ -568,7 +616,7 @@
     
         
         <div class="tag-source">
-            <a href="ttbsandbox_lib_ttbsdk.js.html">ttbsandbox/lib/ttbsdk.js</a>, <a href="ttbsandbox_lib_ttbsdk.js.html#line167">line 167</a>
+            <a href="ttbsandbox_lib_ttbsdk.js.html">ttbsandbox/lib/ttbsdk.js</a>, <a href="ttbsandbox_lib_ttbsdk.js.html#line193">line 193</a>
         </div>
         
     </div>
@@ -822,7 +870,7 @@ TTB.getSponsorsList(payload)
     
         
         <div class="tag-source">
-            <a href="ttbsandbox_lib_ttbsdk.js.html">ttbsandbox/lib/ttbsdk.js</a>, <a href="ttbsandbox_lib_ttbsdk.js.html#line227">line 227</a>
+            <a href="ttbsandbox_lib_ttbsdk.js.html">ttbsandbox/lib/ttbsdk.js</a>, <a href="ttbsandbox_lib_ttbsdk.js.html#line253">line 253</a>
         </div>
         
     </div>
@@ -1101,7 +1149,7 @@ TTB.showSponsorSelector(payload, {
     
         
         <div class="tag-source">
-            <a href="ttbsandbox_lib_ttbsdk.js.html">ttbsandbox/lib/ttbsdk.js</a>, <a href="ttbsandbox_lib_ttbsdk.js.html#line1033">line 1033</a>
+            <a href="ttbsandbox_lib_ttbsdk.js.html">ttbsandbox/lib/ttbsdk.js</a>, <a href="ttbsandbox_lib_ttbsdk.js.html#line1123">line 1123</a>
         </div>
         
     </div>
@@ -1231,7 +1279,7 @@ ttb.getSearchFields()
     
         
         <div class="tag-source">
-            <a href="ttbsandbox_lib_ttbsdk.js.html">ttbsandbox/lib/ttbsdk.js</a>, <a href="ttbsandbox_lib_ttbsdk.js.html#line993">line 993</a>
+            <a href="ttbsandbox_lib_ttbsdk.js.html">ttbsandbox/lib/ttbsdk.js</a>, <a href="ttbsandbox_lib_ttbsdk.js.html#line1083">line 1083</a>
         </div>
         
     </div>
@@ -1356,7 +1404,7 @@ ttb.getTypesReport()
     
         
         <div class="tag-source">
-            <a href="ttbsandbox_lib_ttbsdk.js.html">ttbsandbox/lib/ttbsdk.js</a>, <a href="ttbsandbox_lib_ttbsdk.js.html#line893">line 893</a>
+            <a href="ttbsandbox_lib_ttbsdk.js.html">ttbsandbox/lib/ttbsdk.js</a>, <a href="ttbsandbox_lib_ttbsdk.js.html#line983">line 983</a>
         </div>
         
     </div>
@@ -2007,7 +2055,7 @@ ttb.globalSearch(payload, params)
     
         
         <div class="tag-source">
-            <a href="ttbsandbox_lib_ttbsdk.js.html">ttbsandbox/lib/ttbsdk.js</a>, <a href="ttbsandbox_lib_ttbsdk.js.html#line956">line 956</a>
+            <a href="ttbsandbox_lib_ttbsdk.js.html">ttbsandbox/lib/ttbsdk.js</a>, <a href="ttbsandbox_lib_ttbsdk.js.html#line1046">line 1046</a>
         </div>
         
     </div>
@@ -2200,7 +2248,7 @@ ttb.globalSearchCount(payload, params)
     
         
         <div class="tag-source">
-            <a href="ttbsandbox_lib_ttbsdk.js.html">ttbsandbox/lib/ttbsdk.js</a>, <a href="ttbsandbox_lib_ttbsdk.js.html#line465">line 465</a>
+            <a href="ttbsandbox_lib_ttbsdk.js.html">ttbsandbox/lib/ttbsdk.js</a>, <a href="ttbsandbox_lib_ttbsdk.js.html#line539">line 539</a>
         </div>
         
     </div>
@@ -2446,7 +2494,7 @@ ttb.login(payload)
     
         
         <div class="tag-source">
-            <a href="ttbsandbox_lib_ttbsdk.js.html">ttbsandbox/lib/ttbsdk.js</a>, <a href="ttbsandbox_lib_ttbsdk.js.html#line418">line 418</a>
+            <a href="ttbsandbox_lib_ttbsdk.js.html">ttbsandbox/lib/ttbsdk.js</a>, <a href="ttbsandbox_lib_ttbsdk.js.html#line492">line 492</a>
         </div>
         
     </div>
@@ -2666,7 +2714,7 @@ ttb.remoteLogin(payload)
     
         
         <div class="tag-source">
-            <a href="ttbsandbox_lib_ttbsdk.js.html">ttbsandbox/lib/ttbsdk.js</a>, <a href="ttbsandbox_lib_ttbsdk.js.html#line502">line 502</a>
+            <a href="ttbsandbox_lib_ttbsdk.js.html">ttbsandbox/lib/ttbsdk.js</a>, <a href="ttbsandbox_lib_ttbsdk.js.html#line576">line 576</a>
         </div>
         
     </div>
@@ -2793,7 +2841,7 @@ ttb.logout()
     
         
         <div class="tag-source">
-            <a href="ttbsandbox_lib_ttbsdk.js.html">ttbsandbox/lib/ttbsdk.js</a>, <a href="ttbsandbox_lib_ttbsdk.js.html#line692">line 692</a>
+            <a href="ttbsandbox_lib_ttbsdk.js.html">ttbsandbox/lib/ttbsdk.js</a>, <a href="ttbsandbox_lib_ttbsdk.js.html#line766">line 766</a>
         </div>
         
     </div>
@@ -3130,7 +3178,7 @@ ttb.orderReport(payload)
     
         
         <div class="tag-source">
-            <a href="ttbsandbox_lib_ttbsdk.js.html">ttbsandbox/lib/ttbsdk.js</a>, <a href="ttbsandbox_lib_ttbsdk.js.html#line753">line 753</a>
+            <a href="ttbsandbox_lib_ttbsdk.js.html">ttbsandbox/lib/ttbsdk.js</a>, <a href="ttbsandbox_lib_ttbsdk.js.html#line827">line 827</a>
         </div>
         
     </div>
@@ -3564,12 +3612,12 @@ ttb.propertyComps(payload)
     <div class="nameContainer">
         <h4 class="name" id="propertyDetails">
             
-            propertyDetails<span class="signature">(payload)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{Object}</span>
+            propertyDetails<span class="signature">(payload, options)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{Object}</span>
         </h4>
     
         
         <div class="tag-source">
-            <a href="ttbsandbox_lib_ttbsdk.js.html">ttbsandbox/lib/ttbsdk.js</a>, <a href="ttbsandbox_lib_ttbsdk.js.html#line797">line 797</a>
+            <a href="ttbsandbox_lib_ttbsdk.js.html">ttbsandbox/lib/ttbsdk.js</a>, <a href="ttbsandbox_lib_ttbsdk.js.html#line879">line 879</a>
         </div>
         
     </div>
@@ -3699,6 +3747,53 @@ ttb.propertyComps(payload)
         </tr>
 	
 	
+	
+        <tr>
+            
+                <td class="name"><code>options</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                The options object</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>payload.autoFillContext</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                A query selector of an element(s) inside which to look for inputs elements
+having <code>data-ttb-field</code>attribute.</td>
+        </tr>
+	
+	
 	</tbody>
 </table>
     
@@ -3780,10 +3875,14 @@ var payload = {
   state_fips: 25,
 };
 
-ttb.propertyDetails(payload)
+var options = {
+  autoFillContext: '#propertyDetails__form'
+};
+
+ttb.propertyDetails(payload, options)
 .done(function(res) {
   if (res.response.status === 'OK') {
-    // your success code here to consume res.response.data
+    // your success code here to consume res.response.data for any extra effort other than the auto-fill
     console.log(res.response.data);
   } else {
     // your failure code here to consume res.response.data
@@ -3812,7 +3911,7 @@ ttb.propertyDetails(payload)
     
         
         <div class="tag-source">
-            <a href="ttbsandbox_lib_ttbsdk.js.html">ttbsandbox/lib/ttbsdk.js</a>, <a href="ttbsandbox_lib_ttbsdk.js.html#line644">line 644</a>
+            <a href="ttbsandbox_lib_ttbsdk.js.html">ttbsandbox/lib/ttbsdk.js</a>, <a href="ttbsandbox_lib_ttbsdk.js.html#line718">line 718</a>
         </div>
         
     </div>
@@ -4100,7 +4199,7 @@ ttb.searchByOwnerName(payload)
     
         
         <div class="tag-source">
-            <a href="ttbsandbox_lib_ttbsdk.js.html">ttbsandbox/lib/ttbsdk.js</a>, <a href="ttbsandbox_lib_ttbsdk.js.html#line545">line 545</a>
+            <a href="ttbsandbox_lib_ttbsdk.js.html">ttbsandbox/lib/ttbsdk.js</a>, <a href="ttbsandbox_lib_ttbsdk.js.html#line619">line 619</a>
         </div>
         
     </div>
@@ -4343,7 +4442,7 @@ ttb.searchByParcelNumber(payload)
     
         
         <div class="tag-source">
-            <a href="ttbsandbox_lib_ttbsdk.js.html">ttbsandbox/lib/ttbsdk.js</a>, <a href="ttbsandbox_lib_ttbsdk.js.html#line598">line 598</a>
+            <a href="ttbsandbox_lib_ttbsdk.js.html">ttbsandbox/lib/ttbsdk.js</a>, <a href="ttbsandbox_lib_ttbsdk.js.html#line672">line 672</a>
         </div>
         
     </div>
@@ -4447,7 +4546,7 @@ ttb.searchByParcelNumber(payload)
                         
                     
                 
-                </td>
+                Property House# or Street# with the route e.g. "317 2nd St".</td>
         </tr>
 	
 	
@@ -4477,7 +4576,7 @@ ttb.searchByParcelNumber(payload)
                         
                     
                 
-                </td>
+                Unit# of the property (If has any).</td>
         </tr>
 	
 	
@@ -4507,7 +4606,7 @@ ttb.searchByParcelNumber(payload)
                         
                     
                 
-                </td>
+                Property City e.g. "Huntington Beach"</td>
         </tr>
 	
 	
@@ -4537,7 +4636,7 @@ ttb.searchByParcelNumber(payload)
                         
                     
                 
-                </td>
+                Property State e.g. "CA"</td>
         </tr>
 	
 	
@@ -4567,7 +4666,7 @@ ttb.searchByParcelNumber(payload)
                         
                     
                 
-                </td>
+                Property Street# e.g. "317"</td>
         </tr>
 	
 	
@@ -4597,7 +4696,7 @@ ttb.searchByParcelNumber(payload)
                         
                     
                 
-                </td>
+                Property Route - "2nd St".</td>
         </tr>
 	
 	
@@ -4725,7 +4824,7 @@ ttb.searchBySiteAddress(payload)
     
         
         <div class="tag-source">
-            <a href="ttbsandbox_lib_ttbsdk.js.html">ttbsandbox/lib/ttbsdk.js</a>, <a href="ttbsandbox_lib_ttbsdk.js.html#line380">line 380</a>
+            <a href="ttbsandbox_lib_ttbsdk.js.html">ttbsandbox/lib/ttbsdk.js</a>, <a href="ttbsandbox_lib_ttbsdk.js.html#line454">line 454</a>
         </div>
         
     </div>
@@ -4736,7 +4835,8 @@ ttb.searchBySiteAddress(payload)
     
     
     <div class="description">
-        This method is use to switch to a different sponsor (Title Company) and so generates a new <code>baseURL</code> based on passed <code/>vertical</code> with existing <code>baseURLPattern</code>.
+        This method is use to switch to a different sponsor (Title Company) and so generates a new <code>baseURL</code>
+based on passed <code/>vertical</code> with existing <code>baseURLPattern</code>.
     </div>
     
 
@@ -4783,7 +4883,8 @@ ttb.searchBySiteAddress(payload)
             
             <td class="description last">
                 
-                The Title Company Sponsor name to be used in generating baseURL. - can retrieve from <code>TTB.getSponsorsList()</code></td>
+                The Title Company Sponsor name to be used in generating baseURL. - can retrieve
+from <code>TTB.getSponsorsList()</code></td>
         </tr>
 	
 	
@@ -4887,7 +4988,7 @@ ttb.setVertical('xyz');</code></pre>
 
         <footer>
             Copyright © 2017 <a target="_blank" href="http://www.benutech.com/" target="_blank" title="Benutech official website">Benutech Inc.</a> All rights reserved.</a>
-           <!-- Documentation generated by <a target="_blank" href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Tue Nov 28 2017 01:47:22 GMT+0500 (PKT) -->
+           <!-- Documentation generated by <a target="_blank" href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Thu Dec 07 2017 22:31:17 GMT+0500 (PKT) -->
         </footer>
     </div>
 </div>
