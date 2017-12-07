@@ -297,11 +297,15 @@
     console.log('propertyDetails clicked');
 
     var payload = {
-      property_id: '0091683346',
-      state_fips: 25
+      property_id: $('[name="propertyDetails__property_id"]').val(),
+      state_fips: $('[name="propertyDetails__state_fips"]').val()
     };
 
-    ttb.propertyDetails(payload)
+    var options = {
+      autoFillContext: '#propertyDetails__form'
+    };
+
+    ttb.propertyDetails(payload, options)
         .done(function(res) {
           if (res.response.status === 'OK') {
             // your success code here to consume res.response.data

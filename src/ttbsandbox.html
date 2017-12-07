@@ -33,18 +33,24 @@
         <strong>Documentation link: </strong> <a target="_blank" href="https://ttbsandbox.herokuapp.com/TTB.html#login">here</a>.
       </div>
       <div class="playground row">
-        <div class="col-xs-4">
+        <div class="col-xs-3">
           <div class="form-group">
             <input type="text" class="form-control" placeholder="Username" value="ttbhelp@benutech.com"
                    name="login__username">
           </div>
+        </div>
+        <div class="col-xs-3">
           <div class="form-group">
             <input type="password" class="form-control" placeholder="Password"
                    name="login__password">
           </div>
+        </div>
+        <div class="col-xs-3">
           <div class="form-group">
             <button id="login__submit" class="btn btn-primary" onclick="login()">Login</button>
           </div>
+        </div>
+        <div class="col-xs-6">
           <p id="logged-in" class="alert alert-success" style="display: none">Logged in successful !</p>
         </div>
       </div>
@@ -135,8 +141,60 @@
       <div>
         <strong>Documentation link: </strong> <a target="_blank" href="https://ttbsandbox.herokuapp.com/TTB.html#propertyDetails">here</a>.
       </div>
-      <div class="playground">
-        <button class="btn btn-primary" onclick="propertyDetails()">Property Details</button>
+      <div class="playground row">
+        <div class="col-xs-3">
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="Property ID" value="0024172993"
+                   name="propertyDetails__property_id">
+          </div>
+        </div>
+        <div class="col-xs-3">
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="State FIPS" value="06"
+                   name="propertyDetails__state_fips">
+          </div>
+        </div>
+        <div class="col-xs-3">
+          <div class="form-group">
+            <button id="propertyDetails__submit" class="btn btn-primary" onclick="propertyDetails()">Property Details</button>
+          </div>
+        </div>
+        <div class="col-xs-12">
+          <hr>
+          <h5>Property Details Form (to be auto filled)</h5>
+          <form id="propertyDetails__form">
+            <fieldset>
+              <!--<legend>Property Details Form (to be auto filled)</legend>-->
+              <div class="row">
+                <div class="col-xs-3">
+                  <div class="form-group">
+                    <label for="propertyDetails__year_built">Year Built</label>
+                    <input type="text" class="form-control" placeholder="Year Built"
+                           data-ttb-field="GeneralInfo['Year Built']"
+                           id="propertyDetails__year_built" name="propertyDetails__year_built">
+                  </div>
+                </div>
+                <div class="col-xs-3">
+                  <div class="form-group">
+                    <label for="propertyDetails__bedrooms">Bedrooms</label>
+                    <input type="text" class="form-control" placeholder="Bedrooms"
+                           data-ttb-field="GeneralInfo.Bedrooms"
+                           id="propertyDetails__bedrooms" name="propertyDetails__bedrooms">
+                  </div>
+                </div>
+                <div class="col-xs-3">
+                  <div class="form-group">
+                    <label for="propertyDetails__bathrooms">Bathrooms</label>
+                    <input type="text" class="form-control" placeholder="Bathrooms"
+                           data-ttb-field="GeneralInfo.Bathrooms"
+                           id="propertyDetails__bathrooms" name="propertyDetails__bathrooms">
+                  </div>
+                </div>
+              </div>
+            </fieldset>
+          </form>
+          <hr>
+        </div>
       </div>
     </div>
 
