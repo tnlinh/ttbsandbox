@@ -26,7 +26,10 @@
     <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
     <link type="text/css" rel="stylesheet" href="styles/bootstrap.min.css">
     <link type="text/css" rel="stylesheet" href="styles/jaguar.css">
-    
+
+    <!-- injected from jsdoc.json > customOptions.stylesheet -->
+    <link type="text/css" rel="stylesheet" href="<?js= env.conf.customOptions.stylesheet ?>">
+
     <?js if (env.conf.templates) { ?>
     <script>
     var config = <?js= JSON.stringify(env.conf.templates) ?>;
