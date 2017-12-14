@@ -4,9 +4,9 @@
 Playground to consume TitleToolBox web services for 3rd parties.
 
 ##### Project Structure
-dist or build will be auto-generated inside `dist/` (please use this as read or serve only, on server or local)
-source files are inside `src/` where we can change `ttbsandbox.html` and `sandbox.js`
-SDK file is `lib/ttbsdk.js`, feel free to change if need. (soon to be moved to a separate private repo and symlink here)
+- dist or build will be auto-generated inside `dist/` (please use this as read or serve only, on server or local)
+- source files are inside `src/` where we can change `ttbsandbox.html` and `sandbox.js`
+- SDK file is `lib/ttbsdk.js`, feel free to change if need. (soon to be moved to a separate private repo and symlink here)
 
 ### How to get application set up?
 
