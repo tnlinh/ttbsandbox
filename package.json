@@ -1,9 +1,10 @@
 {
   "name": "ttbsandbox",
   "version": "1.0.0",
-  "description": "Sample project to consume TitleToolBox web services for 3rd parties.",
+  "description": "Playground to consume TitleToolBox web services for 3rd parties.",
   "main": "index.js",
   "scripts": {
+    "serve": "node index.js",
     "start-dev": "supervisor -w index.js index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "doc": "rm -R dist & jsdoc -c jsdoc.json",
