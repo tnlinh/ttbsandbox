@@ -68,6 +68,8 @@
             
                 <li data-name="TTB#globalSearchCount"><a href="TTB.html#globalSearchCount">globalSearchCount</a></li>
             
+                <li data-name="TTB#googleBuildAddress"><a href="TTB.html#googleBuildAddress">googleBuildAddress</a></li>
+            
                 <li data-name="TTB#login"><a href="TTB.html#login">login</a></li>
             
                 <li data-name="TTB#loginRemote"><a href="TTB.html#loginRemote">loginRemote</a></li>
@@ -1172,7 +1174,7 @@ TTB.showSponsorSelector(payload, {
     
         
         <div class="tag-source">
-            <a href="ttbsandbox_lib_ttbsdk.js.html">ttbsandbox/lib/ttbsdk.js</a>, <a href="ttbsandbox_lib_ttbsdk.js.html#line1143">line 1143</a>
+            <a href="ttbsandbox_lib_ttbsdk.js.html">ttbsandbox/lib/ttbsdk.js</a>, <a href="ttbsandbox_lib_ttbsdk.js.html#line1165">line 1165</a>
         </div>
         
     </div>
@@ -1302,7 +1304,7 @@ ttb.getSearchFields()
     
         
         <div class="tag-source">
-            <a href="ttbsandbox_lib_ttbsdk.js.html">ttbsandbox/lib/ttbsdk.js</a>, <a href="ttbsandbox_lib_ttbsdk.js.html#line1103">line 1103</a>
+            <a href="ttbsandbox_lib_ttbsdk.js.html">ttbsandbox/lib/ttbsdk.js</a>, <a href="ttbsandbox_lib_ttbsdk.js.html#line1125">line 1125</a>
         </div>
         
     </div>
@@ -1427,7 +1429,7 @@ ttb.getTypesReport()
     
         
         <div class="tag-source">
-            <a href="ttbsandbox_lib_ttbsdk.js.html">ttbsandbox/lib/ttbsdk.js</a>, <a href="ttbsandbox_lib_ttbsdk.js.html#line1003">line 1003</a>
+            <a href="ttbsandbox_lib_ttbsdk.js.html">ttbsandbox/lib/ttbsdk.js</a>, <a href="ttbsandbox_lib_ttbsdk.js.html#line1025">line 1025</a>
         </div>
         
     </div>
@@ -2078,7 +2080,7 @@ ttb.globalSearch(payload, params)
     
         
         <div class="tag-source">
-            <a href="ttbsandbox_lib_ttbsdk.js.html">ttbsandbox/lib/ttbsdk.js</a>, <a href="ttbsandbox_lib_ttbsdk.js.html#line1066">line 1066</a>
+            <a href="ttbsandbox_lib_ttbsdk.js.html">ttbsandbox/lib/ttbsdk.js</a>, <a href="ttbsandbox_lib_ttbsdk.js.html#line1088">line 1088</a>
         </div>
         
     </div>
@@ -2264,6 +2266,396 @@ ttb.globalSearchCount(payload, params)
             
 <dt>
     <div class="nameContainer">
+        <h4 class="name" id="googleBuildAddress">
+            
+            googleBuildAddress<span class="signature">(autocomplete, <span class="optional">options</span>)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{Object}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="ttbsandbox_lib_ttbsdk.js.html">ttbsandbox/lib/ttbsdk.js</a>, <a href="ttbsandbox_lib_ttbsdk.js.html#line1243">line 1243</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        This method builds the address payload using the google  <code>autocomplete</code> instance once it's
+<code>"place_changed"</code> event fires.
+The returned payload can be utilized to consume <code>searchBySiteAddress()</code> API or you can fill form fields using SDK's autoFill API.
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>autocomplete</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                    
+                    
+                        
+                    
+                
+                The google autocomplete instance used on your site, consuming it's <code>"place_changed"</code> event.</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>options</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                The options object
+                
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>autoFillContext</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                A query selector of an element(s) inside which to look for inputs elements
+having <code>data-ttb-field</code> attribute.
+- For example: &lt;input type="text" <code>data-ttb-field="site_address"</code> /></td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+            </td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+
+
+<table class="params">
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    
+        <tr>
+            <td class="name"><code>address</code></td>
+            <td class="type">
+            
+                        Object
+                        
+                    
+            </td>
+            <td class="description last">  built address payload object using google place components, having following fields against mentioned mapping.
+                
+
+
+<table class="params">
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    
+        <tr>
+            <td class="name"><code>site_street_number</code></td>
+            <td class="type">
+            
+                        Object
+                        
+                    
+            </td>
+            <td class="description last">Component Type: <code>"street_number"</code> | Name Type: <code>"short_name"</code>.</td>
+        </tr>
+    
+        <tr>
+            <td class="name"><code>site_route</code></td>
+            <td class="type">
+            
+                        Object
+                        
+                    
+            </td>
+            <td class="description last">        Component Type: <code>"route"</code> | Name Type: <code>"short_name"</code>.</td>
+        </tr>
+    
+        <tr>
+            <td class="name"><code>site_address</code></td>
+            <td class="type">
+            
+                        Object
+                        
+                    
+            </td>
+            <td class="description last">      *Built using <code>site_street_number</code> + ' ' + <code>site_route</code>.</td>
+        </tr>
+    
+        <tr>
+            <td class="name"><code>site_city</code></td>
+            <td class="type">
+            
+                        Object
+                        
+                    
+            </td>
+            <td class="description last">         Component Type: <code>"locality"</code> | Name Type: <code>"long_name"</code>.</td>
+        </tr>
+    
+        <tr>
+            <td class="name"><code>site_state</code></td>
+            <td class="type">
+            
+                        Object
+                        
+                    
+            </td>
+            <td class="description last">        Component Type: <code>"administrative_area_level_1"</code> | Name Type: <code>"short_name"</code>.</td>
+        </tr>
+    
+        <tr>
+            <td class="name"><code>site_zip</code></td>
+            <td class="type">
+            
+                        Object
+                        
+                    
+            </td>
+            <td class="description last">          Component Type: <code>"postal_code"</code> | Name Type: <code>"short_name"</code>.</td>
+        </tr>
+    
+        <tr>
+            <td class="name"><code>county</code></td>
+            <td class="type">
+            
+                        Object
+                        
+                    
+            </td>
+            <td class="description last">            Component Type: <code>"administrative_area_level_2"</code> | Name Type: <code>"short_name"</code>.</td>
+        </tr>
+    
+        <tr>
+            <td class="name"><code>country</code></td>
+            <td class="type">
+            
+                        Object
+                        
+                    
+            </td>
+            <td class="description last">           Component Type: <code>"country"</code> | Name Type: <code>"long_name"</code>.</td>
+        </tr>
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+    
+    </tbody>
+</table>
+
+    
+    
+    
+        <h5>Example</h5>
+        
+
+    
+    <pre class="prettyprint"><code>var ttb = new TTB({ ... }); // skip if already instantiated.
+
+// render your autocomplete component instance on your desired location
+var autocompleteElement = document.getElementById('googleBuildAddress__autocomplete');
+var autocomplete = new google.maps.places.Autocomplete(autocompleteElement, {types: ['geocode']});
+
+// when the user selects an address from the drop-down, populate the address fields in the form.
+autocomplete.addListener('place_changed', function () {
+
+  // approach # 01 - auto-fill only - build up the address by auto-filling the form fields and leaves the submission logic.
+  // <i>(Note: before submission, make sure you build <code>site_address</code> using <code>site_street_number</code> + ' ' + <code>site_route</code>)</> </i>
+
+  var options = {
+    autoFillContext: '#searchBySiteAddress__form'
+  };
+  ttb.googleBuildAddress(autocomplete, options);
+
+  //--- approach # 01 - auto-fill only - ends ---
+
+  // -- OR --
+
+  // approach # 02 - direct submission - build up the address by getting the payload and proceed with <code>searchBySiteAddress()</code> to retrieve the result.
+  var payload = ttb.googleBuildAddress(autocomplete);
+  ttb.searchBySiteAddress(payload)
+  .done(function(res) {
+    if (res.response.status === 'OK') {
+      // your success code here to consume res.response.data for any extra effort other than the auto-fill
+      console.log(res.response.data);
+    } else {
+      // your failure code here to consume res.response.data
+      console.log(res.response.data);
+    }
+  })
+  .fail(function(err) {
+    // your failure code here
+  })
+  .always(function() {
+   // your on-complete code here as common for both success and failure
+  });
+  // --- approach # 02 - direct submission - ends ---
+
+});</code></pre>
+    
+
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
         <h4 class="name" id="login">
             
             login<span class="signature">(payload)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{Object}</span>
@@ -2271,7 +2663,7 @@ ttb.globalSearchCount(payload, params)
     
         
         <div class="tag-source">
-            <a href="ttbsandbox_lib_ttbsdk.js.html">ttbsandbox/lib/ttbsdk.js</a>, <a href="ttbsandbox_lib_ttbsdk.js.html#line559">line 559</a>
+            <a href="ttbsandbox_lib_ttbsdk.js.html">ttbsandbox/lib/ttbsdk.js</a>, <a href="ttbsandbox_lib_ttbsdk.js.html#line581">line 581</a>
         </div>
         
     </div>
@@ -2517,7 +2909,7 @@ ttb.login(payload)
     
         
         <div class="tag-source">
-            <a href="ttbsandbox_lib_ttbsdk.js.html">ttbsandbox/lib/ttbsdk.js</a>, <a href="ttbsandbox_lib_ttbsdk.js.html#line512">line 512</a>
+            <a href="ttbsandbox_lib_ttbsdk.js.html">ttbsandbox/lib/ttbsdk.js</a>, <a href="ttbsandbox_lib_ttbsdk.js.html#line534">line 534</a>
         </div>
         
     </div>
@@ -2737,7 +3129,7 @@ ttb.remoteLogin(payload)
     
         
         <div class="tag-source">
-            <a href="ttbsandbox_lib_ttbsdk.js.html">ttbsandbox/lib/ttbsdk.js</a>, <a href="ttbsandbox_lib_ttbsdk.js.html#line596">line 596</a>
+            <a href="ttbsandbox_lib_ttbsdk.js.html">ttbsandbox/lib/ttbsdk.js</a>, <a href="ttbsandbox_lib_ttbsdk.js.html#line618">line 618</a>
         </div>
         
     </div>
@@ -2864,7 +3256,7 @@ ttb.logout()
     
         
         <div class="tag-source">
-            <a href="ttbsandbox_lib_ttbsdk.js.html">ttbsandbox/lib/ttbsdk.js</a>, <a href="ttbsandbox_lib_ttbsdk.js.html#line786">line 786</a>
+            <a href="ttbsandbox_lib_ttbsdk.js.html">ttbsandbox/lib/ttbsdk.js</a>, <a href="ttbsandbox_lib_ttbsdk.js.html#line808">line 808</a>
         </div>
         
     </div>
@@ -3201,7 +3593,7 @@ ttb.orderReport(payload)
     
         
         <div class="tag-source">
-            <a href="ttbsandbox_lib_ttbsdk.js.html">ttbsandbox/lib/ttbsdk.js</a>, <a href="ttbsandbox_lib_ttbsdk.js.html#line847">line 847</a>
+            <a href="ttbsandbox_lib_ttbsdk.js.html">ttbsandbox/lib/ttbsdk.js</a>, <a href="ttbsandbox_lib_ttbsdk.js.html#line869">line 869</a>
         </div>
         
     </div>
@@ -3635,12 +4027,12 @@ ttb.propertyComps(payload)
     <div class="nameContainer">
         <h4 class="name" id="propertyDetails">
             
-            propertyDetails<span class="signature">(payload, options)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{Object}</span>
+            propertyDetails<span class="signature">(payload, <span class="optional">options</span>)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{Object}</span>
         </h4>
     
         
         <div class="tag-source">
-            <a href="ttbsandbox_lib_ttbsdk.js.html">ttbsandbox/lib/ttbsdk.js</a>, <a href="ttbsandbox_lib_ttbsdk.js.html#line899">line 899</a>
+            <a href="ttbsandbox_lib_ttbsdk.js.html">ttbsandbox/lib/ttbsdk.js</a>, <a href="ttbsandbox_lib_ttbsdk.js.html#line921">line 921</a>
         </div>
         
     </div>
@@ -3697,6 +4089,11 @@ ttb.propertyComps(payload)
             
             
             <td class="description last">
+                
+                    
+                    
+                        
+                    
                 
                 The payload object containing required info.
                 
@@ -3789,14 +4186,37 @@ ttb.propertyComps(payload)
             
             <td class="description last">
                 
-                The options object</td>
-        </tr>
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                The options object
+                
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
 	
+	<tbody>
 	
 	
         <tr>
             
-                <td class="name"><code>payload.autoFillContext</code></td>
+                <td class="name"><code>autoFillContext</code></td>
             
             
             <td class="type">
@@ -3812,8 +4232,21 @@ ttb.propertyComps(payload)
             
             <td class="description last">
                 
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
                 A query selector of an element(s) inside which to look for inputs elements
 having <code>data-ttb-field</code>attribute.</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+            </td>
         </tr>
 	
 	
@@ -3934,7 +4367,7 @@ ttb.propertyDetails(payload, options)
     
         
         <div class="tag-source">
-            <a href="ttbsandbox_lib_ttbsdk.js.html">ttbsandbox/lib/ttbsdk.js</a>, <a href="ttbsandbox_lib_ttbsdk.js.html#line738">line 738</a>
+            <a href="ttbsandbox_lib_ttbsdk.js.html">ttbsandbox/lib/ttbsdk.js</a>, <a href="ttbsandbox_lib_ttbsdk.js.html#line760">line 760</a>
         </div>
         
     </div>
@@ -4222,7 +4655,7 @@ ttb.searchByOwnerName(payload)
     
         
         <div class="tag-source">
-            <a href="ttbsandbox_lib_ttbsdk.js.html">ttbsandbox/lib/ttbsdk.js</a>, <a href="ttbsandbox_lib_ttbsdk.js.html#line639">line 639</a>
+            <a href="ttbsandbox_lib_ttbsdk.js.html">ttbsandbox/lib/ttbsdk.js</a>, <a href="ttbsandbox_lib_ttbsdk.js.html#line661">line 661</a>
         </div>
         
     </div>
@@ -4465,7 +4898,7 @@ ttb.searchByParcelNumber(payload)
     
         
         <div class="tag-source">
-            <a href="ttbsandbox_lib_ttbsdk.js.html">ttbsandbox/lib/ttbsdk.js</a>, <a href="ttbsandbox_lib_ttbsdk.js.html#line692">line 692</a>
+            <a href="ttbsandbox_lib_ttbsdk.js.html">ttbsandbox/lib/ttbsdk.js</a>, <a href="ttbsandbox_lib_ttbsdk.js.html#line714">line 714</a>
         </div>
         
     </div>
@@ -4847,7 +5280,7 @@ ttb.searchBySiteAddress(payload)
     
         
         <div class="tag-source">
-            <a href="ttbsandbox_lib_ttbsdk.js.html">ttbsandbox/lib/ttbsdk.js</a>, <a href="ttbsandbox_lib_ttbsdk.js.html#line474">line 474</a>
+            <a href="ttbsandbox_lib_ttbsdk.js.html">ttbsandbox/lib/ttbsdk.js</a>, <a href="ttbsandbox_lib_ttbsdk.js.html#line496">line 496</a>
         </div>
         
     </div>
@@ -5011,7 +5444,7 @@ ttb.setVertical('xyz');</code></pre>
 
         <footer>
             Copyright © 2017 <a target="_blank" href="http://www.benutech.com/" target="_blank" title="Benutech official website">Benutech Inc.</a> All rights reserved.</a>
-           <!-- Documentation generated by <a target="_blank" href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Thu Dec 14 2017 22:47:53 GMT+0500 (PKT) -->
+           <!-- Documentation generated by <a target="_blank" href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Tue Dec 19 2017 03:33:03 GMT+0500 (PKT) -->
         </footer>
     </div>
 </div>

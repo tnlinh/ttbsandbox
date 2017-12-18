@@ -68,6 +68,8 @@
             
                 <li data-name="TTB#globalSearchCount"><a href="TTB.html#globalSearchCount">globalSearchCount</a></li>
             
+                <li data-name="TTB#googleBuildAddress"><a href="TTB.html#googleBuildAddress">googleBuildAddress</a></li>
+            
                 <li data-name="TTB#login"><a href="TTB.html#login">login</a></li>
             
                 <li data-name="TTB#loginRemote"><a href="TTB.html#loginRemote">loginRemote</a></li>
@@ -488,7 +490,7 @@
      *@private
      *
      * @param {String} selector - A query selector of context (form/parent element)
-     * @param {Object} data - A data object retrieved from te response of certain of API, against which auto-fill needs to be processed.
+     * @param {Object} data - A data object retrieved from the response of certain of API, against which auto-fill needs to be processed.
      *
      * */
     _fillFields: function (selector, data) {
@@ -507,6 +509,28 @@
           _self._log([defaults.sdkPrefix, ' : autoFill : skipping : invalid model - ', model]);
         }
       });
+    },
+
+    /**
+     * This method looks for the input field against the given fieldName as value of its data-ttb-field="" attribute,
+     * to auto-fill it with the passed fieldValue.
+     *@private
+     *
+     * @param {String} selector - A query selector of context (form/parent element)
+     * @param {String} fieldName - the name specified via data-ttb-field="" attribute of input element.
+     * @param {String | Number } fieldValue - the value to be filled with given input
+     *
+     * */
+    _fillField: function (selector, fieldName, fieldValue) {
+      var $field;
+
+      $field = $(selector).find('input[' + _self.autoFillAttr + '="' + fieldName  +'"]');
+
+      if ($field.length) {
+        $field.val(fieldValue);
+      } else {
+        this._log([defaults.sdkPrefix, ' : autoFill : skipping : field not found - ', fieldName]);
+      }
     },
 
 
@@ -967,8 +991,8 @@
      * @param {Number} payload.property_id - Unique ID of the property
      * @param {Number} payload.state_fips - State FIPS of the property
      *
-     * @param {Object} options - The options object
-     * @param {String} payload.autoFillContext - A query selector of an element(s) inside which to look for inputs elements
+     * @param {Object} [options] - The options object
+     * @param {String} [options.autoFillContext] - A query selector of an element(s) inside which to look for inputs elements
      * having &lt;code>data-ttb-field&lt;/code>attribute.
      *
      * @example
@@ -1252,6 +1276,114 @@
       };
 
       return this._ajax(request, 'webservices/get_search_fields.json');
+    },
+
+
+    /**
+     * This method builds the address payload using the google  &lt;code>autocomplete&lt;/code> instance once it's
+     * &lt;code>"place_changed"&lt;/code> event fires.
+     * The returned payload can be utilized to consume &lt;code>searchBySiteAddress()&lt;/code> API or you can fill form fields using SDK's autoFill API.
+     *
+     * @param {object} autocomplete - The google autocomplete instance used on your site, consuming it's &lt;code>"place_changed"&lt;/code> event.
+     *
+     * @param {Object} [options]- The options object
+     * @param {String} [options.autoFillContext] - A query selector of an element(s) inside which to look for inputs elements
+     * having &lt;code>data-ttb-field&lt;/code> attribute.
+     * - For example: &amp;lt;input type="text" &lt;code>data-ttb-field="site_address"&lt;/code> />
+     *
+     * @example
+     * var ttb = new TTB({ ... }); // skip if already instantiated.
+     *
+     * // render your autocomplete component instance on your desired location
+     * var autocompleteElement = document.getElementById('googleBuildAddress__autocomplete');
+     * var autocomplete = new google.maps.places.Autocomplete(autocompleteElement, {types: ['geocode']});
+     *
+     * // when the user selects an address from the drop-down, populate the address fields in the form.
+     * autocomplete.addListener('place_changed', function () {
+     *
+     *   // approach # 01 - auto-fill only - build up the address by auto-filling the form fields and leaves the submission logic.
+     *   // &lt;i>(Note: before submission, make sure you build &lt;code>site_address&lt;/code> using &lt;code>site_street_number&lt;/code> + ' ' + &lt;code>site_route&lt;/code>)&lt;/> &lt;/i>
+     *
+     *   var options = {
+     *     autoFillContext: '#searchBySiteAddress__form'
+     *   };
+     *   ttb.googleBuildAddress(autocomplete, options);
+     *
+     *   //--- approach # 01 - auto-fill only - ends ---
+     *
+     *   // -- OR --
+     *
+     *   // approach # 02 - direct submission - build up the address by getting the payload and proceed with &lt;code>searchBySiteAddress()&lt;/code> to retrieve the result.
+     *   var payload = ttb.googleBuildAddress(autocomplete);
+     *   ttb.searchBySiteAddress(payload)
+     *   .done(function(res) {
+     *     if (res.response.status === 'OK') {
+     *       // your success code here to consume res.response.data for any extra effort other than the auto-fill
+     *       console.log(res.response.data);
+     *     } else {
+     *       // your failure code here to consume res.response.data
+     *       console.log(res.response.data);
+     *     }
+     *   })
+     *   .fail(function(err) {
+     *     // your failure code here
+     *   })
+     *   .always(function() {
+     *    // your on-complete code here as common for both success and failure
+     *   });
+     *   // --- approach # 02 - direct submission - ends ---
+     *
+     * });
+     *
+     *
+     * @return {Object} address   built address payload object using google place components, having following fields against mentioned mapping.
+     *
+     * @return {Object} address.site_street_number Component Type: &lt;code>"street_number"&lt;/code> | Name Type: &lt;code>"short_name"&lt;/code>.
+     * @return {Object} address.site_route         Component Type: &lt;code>"route"&lt;/code> | Name Type: &lt;code>"short_name"&lt;/code>.
+     * @return {Object} address.site_address       *Built using &lt;code>site_street_number&lt;/code> + ' ' + &lt;code>site_route&lt;/code>.
+     * @return {Object} address.site_city          Component Type: &lt;code>"locality"&lt;/code> | Name Type: &lt;code>"long_name"&lt;/code>.
+     * @return {Object} address.site_state         Component Type: &lt;code>"administrative_area_level_1"&lt;/code> | Name Type: &lt;code>"short_name"&lt;/code>.
+     * @return {Object} address.site_zip           Component Type: &lt;code>"postal_code"&lt;/code> | Name Type: &lt;code>"short_name"&lt;/code>.
+     * @return {Object} address.county             Component Type: &lt;code>"administrative_area_level_2"&lt;/code> | Name Type: &lt;code>"short_name"&lt;/code>.
+     * @return {Object} address.country            Component Type: &lt;code>"country"&lt;/code> | Name Type: &lt;code>"long_name"&lt;/code>.
+     *
+     * */
+    googleBuildAddress: function (autocomplete, options) {
+      var addressInfo, addressComp, addressType, addressValue;
+
+      // our details object can be used for payload
+      addressInfo = {};
+
+      // place-components vs form-fields mapping
+      var componentForm = {
+        street_number: {field_name: 'site_street_number', name_type: 'short_name'},
+        route: {field_name: 'site_route', name_type: 'short_name'},
+        locality: {field_name: 'site_city', name_type: 'long_name'},
+        administrative_area_level_1: {field_name: 'site_state', name_type: 'short_name'},
+        administrative_area_level_2: {field_name: 'county', name_type: 'short_name'},
+        postal_code: {field_name: 'site_zip', name_type: 'short_name'},
+        country: {field_name: 'country', name_type: 'long_name'}
+      };
+
+      // iterate over each component available in selected place
+      for (var i = 0, len = place.address_components.length; i &lt; len; i++) {
+        addressComp = place.address_components[i];
+        addressType = addressComp.types[0];
+
+        // check if the component is of our use e.g. "administrative_area_level_1"
+        if (componentForm[addressType]) {
+          addressValue = addressComp[componentForm[addressType].name_type];
+
+          // fill the address info object
+          addressInfo[componentForm[addressType].field_name] = addressValue;
+
+          // check to auto-fill field if auto-fill-context option was provided.
+          options.autoFillContext &amp;&amp; this._fillField(options.autoFillContext, componentForm[addressType].field_name, addressValue);
+        }
+      }
+
+      // Special field handling for "site_address"
+      addressInfo.site_address = addressInfo.site_street_number + ' ' + addressInfo.site_route;
     }
 
   };
@@ -1270,7 +1402,7 @@
 
         <footer>
             Copyright © 2017 <a href="http://www.benutech.com/" target="_blank" title="Benutech official website">Benutech Inc.</a> All rights reserved.</a>
-           <!-- Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Thu Dec 14 2017 22:47:53 GMT+0500 (PKT) -->
+           <!-- Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Tue Dec 19 2017 03:33:03 GMT+0500 (PKT) -->
         </footer>
     </div>
 </div>

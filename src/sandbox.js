@@ -1,4 +1,3 @@
-
 (function () {
   'use strict';
 
@@ -13,7 +12,7 @@
   });
 
   // to be invoked when google maps library gets successfully loaded
-  window.googleInit = function() {
+  window.googleInit = function () {
 
     /* -- searchBySiteAddress | googleBuildAddress - init stuff - starts -- */
     // render the autocomplete component instance on the desired location
@@ -40,7 +39,7 @@
     };
 
     ttb.login(payload)
-      .done(function(res) {
+      .done(function (res) {
         if (res.response.status === 'OK') {
           // user is successfully logged-in !!
           // your success code here to consume res.response.data for logged-in user info
@@ -57,7 +56,7 @@
           alert('login response - ' + JSON.stringify(res));
         }
       })
-      .fail(function(err) {
+      .fail(function (err) {
         // your failure code here
         alert('login response - ' + JSON.stringify(err));
       });
@@ -67,7 +66,7 @@
     console.log('logout clicked');
 
     ttb.logout()
-      .done(function(res) {
+      .done(function (res) {
         if (res.response.status === 'OK') {
           // user is successfully logged-out!!
           // your success code here to clear any cached info etc from the web page
@@ -80,7 +79,7 @@
           console.log(res.response.data);
         }
       })
-      .fail(function(err) {
+      .fail(function (err) {
         // your failure code here
         alert('logout response - ' + JSON.stringify(err));
       });
@@ -98,11 +97,11 @@
 
     TTB.showSelectSponsor(payload, {
       ttb: ttb,
-      onSelect: function(info) {
+      onSelect: function (info) {
         // your success code here
         alert('showSelectSponsor select - ' + JSON.stringify(info));
       },
-      onError: function(reason) {
+      onError: function (reason) {
         // your failure code here
         alert('showSelectSponsor error - ' + JSON.stringify(reason));
       }
@@ -115,7 +114,7 @@
     console.log('getSearchFields clicked');
 
     ttb.getSearchFields()
-      .done(function(res) {
+      .done(function (res) {
         if (res instanceof Array) {
 
           // your success code here to consume res as fields list.
@@ -127,7 +126,7 @@
           alert('getSearchFields response - ' + JSON.stringify(res));
         }
       })
-      .fail(function(err) {
+      .fail(function (err) {
         // your failure code here
         alert('getSearchFields response - ' + JSON.stringify(err));
       });
@@ -137,7 +136,7 @@
     console.log('getTypesReport clicked');
 
     ttb.getTypesReport()
-      .done(function(res) {
+      .done(function (res) {
         if (res.response.status === 'OK') {
           // your success code here to consume res.response.data
           alert('getTypesReport response - ' + JSON.stringify(res.response.data));
@@ -146,7 +145,7 @@
           alert('getTypesReport response - ' + JSON.stringify(res));
         }
       })
-      .fail(function(err) {
+      .fail(function (err) {
         // your failure code here
         alert('getTypesReport response - ' + JSON.stringify(err));
       });
@@ -155,7 +154,7 @@
   window.globalSearch = function () {
     console.log('globalSearch clicked');
 
-    var params = { limit: 1000, page: 2 };
+    var params = {limit: 1000, page: 2};
     var payload = {
       "mm_fips_state_code": "06", // State FIPS
       "mm_fips_muni_code": "059", // County FIPS
@@ -200,25 +199,25 @@
     };
 
     ttb.globalSearch(payload, params)
-        .done(function(res) {
-          if (res.response.status === 'OK') {
-            // your success code here to consume res.response.data
-            alert('globalSearch response - ' + JSON.stringify(res.response.data));
-          } else {
-            // your failure code here to consume res.response.data
-            alert('globalSearch response - ' + JSON.stringify(res));
-          }
-        })
-        .fail(function(err) {
-          // your failure code here
-          alert('globalSearch response - ' + JSON.stringify(err));
-        });
+      .done(function (res) {
+        if (res.response.status === 'OK') {
+          // your success code here to consume res.response.data
+          alert('globalSearch response - ' + JSON.stringify(res.response.data));
+        } else {
+          // your failure code here to consume res.response.data
+          alert('globalSearch response - ' + JSON.stringify(res));
+        }
+      })
+      .fail(function (err) {
+        // your failure code here
+        alert('globalSearch response - ' + JSON.stringify(err));
+      });
   };
 
   window.globalSearchCount = function () {
     console.log('globalSearchCount clicked');
 
-    var params = { limit: 1000, page: 2 };
+    var params = {limit: 1000, page: 2};
     var payload = {
       "mm_fips_state_code": "06", // State FIPS
       "mm_fips_muni_code": "059", // County FIPS
@@ -242,19 +241,19 @@
     };
 
     ttb.globalSearchCount(payload, params)
-        .done(function(res) {
-          if (res.response.status === 'OK') {
-            // your success code here to consume res.response.data
-            alert('globalSearchCount response - ' + JSON.stringify(res.response.data));
-          } else {
-            // your failure code here to consume res.response.data
-            alert('globalSearchCount response - ' + JSON.stringify(res));
-          }
-        })
-        .fail(function(err) {
-          // your failure code here
-          alert('globalSearchCount response - ' + JSON.stringify(err));
-        });
+      .done(function (res) {
+        if (res.response.status === 'OK') {
+          // your success code here to consume res.response.data
+          alert('globalSearchCount response - ' + JSON.stringify(res.response.data));
+        } else {
+          // your failure code here to consume res.response.data
+          alert('globalSearchCount response - ' + JSON.stringify(res));
+        }
+      })
+      .fail(function (err) {
+        // your failure code here
+        alert('globalSearchCount response - ' + JSON.stringify(err));
+      });
   };
 
   window.orderReport = function () {
@@ -268,19 +267,19 @@
     };
 
     ttb.orderReport(payload)
-        .done(function(res) {
-          if (res.response.status === 'OK') {
-            // your success code here to consume res.response.data
-            alert('orderReport response - ' + JSON.stringify(res.response.data));
-          } else {
-            // your failure code here to consume res.response.data
-            alert('orderReport response - ' + JSON.stringify(res));
-          }
-        })
-        .fail(function(err) {
-          // your failure code here
-          alert('orderReport response - ' + JSON.stringify(err));
-        });
+      .done(function (res) {
+        if (res.response.status === 'OK') {
+          // your success code here to consume res.response.data
+          alert('orderReport response - ' + JSON.stringify(res.response.data));
+        } else {
+          // your failure code here to consume res.response.data
+          alert('orderReport response - ' + JSON.stringify(res));
+        }
+      })
+      .fail(function (err) {
+        // your failure code here
+        alert('orderReport response - ' + JSON.stringify(err));
+      });
   };
 
   window.propertyComps = function () {
@@ -298,19 +297,19 @@
     };
 
     ttb.propertyComps(payload)
-        .done(function(res) {
-          if (res.response.status === 'OK') {
-            // your success code here to consume res.response.data
-            alert('propertyComps response - ' + JSON.stringify(res.response.data));
-          } else {
-            // your failure code here to consume res.response.data
-            alert('propertyComps response - ' + JSON.stringify(res));
-          }
-        })
-        .fail(function(err) {
-          // your failure code here
-          alert('propertyComps response - ' + JSON.stringify(err));
-        });
+      .done(function (res) {
+        if (res.response.status === 'OK') {
+          // your success code here to consume res.response.data
+          alert('propertyComps response - ' + JSON.stringify(res.response.data));
+        } else {
+          // your failure code here to consume res.response.data
+          alert('propertyComps response - ' + JSON.stringify(res));
+        }
+      })
+      .fail(function (err) {
+        // your failure code here
+        alert('propertyComps response - ' + JSON.stringify(err));
+      });
   };
 
   window.propertyDetails = function () {
@@ -326,19 +325,19 @@
     };
 
     ttb.propertyDetails(payload, options)
-        .done(function(res) {
-          if (res.response.status === 'OK') {
-            // your success code here to consume res.response.data
-            alert('propertyDetails response - ' + JSON.stringify(res.response.data));
-          } else {
-            // your failure code here to consume res.response.data
-            alert('propertyDetails response - ' + JSON.stringify(res));
-          }
-        })
-        .fail(function(err) {
-          // your failure code here
-          alert('propertyDetails response - ' + JSON.stringify(err));
-        });
+      .done(function (res) {
+        if (res.response.status === 'OK') {
+          // your success code here to consume res.response.data
+          alert('propertyDetails response - ' + JSON.stringify(res.response.data));
+        } else {
+          // your failure code here to consume res.response.data
+          alert('propertyDetails response - ' + JSON.stringify(res));
+        }
+      })
+      .fail(function (err) {
+        // your failure code here
+        alert('propertyDetails response - ' + JSON.stringify(err));
+      });
   };
 
   window.searchByOwnerName = function () {
@@ -351,19 +350,19 @@
     };
 
     ttb.searchByOwnerName(payload)
-        .done(function(res) {
-          if (res.response.status === 'OK') {
-            // your success code here to consume res.response.data
-            alert('searchByOwnerName response - ' + JSON.stringify(res.response.data));
-          } else {
-            // your failure code here to consume res.response.data
-            alert('searchByOwnerName response - ' + JSON.stringify(res));
-          }
-        })
-        .fail(function(err) {
-          // your failure code here
-          alert('searchByOwnerName response - ' + JSON.stringify(err));
-        });
+      .done(function (res) {
+        if (res.response.status === 'OK') {
+          // your success code here to consume res.response.data
+          alert('searchByOwnerName response - ' + JSON.stringify(res.response.data));
+        } else {
+          // your failure code here to consume res.response.data
+          alert('searchByOwnerName response - ' + JSON.stringify(res));
+        }
+      })
+      .fail(function (err) {
+        // your failure code here
+        alert('searchByOwnerName response - ' + JSON.stringify(err));
+      });
   };
 
   window.searchByParcelNumber = function () {
@@ -375,19 +374,19 @@
     };
 
     ttb.searchByParcelNumber(payload)
-        .done(function(res) {
-          if (res.response.status === 'OK') {
-            // your success code here to consume res.response.data
-            alert('searchByParcelNumber response - ' + JSON.stringify(res.response.data));
-          } else {
-            // your failure code here to consume res.response.data
-            alert('searchByParcelNumber response - ' + JSON.stringify(res));
-          }
-        })
-        .fail(function(err) {
-          // your failure code here
-          alert('searchByParcelNumber response - ' + JSON.stringify(err));
-        });
+      .done(function (res) {
+        if (res.response.status === 'OK') {
+          // your success code here to consume res.response.data
+          alert('searchByParcelNumber response - ' + JSON.stringify(res.response.data));
+        } else {
+          // your failure code here to consume res.response.data
+          alert('searchByParcelNumber response - ' + JSON.stringify(res));
+        }
+      })
+      .fail(function (err) {
+        // your failure code here
+        alert('searchByParcelNumber response - ' + JSON.stringify(err));
+      });
   };
 
   window.searchBySiteAddress = function () {
@@ -407,7 +406,7 @@
     payload.site_address = payload.site_street_number + ' ' + payload.site_route;
 
     ttb.searchBySiteAddress(payload)
-      .done(function(res) {
+      .done(function (res) {
         if (res.response.status === 'OK') {
           // your success code here to consume res.response.data
           alert('searchBySiteAddress response - ' + JSON.stringify(res.response.data));
@@ -416,7 +415,7 @@
           alert('searchBySiteAddress response - ' + JSON.stringify(res));
         }
       })
-      .fail(function(err) {
+      .fail(function (err) {
         // your failure code here
         alert('searchBySiteAddress response - ' + JSON.stringify(err));
       });
