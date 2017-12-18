@@ -4,6 +4,7 @@
 
   /* Sandbox script */
 
+  /* initialization stuff */
   // setup ttb SDK
   var ttb = new TTB({
     partnerKey: '1-7a32b4f2-62a8-4990-830b-2cf674504875', // official TTB - retrieve yours from support team.
@@ -11,7 +12,23 @@
     debug: true
   });
 
+  // to be invoked when google maps library gets successfully loaded
+  window.googleInit = function() {
 
+    /* -- searchBySiteAddress | googleBuildAddress - init stuff - starts -- */
+    // render the autocomplete component instance on the desired location
+    var autocompleteElement = document.getElementById('googleBuildAddress__autocomplete');
+    var autocomplete = new google.maps.places.Autocomplete(autocompleteElement, {types: ['geocode']});
+
+    // when the user selects an address from the drop-down, populate the address fields in the form.
+    autocomplete.addListener('place_changed', function () {
+      ttb.googleBuildAddress(autocomplete, {autoFillContext: 'searchBySiteAddress__form'});
+    });
+    /* -- searchBySiteAddress | googleBuildAddress - init stuff - ends -- */
+
+  };
+
+  /* authentication functions */
   window.login = function () {
     console.log('login clicked');
 
@@ -70,6 +87,7 @@
   };
 
 
+  /* UI Widgets */
   window.showSelectSponsor = function () {
     console.log('showSelectSponsor clicked');
 
@@ -91,6 +109,8 @@
     });
   };
 
+
+  /* web-services APIs */
   window.getSearchFields = function () {
     console.log('getSearchFields clicked');
 
@@ -374,29 +394,32 @@
     console.log('searchBySiteAddress clicked');
 
     var payload = {
-      site_address: "317 2nd St",
-      site_unit: "",
-      site_city: "Huntington Beach",
-      site_state: "CA",
-      site_zip:"92648",
-      site_street_number: "317",
-      site_route: "2nd St"
+      site_street_number: $('[name="propertyDetails__site_street_number"]').val(),
+      site_route: $('[name="propertyDetails__site_route"]').val(),
+      site_city: $('[name="propertyDetails__site_city"]').val(),
+      site_state: $('[name="propertyDetails__site_state"]').val(),
+      site_zip: $('[name="propertyDetails__site_zip"]').val(),
+      site_unit: $('[name="propertyDetails__site_unit"]').val(),
+      site_county: $('[name="propertyDetails__site_county"]').val()
     };
 
+    // build the "site_address" field
+    payload.site_address = payload.site_street_number + ' ' + payload.site_route;
+
     ttb.searchBySiteAddress(payload)
-        .done(function(res) {
-          if (res.response.status === 'OK') {
-            // your success code here to consume res.response.data
-            alert('searchBySiteAddress response - ' + JSON.stringify(res.response.data));
-          } else {
-            // your failure code here to consume res.response.data
-            alert('searchBySiteAddress response - ' + JSON.stringify(res));
-          }
-        })
-        .fail(function(err) {
-          // your failure code here
-          alert('searchBySiteAddress response - ' + JSON.stringify(err));
-        });
+      .done(function(res) {
+        if (res.response.status === 'OK') {
+          // your success code here to consume res.response.data
+          alert('searchBySiteAddress response - ' + JSON.stringify(res.response.data));
+        } else {
+          // your failure code here to consume res.response.data
+          alert('searchBySiteAddress response - ' + JSON.stringify(res));
+        }
+      })
+      .fail(function(err) {
+        // your failure code here
+        alert('searchBySiteAddress response - ' + JSON.stringify(err));
+      });
   };
 
 })();
