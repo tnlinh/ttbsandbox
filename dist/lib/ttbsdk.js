@@ -1,112 +1,4 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <title>Source: ttbsandbox/lib/ttbsdk.js</title>
-    
-    
-    <script src="scripts/prettify/prettify.js"></script>
-    <script src="scripts/prettify/lang-css.js"></script>
-    <script src="scripts/jquery.min.js"></script>
-    <!--[if lt IE 9]>
-      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
-    <link type="text/css" rel="stylesheet" href="styles/bootstrap.min.css">
-    <link type="text/css" rel="stylesheet" href="styles/jaguar.css">
 
-    <!-- injected from jsdoc.json > customOptions.stylesheet -->
-    <link type="text/css" rel="stylesheet" href="/main.css">
-
-    
-    <script>
-    var config = {"monospaceLinks":false,"cleverLinks":false,"default":{"outputSourceFiles":true}};
-    </script>
-    
-
-    
-</head>
-<body>
-<div id="wrap" class="clearfix">
-    
-<div class="navigation">
-    <h3 class="applicationName"><a href="index.html"></a></h3>
-
-    <div class="search">
-        <input id="search" type="text" class="form-control input-sm" placeholder="Search Documentations">
-    </div>
-    <ul class="list">
-    
-        <li class="item" data-name="TTB">
-            <span class="title">
-                <a href="TTB.html">TTB</a>
-                
-            </span>
-            <ul class="members itemMembers">
-            
-            <span class="subtitle">Members</span>
-            
-                <li data-name="TTB#config"><a href="TTB.html#config">config</a></li>
-            
-            </ul>
-            <ul class="typedefs itemMembers">
-            
-            </ul>
-            <ul class="methods itemMembers">
-            
-            <span class="subtitle">Methods</span>
-            
-                <li data-name="TTB.getSponsorsList"><a href="TTB.html#.getSponsorsList">getSponsorsList</a></li>
-            
-                <li data-name="TTB.showSelectSponsor"><a href="TTB.html#.showSelectSponsor">showSelectSponsor</a></li>
-            
-                <li data-name="TTB#getSearchFields"><a href="TTB.html#getSearchFields">getSearchFields</a></li>
-            
-                <li data-name="TTB#getTypesReport"><a href="TTB.html#getTypesReport">getTypesReport</a></li>
-            
-                <li data-name="TTB#globalSearch"><a href="TTB.html#globalSearch">globalSearch</a></li>
-            
-                <li data-name="TTB#globalSearchCount"><a href="TTB.html#globalSearchCount">globalSearchCount</a></li>
-            
-                <li data-name="TTB#googleBuildAddress"><a href="TTB.html#googleBuildAddress">googleBuildAddress</a></li>
-            
-                <li data-name="TTB#login"><a href="TTB.html#login">login</a></li>
-            
-                <li data-name="TTB#loginRemote"><a href="TTB.html#loginRemote">loginRemote</a></li>
-            
-                <li data-name="TTB#logout"><a href="TTB.html#logout">logout</a></li>
-            
-                <li data-name="TTB#orderReport"><a href="TTB.html#orderReport">orderReport</a></li>
-            
-                <li data-name="TTB#propertyComps"><a href="TTB.html#propertyComps">propertyComps</a></li>
-            
-                <li data-name="TTB#propertyDetails"><a href="TTB.html#propertyDetails">propertyDetails</a></li>
-            
-                <li data-name="TTB#searchByOwnerName"><a href="TTB.html#searchByOwnerName">searchByOwnerName</a></li>
-            
-                <li data-name="TTB#searchByParcelNumber"><a href="TTB.html#searchByParcelNumber">searchByParcelNumber</a></li>
-            
-                <li data-name="TTB#searchBySiteAddress"><a href="TTB.html#searchBySiteAddress">searchBySiteAddress</a></li>
-            
-                <li data-name="TTB#setSponsor"><a href="TTB.html#setSponsor">setSponsor</a></li>
-            
-            </ul>
-            <ul class="events itemMembers">
-            
-            </ul>
-        </li>
-    
-    </ul>
-</div>
-    <div class="main">
-        <h1 class="page-title" data-filename="ttbsandbox_lib_ttbsdk.js.html">Source: ttbsandbox/lib/ttbsdk.js</h1>
-        
-
-
-    
-    <section>
-        <article>
-            <pre class="prettyprint source "><code>
 /**
  * Copyright © 2017 Benutech Inc. All rights reserved.
  * http://www.benutech.com - help@benutech.com
@@ -126,19 +18,19 @@
     sdkPrefix: 'ttb-sdk',
     autoFillAttr: 'data-ttb-field',
     modalTemplate: [
-      '&lt;div id={{modalId}} class="ttb-sdk-modal modal" role="dialog">',
-      ' &lt;div class="modal-dialog">',
-      '  &lt;div class="modal-content">',
-      '   &lt;div class="modal-header">',
-      '    &lt;button type="button" class="close" data-dismiss="modal" title="Close">&amp;times;&lt;/button>',
-      '    &lt;h4 class="modal-title">{{title}}&lt;/h4>',
-      '   &lt;/div>',
-      '   &lt;div class="modal-body">',
+      '<div id={{modalId}} class="ttb-sdk-modal modal" role="dialog">',
+      ' <div class="modal-dialog">',
+      '  <div class="modal-content">',
+      '   <div class="modal-header">',
+      '    <button type="button" class="close" data-dismiss="modal" title="Close">&times;</button>',
+      '    <h4 class="modal-title">{{title}}</h4>',
+      '   </div>',
+      '   <div class="modal-body">',
       '    {{bodyContent}}',
-      '   &lt;/div>',
-      '  &lt;/div>',
-      ' &lt;/div>',
-      '&lt;/div>'
+      '   </div>',
+      '  </div>',
+      ' </div>',
+      '</div>'
     ].join('')
   };
 
@@ -147,46 +39,46 @@
    * @class
    * @alias TTB
    *
-   * @classdesc &lt;p class="main-desc">JavaScript SDK for consuming webservices and widgets by TitleToolBox from third-party websites.&lt;/p>
+   * @classdesc <p class="main-desc">JavaScript SDK for consuming webservices and widgets by TitleToolBox from third-party websites.</p>
    *
-   * &lt;p>&lt;strong>Dependencies:&lt;/strong>&lt;/p>
-   * &lt;p>
-   * &lt;strong>JQuery&lt;/strong> - version &lt;code>1.x&lt;/code> or &lt;code>2.x&lt;/code> any would work. We recommend the latest version &lt;code>3.x&lt;/code> &lt;br/>
-   * &lt;code> &amp;lt;script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">&amp;lt;/script> &lt;/code>
-   * &lt;/p>
+   * <p><strong>Dependencies:</strong></p>
+   * <p>
+   * <strong>JQuery</strong> - version <code>1.x</code> or <code>2.x</code> any would work. We recommend the latest version <code>3.x</code> <br/>
+   * <code> &lt;script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">&lt;/script> </code>
+   * </p>
    *
-   * &lt;p>
-   * &lt;strong>Bootstrap&lt;/strong> - For modals, and rendering widgets, SDK uses bootstrap UI and script. &lt;br/>
-   * &lt;code> &amp;lt;link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> &lt;/code> &lt;br/>
-   * &lt;code> &amp;lt;script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js">&amp;lt;/script> &lt;/code>
-   * &lt;/p>
+   * <p>
+   * <strong>Bootstrap</strong> - For modals, and rendering widgets, SDK uses bootstrap UI and script. <br/>
+   * <code> &lt;link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> </code> <br/>
+   * <code> &lt;script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js">&lt;/script> </code>
+   * </p>
    *
-   * &lt;p>
-   * &lt;strong>TitleToolBox SDK &lt;/strong> script file itself, it should be pulled via our private repo
-   * as &lt;code>bower&lt;/code> component or can directly be injected whatever suits you best. &lt;br/>
-   * &lt;code> &amp;lt;script src="bower_components/ttbsdk/dist/ttbsdk.js">&amp;lt;/script> &lt;/code>
-   * &lt;/p>
+   * <p>
+   * <strong>TitleToolBox SDK </strong> script file itself, it should be pulled via our private repo
+   * as <code>bower</code> component or can directly be injected whatever suits you best. <br/>
+   * <code> &lt;script src="bower_components/ttbsdk/dist/ttbsdk.js">&lt;/script> </code>
+   * </p>
    *
    * @param {Object} config - The configuration info required
    *
    * @param {String} config.partnerKey - The Partner-Key is a unique ID assigned to you by Company, that to be sent on
    * every request from your site.
    *
-   * @param {String} [config.baseURL="https://direct.api.titletoolbox.com/"] - The Base URL to be used for APIs calls. (note - we can alternatively use &lt;code>sponsor&lt;/code>
-   * and/or &lt;code>baseURLPattern&lt;/code> to keep switching to custom &lt;code>baseURL&lt;/code> on the fly.)
+   * @param {String} [config.baseURL="https://direct.api.titletoolbox.com/"] - The Base URL to be used for APIs calls. (note - we can alternatively use <code>sponsor</code>
+   * and/or <code>baseURLPattern</code> to keep switching to custom <code>baseURL</code> on the fly.)
    *
    * @param {String} [config.sponsor="direct"] - The Title Company Sponsor name to be used in generating baseURL.
    * (note - It will be ignored if baseURL is already passed.)
    *
    * @param {String} [config.baseURLPattern="https://{{sponsor}}.api.titletoolbox.com/"] - The URL pattern to be used
-   * to generate the baseURL which includes the &lt;code>sponsor&lt;/code> provided. Must contain {{sponsor}} at least once.
-   * (note - It will be ignored if &lt;code>baseURL&lt;/code> is already passed.)
+   * to generate the baseURL which includes the <code>sponsor</code> provided. Must contain {{sponsor}} at least once.
+   * (note - It will be ignored if <code>baseURL</code> is already passed.)
    *
    * @param {String} [config.autoFillAttr="data-ttb-field"] - The attribute to be used for auto-fill input fields when
-   * &lt;code>options.autoFillContext&lt;/code> specified in methods which support auto-fill.
-   * (Note: the attribute value on those inputs would be used to evaluate to &lt;code>res.response.data&lt;/code>
-   * - For example: &amp;lt;input type="text" &lt;code>data-ttb-field="GeneralInfo.Bedrooms"&lt;/code> />
-   * or &amp;lt;input type="text" &lt;code>data-ttb-field="GeneralInfo['Year Built']"&lt;/code> />
+   * <code>options.autoFillContext</code> specified in methods which support auto-fill.
+   * (Note: the attribute value on those inputs would be used to evaluate to <code>res.response.data</code>
+   * - For example: &lt;input type="text" <code>data-ttb-field="GeneralInfo.Bedrooms"</code> />
+   * or &lt;input type="text" <code>data-ttb-field="GeneralInfo['Year Built']"</code> />
    *
    * @param {String} [config.debug=true] - SDK debug mode flag useful for logs, etc.
    *
@@ -207,7 +99,7 @@
    *  });
    *
    *  @example
-   *  // With advanced configuration for custom &lt;code>baseURLPattern&lt;/code> and &lt;code>sponsor&lt;/code>, and custom auto-fill attributes.
+   *  // With advanced configuration for custom <code>baseURLPattern</code> and <code>sponsor</code>, and custom auto-fill attributes.
    *  var ttb = new TTB({
    *    partnerKey: '{your partner key}',
    *    baseURLPattern: 'https://customdomain.com/api/{{sponsor}}',
@@ -246,10 +138,10 @@
    * @param {Object} options.title - The Title of the modal to be shown inside the modal header - can be plain text or HTML markup.
    * @param {Object} options.bodyContent - The body content - can be plain text or HTML markup.
    * @param {Object} [options.id="Dynamically generated number e.g. ttb-sdk-1234567890"] - A unique id to be assigned to the modal
-   * @param {Function} [options.onLoad] - A callback function to be invoked when modal has been loaded into DOM. it uses &lt;code>loaded.bs.modal&lt;/code> bootstrap modal event.
-   * @param {Function} [options.onShown] - A callback function to be invoked when modal has been triggered and shown to user. it uses &lt;code>shown.bs.modal&lt;/code> bootstrap modal event.
-   * @param {Function} [options.onClose] - A callback function to be invoked when modal has been closed by the user. it uses &lt;code>hidden.bs.modal&lt;/code> bootstrap modal event.
-   * @param {Function} [options.onBeforeClose] - A callback function to be invoked when modal is about to be close. it uses &lt;code>hide.bs.modal&lt;/code> bootstrap modal event.
+   * @param {Function} [options.onLoad] - A callback function to be invoked when modal has been loaded into DOM. it uses <code>loaded.bs.modal</code> bootstrap modal event.
+   * @param {Function} [options.onShown] - A callback function to be invoked when modal has been triggered and shown to user. it uses <code>shown.bs.modal</code> bootstrap modal event.
+   * @param {Function} [options.onClose] - A callback function to be invoked when modal has been closed by the user. it uses <code>hidden.bs.modal</code> bootstrap modal event.
+   * @param {Function} [options.onBeforeClose] - A callback function to be invoked when modal is about to be close. it uses <code>hide.bs.modal</code> bootstrap modal event.
    *
    * @return {String} $modal - A JQuery reference to the modal DOMNode Element.
    *
@@ -269,10 +161,10 @@
     //return $(document.body).append(modalTemplate);
     $modal = $(modalTemplate).appendTo(document.body);
 
-    options.onLoad &amp;&amp; $modal.on('loaded.bs.modal', options.onLoad);
-    options.onShown &amp;&amp; $modal.on('shown.bs.modal', options.onShown);
-    options.onBeforeClose &amp;&amp; $modal.on('hide.bs.modal', options.onBeforeClose);
-    options.onClose &amp;&amp; $modal.on('hidden.bs.modal', options.onClose);
+    options.onLoad && $modal.on('loaded.bs.modal', options.onLoad);
+    options.onShown && $modal.on('shown.bs.modal', options.onShown);
+    options.onBeforeClose && $modal.on('hide.bs.modal', options.onBeforeClose);
+    options.onClose && $modal.on('hidden.bs.modal', options.onClose);
 
     return $modal;
   };
@@ -341,11 +233,11 @@
    *
    * This static method provides the list of all available sponsors based on given info.
    *
-   * @param {Object} payload - To be used for &lt;code>getSponsorsList()&lt;/code>. Please see payload information [over there]{@link TTB#getSponsorsList}.
+   * @param {Object} payload - To be used for <code>getSponsorsList()</code>. Please see payload information [over there]{@link TTB#getSponsorsList}.
 
    * @param {Object} options - The callbacks options to retrieve success and failure info.
-   * @param {Function} [options.onSelect] - The callback to be invoked with &lt;code>selectedSponsor&lt;/code> when user selects it.
-   * @param {Function} [options.onError] - The callback to be invoked with &lt;code>error&lt;/code>.
+   * @param {Function} [options.onSelect] - The callback to be invoked with <code>selectedSponsor</code> when user selects it.
+   * @param {Function} [options.onError] - The callback to be invoked with <code>error</code>.
    *
    * @example
    * // No ttb instance needed.
@@ -412,13 +304,13 @@
           sponsorsList = [];
 
           // iterate over the list and generate the available options
-          for (var i = 0; i &lt; sponsors.length; i++) {
+          for (var i = 0; i < sponsors.length; i++) {
             sponsorsList.push([
-              '&lt;tr>',
-                '&lt;td>{{name}}&lt;/td>',
-                '&lt;td>{{county}}&lt;/td>',
-                '&lt;td>&lt;button class="btn btn-primary pull-right" data-vertical="{{vertical}}">Select&lt;/button>&lt;/td>',
-              '&lt;/tr>'].join('')
+              '<tr>',
+                '<td>{{name}}</td>',
+                '<td>{{county}}</td>',
+                '<td><button class="btn btn-primary pull-right" data-vertical="{{vertical}}">Select</button></td>',
+              '</tr>'].join('')
               .replace('{{name}}', sponsors[i].name)
               .replace('{{county}}', sponsors[i].county)
               .replace('{{vertical}}', sponsors[i].vertical_name)
@@ -427,19 +319,19 @@
           }
 
           bodyContent = [
-            '&lt;p>Please select sponsor from the following list.&lt;/p>',
-            '&lt;div class="table-responsive">',
-              '&lt;table class="table table-striped">',
-                '&lt;thead>',
-                  '&lt;tr>',
-                    '&lt;th>Name&lt;/th>',
-                    '&lt;th>County&lt;/th>',
-                    '&lt;th>&lt;/th>',
-                  '&lt;/tr>',
-                '&lt;thead>',
-                '&lt;tbody>{{sponsorsList}}&lt;/tbody>',
-              '&lt;table>',
-            '&lt;/div>'
+            '<p>Please select sponsor from the following list.</p>',
+            '<div class="table-responsive">',
+              '<table class="table table-striped">',
+                '<thead>',
+                  '<tr>',
+                    '<th>Name</th>',
+                    '<th>County</th>',
+                    '<th></th>',
+                  '</tr>',
+                '<thead>',
+                '<tbody>{{sponsorsList}}</tbody>',
+              '<table>',
+            '</div>'
           ].join('');
 
           // append the sponsors choices and add the final markup to DOM.
@@ -451,7 +343,7 @@
             var selectedSponsor = $(this).attr('data-vertical');
 
             // pass the selectedSponsor to on-select callback if provided.
-            options.onSelect &amp;&amp; options.onSelect(selectedSponsor);
+            options.onSelect && options.onSelect(selectedSponsor);
 
             // auto close/hide the modal
             $modal.modal('hide');
@@ -459,13 +351,13 @@
 
         } else {
           // pass the error response to error callback if provided.
-          options.onError &amp;&amp; options.onError(res);
+          options.onError && options.onError(res);
         }
       })
       .fail(function (err) {
         $modal.find('.modal-body').html('Failed in retrieving list.');
         // pass the error to error callback if provided.
-        options.onError &amp;&amp; options.onError(err);
+        options.onError && options.onError(err);
       });
 
     // triggering .modal() of bootstrap
@@ -482,7 +374,7 @@
      * @private
      * */
     _log: function (args) {
-      this.config.debug &amp;&amp; console.log.apply(console, args);
+      this.config.debug && console.log.apply(console, args);
     },
 
     /**
@@ -587,13 +479,13 @@
 
 
     /**
-     * This method is use to switch to a different sponsor (Title Company) and so generates a new &lt;code>baseURL&lt;/code>
-     * based on passed &lt;code/>vertical&lt;/code> with existing &lt;code>baseURLPattern&lt;/code>.
+     * This method is use to switch to a different sponsor (Title Company) and so generates a new <code>baseURL</code>
+     * based on passed <code/>vertical</code> with existing <code>baseURLPattern</code>.
      *
      * @param {String} vertical - The Title Company Sponsor name to be used in generating baseURL. - can retrieve
-     * from &lt;code>TTB.getSponsorsList()&lt;/code>
+     * from <code>TTB.getSponsorsList()</code>
      *
-     * @return {String} baseURL - The newly generated &lt;code>baseURL&lt;/code>.
+     * @return {String} baseURL - The newly generated <code>baseURL</code>.
      *
      * @example
      * var ttb = new TTB({ ... }); // skip if already instantiated.
@@ -993,7 +885,7 @@
      *
      * @param {Object} [options] - The options object
      * @param {String} [options.autoFillContext] - A query selector of an element(s) inside which to look for inputs elements
-     * having &lt;code>data-ttb-field&lt;/code>attribute.
+     * having <code>data-ttb-field</code>attribute.
      *
      * @example
      * var ttb = new TTB({ ... }); // skip if already instantiated.
@@ -1039,13 +931,13 @@
 
       return this._ajax(request, 'webservices/property_details.json')
       .then(function (res) {
-        options.autoFillContext &amp;&amp; _self._fillFields(options.autoFillContext, res.response.data);
+        options.autoFillContext && _self._fillFields(options.autoFillContext, res.response.data);
         return res;
       })
     },
 
     /**
-     * This method is used to search all properties matching a set of criteria.&lt;br>
+     * This method is used to search all properties matching a set of criteria.<br>
      * There is a vast number of criteria available, see the Available Search Fields and Search Criteria section.
      *
      * @param {Object} payload - The payload object containing required info.
@@ -1081,11 +973,11 @@
      *  "sa_site_mail_same": "Y",
      *  "sa_owner_1_type": "0",
      *  "sa_nbr_bedrms": { // Beds
-     *    "match": "&lt;=",
+     *    "match": "<=",
      *    "value": 3
      *  },
      *  "sa_nbr_bath": { // Baths
-     *    "match": "&lt;=",
+     *    "match": "<=",
      *    "value": 2
      * },
      *  "use_code_std": [
@@ -1136,14 +1028,14 @@
         data: JSON.stringify(payload)
       };
 
-      var endpoint = 'webservices/global_search.json' + (params &amp;&amp; $.param(params));
+      var endpoint = 'webservices/global_search.json' + (params && $.param(params));
 
       return this._ajax(request, endpoint);
     },
 
 
     /**
-     * This method is to only get the count (as opposed to full set of records) against a certain set of search criteria.&lt;br>
+     * This method is to only get the count (as opposed to full set of records) against a certain set of search criteria.<br>
      * Note - It accepts the same search criteria input as for [global_search]{@link TTB#globalSearch} API.
      *
      * @param {Object} payload - The payload object containing required info.
@@ -1162,7 +1054,7 @@
      *    "92805"
      *  ],
      *  "sa_nbr_bedrms": { // Beds
-     *    "match": "&lt;=",
+     *    "match": "<=",
      *    "value": 3
      *  },
      *  "searchOptions": { // Additional Search Options
@@ -1241,11 +1133,11 @@
 
     /**
      * This method provides the complete list of all fields that can be used to construct search terms for
-     * [global_search]{@link TTB#globalSearch} and [global_search_count]{@link TTB#globalSearchCount} APIs. &lt;br>&lt;br>
+     * [global_search]{@link TTB#globalSearch} and [global_search_count]{@link TTB#globalSearchCount} APIs. <br><br>
      *
-     * To view the complete list of all available search fields and their possible values. &lt;br>
+     * To view the complete list of all available search fields and their possible values. <br>
      * Please follow this [JSON presentation]{@link http://jsoneditoronline.org/?id=ba6b41ee73822c653dae0e2cc8cf6351} -
-     * The key info you should look for is the &lt;code>field_name&lt;/code>, &lt;code>search_type&lt;/code> and &lt;code>choices&lt;/code>.
+     * The key info you should look for is the <code>field_name</code>, <code>search_type</code> and <code>choices</code>.
      *
      * @example
      * var ttb = new TTB({ ... }); // skip if already instantiated.
@@ -1253,7 +1145,7 @@
      * ttb.getSearchFields()
      * .done(function(res) {
      *   if (res instanceof Array) {
-     *     // your success code here to consume res as fields list. see example [&lt; JSON here >]{@link http://jsoneditoronline.org/?id=ba6b41ee73822c653dae0e2cc8cf6351}
+     *     // your success code here to consume res as fields list. see example [< JSON here >]{@link http://jsoneditoronline.org/?id=ba6b41ee73822c653dae0e2cc8cf6351}
      *     console.log(res);
      *   } else {
      *     // your failure code here to consume res
@@ -1280,16 +1172,16 @@
 
 
     /**
-     * This method builds the address payload using the google  &lt;code>autocomplete&lt;/code> instance once it's
-     * &lt;code>"place_changed"&lt;/code> event fires.
-     * The returned payload can be utilized to consume &lt;code>searchBySiteAddress()&lt;/code> API or you can fill form fields using SDK's autoFill API.
+     * This method builds the address payload using the google  <code>autocomplete</code> instance once it's
+     * <code>"place_changed"</code> event fires.
+     * The returned payload can be utilized to consume <code>searchBySiteAddress()</code> API or you can fill form fields using SDK's autoFill API.
      *
-     * @param {object} autocomplete - The google autocomplete instance used on your site, consuming it's &lt;code>"place_changed"&lt;/code> event.
+     * @param {object} autocomplete - The google autocomplete instance used on your site, consuming it's <code>"place_changed"</code> event.
      *
      * @param {Object} [options]- The options object
      * @param {String} [options.autoFillContext] - A query selector of an element(s) inside which to look for inputs elements
-     * having &lt;code>data-ttb-field&lt;/code> attribute.
-     * - For example: &amp;lt;input type="text" &lt;code>data-ttb-field="site_address"&lt;/code> />
+     * having <code>data-ttb-field</code> attribute.
+     * - For example: &lt;input type="text" <code>data-ttb-field="site_address"</code> />
      *
      * @example
      * var ttb = new TTB({ ... }); // skip if already instantiated.
@@ -1302,7 +1194,7 @@
      * autocomplete.addListener('place_changed', function () {
      *
      *   // approach # 01 - auto-fill only - build up the address by auto-filling the form fields and leaves the submission logic.
-     *   // &lt;i>(Note: before submission, make sure you build &lt;code>site_address&lt;/code> using &lt;code>site_street_number&lt;/code> + ' ' + &lt;code>site_route&lt;/code>)&lt;/> &lt;/i>
+     *   // <i>(Note: before submission, make sure you build <code>site_address</code> using <code>site_street_number</code> + ' ' + <code>site_route</code>)</> </i>
      *
      *   var options = {
      *     autoFillContext: '#searchBySiteAddress__form'
@@ -1313,7 +1205,7 @@
      *
      *   // -- OR --
      *
-     *   // approach # 02 - direct submission - build up the address by getting the payload and proceed with &lt;code>searchBySiteAddress()&lt;/code> to retrieve the result.
+     *   // approach # 02 - direct submission - build up the address by getting the payload and proceed with <code>searchBySiteAddress()</code> to retrieve the result.
      *   var payload = ttb.googleBuildAddress(autocomplete);
      *   ttb.searchBySiteAddress(payload)
      *   .done(function(res) {
@@ -1338,14 +1230,14 @@
      *
      * @return {Object} address   built address payload object using google place components, having following fields against mentioned mapping.
      *
-     * @return {Object} address.site_street_number Component Type: &lt;code>"street_number"&lt;/code> | Name Type: &lt;code>"short_name"&lt;/code>.
-     * @return {Object} address.site_route         Component Type: &lt;code>"route"&lt;/code> | Name Type: &lt;code>"short_name"&lt;/code>.
-     * @return {Object} address.site_address       *Built using &lt;code>site_street_number&lt;/code> + ' ' + &lt;code>site_route&lt;/code>.
-     * @return {Object} address.site_city          Component Type: &lt;code>"locality"&lt;/code> | Name Type: &lt;code>"long_name"&lt;/code>.
-     * @return {Object} address.site_state         Component Type: &lt;code>"administrative_area_level_1"&lt;/code> | Name Type: &lt;code>"short_name"&lt;/code>.
-     * @return {Object} address.site_zip           Component Type: &lt;code>"postal_code"&lt;/code> | Name Type: &lt;code>"short_name"&lt;/code>.
-     * @return {Object} address.county             Component Type: &lt;code>"administrative_area_level_2"&lt;/code> | Name Type: &lt;code>"short_name"&lt;/code>.
-     * @return {Object} address.country            Component Type: &lt;code>"country"&lt;/code> | Name Type: &lt;code>"long_name"&lt;/code>.
+     * @return {Object} address.site_street_number Component Type: <code>"street_number"</code> | Name Type: <code>"short_name"</code>.
+     * @return {Object} address.site_route         Component Type: <code>"route"</code> | Name Type: <code>"short_name"</code>.
+     * @return {Object} address.site_address       *Built using <code>site_street_number</code> + ' ' + <code>site_route</code>.
+     * @return {Object} address.site_city          Component Type: <code>"locality"</code> | Name Type: <code>"long_name"</code>.
+     * @return {Object} address.site_state         Component Type: <code>"administrative_area_level_1"</code> | Name Type: <code>"short_name"</code>.
+     * @return {Object} address.site_zip           Component Type: <code>"postal_code"</code> | Name Type: <code>"short_name"</code>.
+     * @return {Object} address.county             Component Type: <code>"administrative_area_level_2"</code> | Name Type: <code>"short_name"</code>.
+     * @return {Object} address.country            Component Type: <code>"country"</code> | Name Type: <code>"long_name"</code>.
      *
      * */
     googleBuildAddress: function (autocomplete, options) {
@@ -1366,7 +1258,7 @@
       };
 
       // iterate over each component available in selected place
-      for (var i = 0, len = place.address_components.length; i &lt; len; i++) {
+      for (var i = 0, len = place.address_components.length; i < len; i++) {
         addressComp = place.address_components[i];
         addressType = addressComp.types[0];
 
@@ -1378,7 +1270,7 @@
           addressInfo[componentForm[addressType].field_name] = addressValue;
 
           // check to auto-fill field if auto-fill-context option was provided.
-          options.autoFillContext &amp;&amp; this._fillField(options.autoFillContext, componentForm[addressType].field_name, addressValue);
+          options.autoFillContext && this._fillField(options.autoFillContext, componentForm[addressType].field_name, addressValue);
         }
       }
 
@@ -1389,25 +1281,3 @@
   };
 
 })();
-</code></pre>
-        </article>
-    </section>
-
-
-
-
-
-
-        
-
-        <footer>
-            Copyright © 2017 <a href="http://www.benutech.com/" target="_blank" title="Benutech official website">Benutech Inc.</a> All rights reserved.</a>
-           <!-- Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Tue Dec 19 2017 03:55:32 GMT+0500 (PKT) -->
-        </footer>
-    </div>
-</div>
-<script>prettyPrint();</script>
-<script src="scripts/linenumber.js"></script>
-<script src="scripts/main.js"></script>
-</body>
-</html>
