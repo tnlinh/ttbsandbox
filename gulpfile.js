@@ -15,13 +15,13 @@ gulp.task('doc', ['del'], function (cb) {
     .pipe(jsdoc(config));
 });
 
-gulp.task('copy-lib', ['doc'], function () {
+gulp.task('copy-lib', ['doc', 'del'], function () {
   //console.log('task: copy-lib');
   return gulp.src(['lib/**/*.*'])
     .pipe(gulp.dest('dist/lib'));
 });
 
-gulp.task('copy-sandbox', ['doc'], function () {
+gulp.task('copy-sandbox', ['copy-lib', 'doc', 'del'], function () {
   //console.log('task: copy-sandbox');
   return gulp.src(['src/**/*.*'])
     .pipe(gulp.dest('dist/'));
@@ -31,7 +31,7 @@ gulp.task('copy', ['copy-sandbox', 'copy-lib']);
 
 gulp.task('watch', ['doc', 'copy'], function () {
   //console.log('task: watch');
-  gulp.watch(['lib/**/*.js', 'jsdoc.json'], ['copy-sandbox', 'doc']);
+  gulp.watch(['lib/**/*.js', 'jsdoc.json', 'src/**/*.*'], ['copy-sandbox', 'doc']);
 });
 
 gulp.task('doc-dev', ['watch']);
