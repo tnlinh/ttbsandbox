@@ -1252,9 +1252,9 @@
         route: {field_name: 'site_route', name_type: 'short_name'},
         locality: {field_name: 'site_city', name_type: 'long_name'},
         administrative_area_level_1: {field_name: 'site_state', name_type: 'short_name'},
-        administrative_area_level_2: {field_name: 'county', name_type: 'short_name'},
-        postal_code: {field_name: 'site_zip', name_type: 'short_name'},
-        country: {field_name: 'country', name_type: 'long_name'}
+        administrative_area_level_2: {field_name: 'site_county', name_type: 'short_name'},
+        postal_code: {field_name: 'site_zip', name_type: 'short_name'}
+        //country: {field_name: 'country', name_type: 'long_name'}
       };
 
       // get the current place info from google autocomplete instance
