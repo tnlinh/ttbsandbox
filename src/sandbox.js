@@ -21,7 +21,15 @@
 
     // when the user selects an address from the drop-down, populate the address fields in the form.
     autocomplete.addListener('place_changed', function () {
-      ttb.googleBuildAddress(autocomplete, {autoFillContext: 'searchBySiteAddress__form'});
+
+      // fill the address form fields
+      ttb.googleBuildAddress(autocomplete, {autoFillContext: '#searchBySiteAddress__form'});
+
+      // auto fetch the matching record
+      setTimeout(function () {
+        window.searchBySiteAddress();
+      });
+
     });
     /* -- searchBySiteAddress | googleBuildAddress - init stuff - ends -- */
 

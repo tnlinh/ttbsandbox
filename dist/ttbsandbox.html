@@ -235,6 +235,7 @@
           <br>
           <label for="googleBuildAddress__autocomplete">Google Auto-complete place complete:</label><br>
           <input type="text" id="googleBuildAddress__autocomplete" placeholder="Enter your address" style="width: 500px">
+          <button class="btn btn-primary" onclick="searchBySiteAddress()">Search By Site Address</button>
         </div>
 
         <div class="col-xs-12">
@@ -251,7 +252,7 @@
                   <div class="form-group">
                     <label for="propertyDetails__site_street_number">Street Number:</label>
                     <input type="text" class="form-control" placeholder=""
-                           data-ttb-field="site_address"
+                           data-ttb-field="site_street_number"
                            id="propertyDetails__site_street_number" name="propertyDetails__site_street_number">
                   </div>
                 </div>
@@ -259,7 +260,7 @@
                   <div class="form-group">
                     <label for="propertyDetails__site_route">Street Name:</label>
                     <input type="text" class="form-control" placeholder=""
-                           data-ttb-field="site_address"
+                           data-ttb-field="site_route"
                            id="propertyDetails__site_route" name="propertyDetails__site_route">
                   </div>
                 </div>
@@ -275,7 +276,7 @@
                   <div class="form-group">
                     <label for="propertyDetails__site_state">Site State:</label>
                     <input type="text" class="form-control" placeholder=""
-                           data-ttb-field="site_city"
+                           data-ttb-field="site_state"
                            id="propertyDetails__site_state" name="propertyDetails__site_state">
                   </div>
                 </div>
@@ -306,10 +307,6 @@
               </div>
             </fieldset>
           </form>
-        </div>
-
-        <div class="col-xs-12">
-          <button class="btn btn-primary" onclick="searchBySiteAddress()">Search By Site Address</button>
         </div>
       </div>
     </div>
