@@ -74,8 +74,26 @@
       <div>
         <strong>Documentation link: </strong> <a target="_blank" href="https://ttbsandbox.herokuapp.com/TTB.html#.showSelectSponsor">here</a>.
       </div>
-      <div class="playground">
-        <button class="btn btn-primary" onclick="showSelectSponsor()">Show Select Sponsor</button>
+      <div class="playground row">
+        <div class="col-xs-3">
+          <div class="form-group">
+            <label for="showSelectSponsor__email">User's email</label>
+            <input type="text" class="form-control" placeholder="" value="ttbhelp@benutech.com"
+                   id="showSelectSponsor__email" name="showSelectSponsor__email">
+          </div>
+        </div>
+        <div class="col-xs-3">
+          <div class="form-group">
+            <label for="showSelectSponsor__zip">User's Zip Code:</label>
+            <input type="text" class="form-control" placeholder="" value="92801"
+                   id="showSelectSponsor__zip" name="showSelectSponsor__zip">
+          </div>
+        </div>
+        <div class="col-xs-3">
+          <div class="form-group" style="margin-top: 24px;">
+            <button id="showSelectSponsor__submit" class="btn btn-primary" onclick="showSelectSponsor()">Show Select Sponsor</button>
+          </div>
+        </div>
       </div>
     </div>
 

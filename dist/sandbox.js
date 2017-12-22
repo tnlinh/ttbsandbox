@@ -134,8 +134,8 @@
     console.log('showSelectSponsor clicked');
 
     var payload = {
-      email: 'agent47@domain.com',
-      zipCode: '12345'
+      email: $('[name="showSelectSponsor__email"]').val(),
+      zipCode: $('[name="showSelectSponsor__zip"]').val()
     };
 
     TTB.showSelectSponsor(payload, {
