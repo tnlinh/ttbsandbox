@@ -106,8 +106,7 @@
     
     <section>
         <article>
-            <pre class="prettyprint source "><code>
-/**
+            <pre class="prettyprint source "><code>/**
  * Copyright © 2017 Benutech Inc. All rights reserved.
  * http://www.benutech.com - help@benutech.com
  * version: 0.1.0
@@ -181,6 +180,14 @@
    * @param {String} [config.baseURLPattern="https://{{sponsor}}.api.titletoolbox.com/"] - The URL pattern to be used
    * to generate the baseURL which includes the &lt;code>sponsor&lt;/code> provided. Must contain {{sponsor}} at least once.
    * (note - It will be ignored if &lt;code>baseURL&lt;/code> is already passed.)
+   *
+   * @param {Function} [config.onSessionExpire] - The callback / handler to be called whenever an API receives &lt;code>401 - UNAUTHENTICATED&lt;/code>
+   * (session expired) from server.
+   * @param {Object} [config.onSessionExpire.info] - The info object that SDK passes to the callback to provide more control to recover the request failure.
+   * @param {String} [config.onSessionExpire.info.requestError] - The AJAX error object passed to the error-handler of the API method that was failed.
+   * @param {String} [config.onSessionExpire.info.requestConfig] - The configuration object passed to the request that was failed.
+   * @param {Function} [config.onSessionExpire.info.retry()] - retry the failed call, while passing all exact payload(if), and query params (if any)
+   * Returns the AJAX promise. - very useful to call and ready-up the feature once user logs-in back.
    *
    * @param {String} [config.autoFillAttr="data-ttb-field"] - The attribute to be used for auto-fill input fields when
    * &lt;code>options.autoFillContext&lt;/code> specified in methods which support auto-fill.
@@ -415,30 +422,29 @@
           for (var i = 0; i &lt; sponsors.length; i++) {
             sponsorsList.push([
               '&lt;tr>',
-                '&lt;td>{{name}}&lt;/td>',
-                '&lt;td>{{county}}&lt;/td>',
-                '&lt;td>&lt;button class="btn btn-primary pull-right" data-vertical="{{vertical}}">Select&lt;/button>&lt;/td>',
+              '&lt;td>{{name}}&lt;/td>',
+              '&lt;td>{{county}}&lt;/td>',
+              '&lt;td>&lt;button class="btn btn-primary pull-right" data-vertical="{{vertical}}">Select&lt;/button>&lt;/td>',
               '&lt;/tr>'].join('')
               .replace('{{name}}', sponsors[i].name)
               .replace('{{county}}', sponsors[i].county)
               .replace('{{vertical}}', sponsors[i].vertical_name)
-
             );
           }
 
           bodyContent = [
             '&lt;p>Please select sponsor from the following list.&lt;/p>',
             '&lt;div class="table-responsive">',
-              '&lt;table class="table table-striped">',
-                '&lt;thead>',
-                  '&lt;tr>',
-                    '&lt;th>Name&lt;/th>',
-                    '&lt;th>County&lt;/th>',
-                    '&lt;th>&lt;/th>',
-                  '&lt;/tr>',
-                '&lt;thead>',
-                '&lt;tbody>{{sponsorsList}}&lt;/tbody>',
-              '&lt;table>',
+            '&lt;table class="table table-striped">',
+            '&lt;thead>',
+            '&lt;tr>',
+            '&lt;th>Name&lt;/th>',
+            '&lt;th>County&lt;/th>',
+            '&lt;th>&lt;/th>',
+            '&lt;/tr>',
+            '&lt;thead>',
+            '&lt;tbody>{{sponsorsList}}&lt;/tbody>',
+            '&lt;table>',
             '&lt;/div>'
           ].join('');
 
@@ -511,6 +517,7 @@
       });
     },
 
+
     /**
      * This method looks for the input field against the given fieldName as value of its data-ttb-field="" attribute,
      * to auto-fill it with the passed fieldValue.
@@ -524,7 +531,7 @@
     _fillField: function (selector, fieldName, fieldValue) {
       var $field;
 
-      $field = $(selector).find('input[' + this.autoFillAttr + '="' + fieldName  +'"]');
+      $field = $(selector).find('input[' + this.autoFillAttr + '="' + fieldName + '"]');
 
       if ($field.length) {
         $field.val(fieldValue);
@@ -577,12 +584,25 @@
         })
         .fail(function (err) {
           _self._log([defaults.sdkPrefix + ' :', endpoint, ': fail :', err]);
+
+          // handle 401 unauthenticated / session-expired if config.onSessionExpire callback provided
+          if (err.status === 401 &amp;&amp; _self.config.onSessionExpire) {
+            _self.config.onSessionExpire({
+              requestConfig: request,
+              requestError: err,
+              url: options.url,
+              retry: function () {
+                return $.ajax(request);
+              }
+            });
+          }
+
           return err;
         });
-        //.always(function(arg) {
-        //  _self._log([defaults.sdkPrefix + ' :', endpoint, ': always :', arg]);
-        //  return arg;
-        //});
+      //.always(function(arg) {
+      //  _self._log([defaults.sdkPrefix + ' :', endpoint, ': always :', arg]);
+      //  return arg;
+      //});
     },
 
 
@@ -1038,10 +1058,10 @@
       };
 
       return this._ajax(request, 'webservices/property_details.json')
-      .then(function (res) {
-        options.autoFillContext &amp;&amp; _self._fillFields(options.autoFillContext, res.response.data);
-        return res;
-      })
+        .then(function (res) {
+          options.autoFillContext &amp;&amp; _self._fillFields(options.autoFillContext, res.response.data);
+          return res;
+        });
     },
 
     /**
@@ -1405,7 +1425,7 @@
 
         <footer>
             Copyright © 2017 <a href="http://www.benutech.com/" target="_blank" title="Benutech official website">Benutech Inc.</a> All rights reserved.</a>
-           <!-- Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Wed Dec 20 2017 03:53:50 GMT+0500 (PKT) -->
+           <!-- Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Fri Dec 22 2017 23:03:19 GMT+0500 (PKT) -->
         </footer>
     </div>
 </div>

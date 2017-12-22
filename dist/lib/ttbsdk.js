@@ -1,4 +1,3 @@
-
 /**
  * Copyright © 2017 Benutech Inc. All rights reserved.
  * http://www.benutech.com - help@benutech.com
@@ -73,6 +72,14 @@
    * @param {String} [config.baseURLPattern="https://{{sponsor}}.api.titletoolbox.com/"] - The URL pattern to be used
    * to generate the baseURL which includes the <code>sponsor</code> provided. Must contain {{sponsor}} at least once.
    * (note - It will be ignored if <code>baseURL</code> is already passed.)
+   *
+   * @param {Function} [config.onSessionExpire] - The callback / handler to be called whenever an API receives <code>401 - UNAUTHENTICATED</code>
+   * (session expired) from server.
+   * @param {Object} [config.onSessionExpire.info] - The info object that SDK passes to the callback to provide more control to recover the request failure.
+   * @param {String} [config.onSessionExpire.info.requestError] - The AJAX error object passed to the error-handler of the API method that was failed.
+   * @param {String} [config.onSessionExpire.info.requestConfig] - The configuration object passed to the request that was failed.
+   * @param {Function} [config.onSessionExpire.info.retry()] - retry the failed call, while passing all exact payload(if), and query params (if any)
+   * Returns the AJAX promise. - very useful to call and ready-up the feature once user logs-in back.
    *
    * @param {String} [config.autoFillAttr="data-ttb-field"] - The attribute to be used for auto-fill input fields when
    * <code>options.autoFillContext</code> specified in methods which support auto-fill.
@@ -307,30 +314,29 @@
           for (var i = 0; i < sponsors.length; i++) {
             sponsorsList.push([
               '<tr>',
-                '<td>{{name}}</td>',
-                '<td>{{county}}</td>',
-                '<td><button class="btn btn-primary pull-right" data-vertical="{{vertical}}">Select</button></td>',
+              '<td>{{name}}</td>',
+              '<td>{{county}}</td>',
+              '<td><button class="btn btn-primary pull-right" data-vertical="{{vertical}}">Select</button></td>',
               '</tr>'].join('')
               .replace('{{name}}', sponsors[i].name)
               .replace('{{county}}', sponsors[i].county)
               .replace('{{vertical}}', sponsors[i].vertical_name)
-
             );
           }
 
           bodyContent = [
             '<p>Please select sponsor from the following list.</p>',
             '<div class="table-responsive">',
-              '<table class="table table-striped">',
-                '<thead>',
-                  '<tr>',
-                    '<th>Name</th>',
-                    '<th>County</th>',
-                    '<th></th>',
-                  '</tr>',
-                '<thead>',
-                '<tbody>{{sponsorsList}}</tbody>',
-              '<table>',
+            '<table class="table table-striped">',
+            '<thead>',
+            '<tr>',
+            '<th>Name</th>',
+            '<th>County</th>',
+            '<th></th>',
+            '</tr>',
+            '<thead>',
+            '<tbody>{{sponsorsList}}</tbody>',
+            '<table>',
             '</div>'
           ].join('');
 
@@ -403,6 +409,7 @@
       });
     },
 
+
     /**
      * This method looks for the input field against the given fieldName as value of its data-ttb-field="" attribute,
      * to auto-fill it with the passed fieldValue.
@@ -416,7 +423,7 @@
     _fillField: function (selector, fieldName, fieldValue) {
       var $field;
 
-      $field = $(selector).find('input[' + this.autoFillAttr + '="' + fieldName  +'"]');
+      $field = $(selector).find('input[' + this.autoFillAttr + '="' + fieldName + '"]');
 
       if ($field.length) {
         $field.val(fieldValue);
@@ -469,12 +476,25 @@
         })
         .fail(function (err) {
           _self._log([defaults.sdkPrefix + ' :', endpoint, ': fail :', err]);
+
+          // handle 401 unauthenticated / session-expired if config.onSessionExpire callback provided
+          if (err.status === 401 && _self.config.onSessionExpire) {
+            _self.config.onSessionExpire({
+              requestConfig: request,
+              requestError: err,
+              url: options.url,
+              retry: function () {
+                return $.ajax(request);
+              }
+            });
+          }
+
           return err;
         });
-        //.always(function(arg) {
-        //  _self._log([defaults.sdkPrefix + ' :', endpoint, ': always :', arg]);
-        //  return arg;
-        //});
+      //.always(function(arg) {
+      //  _self._log([defaults.sdkPrefix + ' :', endpoint, ': always :', arg]);
+      //  return arg;
+      //});
     },
 
 
@@ -930,10 +950,10 @@
       };
 
       return this._ajax(request, 'webservices/property_details.json')
-      .then(function (res) {
-        options.autoFillContext && _self._fillFields(options.autoFillContext, res.response.data);
-        return res;
-      })
+        .then(function (res) {
+          options.autoFillContext && _self._fillFields(options.autoFillContext, res.response.data);
+          return res;
+        });
     },
 
     /**

@@ -148,7 +148,7 @@ as <code>bower</code> component or can directly be injected whatever suits you b
     
         
         <div class="tag-source">
-            <a href="ttbsandbox_lib_ttbsdk.js.html">ttbsandbox/lib/ttbsdk.js</a>, <a href="ttbsandbox_lib_ttbsdk.js.html#line110">line 110</a>
+            <a href="ttbsandbox_lib_ttbsdk.js.html">ttbsandbox/lib/ttbsdk.js</a>, <a href="ttbsandbox_lib_ttbsdk.js.html#line117">line 117</a>
         </div>
         
     </div>
@@ -370,6 +370,206 @@ and/or <code>baseURLPattern</code> to keep switching to custom <code>baseURL</co
                 The URL pattern to be used
 to generate the baseURL which includes the <code>sponsor</code> provided. Must contain {{sponsor}} at least once.
 (note - It will be ignored if <code>baseURL</code> is already passed.)</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>onSessionExpire</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                The callback / handler to be called whenever an API receives <code>401 - UNAUTHENTICATED</code>
+(session expired) from server.
+                
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>info</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                The info object that SDK passes to the callback to provide more control to recover the request failure.
+                
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>requestError</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                The AJAX error object passed to the error-handler of the API method that was failed.</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>requestConfig</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                The configuration object passed to the request that was failed.</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>retry()</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                retry the failed call, while passing all exact payload(if), and query params (if any)
+Returns the AJAX promise. - very useful to call and ready-up the feature once user logs-in back.</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+            </td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+            </td>
         </tr>
 	
 	
@@ -641,7 +841,7 @@ or &lt;input type="text" <code>data-ttb-field="GeneralInfo['Year Built']"</code>
     
         
         <div class="tag-source">
-            <a href="ttbsandbox_lib_ttbsdk.js.html">ttbsandbox/lib/ttbsdk.js</a>, <a href="ttbsandbox_lib_ttbsdk.js.html#line213">line 213</a>
+            <a href="ttbsandbox_lib_ttbsdk.js.html">ttbsandbox/lib/ttbsdk.js</a>, <a href="ttbsandbox_lib_ttbsdk.js.html#line220">line 220</a>
         </div>
         
     </div>
@@ -895,7 +1095,7 @@ TTB.getSponsorsList(payload)
     
         
         <div class="tag-source">
-            <a href="ttbsandbox_lib_ttbsdk.js.html">ttbsandbox/lib/ttbsdk.js</a>, <a href="ttbsandbox_lib_ttbsdk.js.html#line273">line 273</a>
+            <a href="ttbsandbox_lib_ttbsdk.js.html">ttbsandbox/lib/ttbsdk.js</a>, <a href="ttbsandbox_lib_ttbsdk.js.html#line280">line 280</a>
         </div>
         
     </div>
@@ -1174,7 +1374,7 @@ TTB.showSponsorSelector(payload, {
     
         
         <div class="tag-source">
-            <a href="ttbsandbox_lib_ttbsdk.js.html">ttbsandbox/lib/ttbsdk.js</a>, <a href="ttbsandbox_lib_ttbsdk.js.html#line1165">line 1165</a>
+            <a href="ttbsandbox_lib_ttbsdk.js.html">ttbsandbox/lib/ttbsdk.js</a>, <a href="ttbsandbox_lib_ttbsdk.js.html#line1185">line 1185</a>
         </div>
         
     </div>
@@ -1304,7 +1504,7 @@ ttb.getSearchFields()
     
         
         <div class="tag-source">
-            <a href="ttbsandbox_lib_ttbsdk.js.html">ttbsandbox/lib/ttbsdk.js</a>, <a href="ttbsandbox_lib_ttbsdk.js.html#line1125">line 1125</a>
+            <a href="ttbsandbox_lib_ttbsdk.js.html">ttbsandbox/lib/ttbsdk.js</a>, <a href="ttbsandbox_lib_ttbsdk.js.html#line1145">line 1145</a>
         </div>
         
     </div>
@@ -1429,7 +1629,7 @@ ttb.getTypesReport()
     
         
         <div class="tag-source">
-            <a href="ttbsandbox_lib_ttbsdk.js.html">ttbsandbox/lib/ttbsdk.js</a>, <a href="ttbsandbox_lib_ttbsdk.js.html#line1025">line 1025</a>
+            <a href="ttbsandbox_lib_ttbsdk.js.html">ttbsandbox/lib/ttbsdk.js</a>, <a href="ttbsandbox_lib_ttbsdk.js.html#line1045">line 1045</a>
         </div>
         
     </div>
@@ -2080,7 +2280,7 @@ ttb.globalSearch(payload, params)
     
         
         <div class="tag-source">
-            <a href="ttbsandbox_lib_ttbsdk.js.html">ttbsandbox/lib/ttbsdk.js</a>, <a href="ttbsandbox_lib_ttbsdk.js.html#line1088">line 1088</a>
+            <a href="ttbsandbox_lib_ttbsdk.js.html">ttbsandbox/lib/ttbsdk.js</a>, <a href="ttbsandbox_lib_ttbsdk.js.html#line1108">line 1108</a>
         </div>
         
     </div>
@@ -2273,7 +2473,7 @@ ttb.globalSearchCount(payload, params)
     
         
         <div class="tag-source">
-            <a href="ttbsandbox_lib_ttbsdk.js.html">ttbsandbox/lib/ttbsdk.js</a>, <a href="ttbsandbox_lib_ttbsdk.js.html#line1243">line 1243</a>
+            <a href="ttbsandbox_lib_ttbsdk.js.html">ttbsandbox/lib/ttbsdk.js</a>, <a href="ttbsandbox_lib_ttbsdk.js.html#line1263">line 1263</a>
         </div>
         
     </div>
@@ -2663,7 +2863,7 @@ autocomplete.addListener('place_changed', function () {
     
         
         <div class="tag-source">
-            <a href="ttbsandbox_lib_ttbsdk.js.html">ttbsandbox/lib/ttbsdk.js</a>, <a href="ttbsandbox_lib_ttbsdk.js.html#line581">line 581</a>
+            <a href="ttbsandbox_lib_ttbsdk.js.html">ttbsandbox/lib/ttbsdk.js</a>, <a href="ttbsandbox_lib_ttbsdk.js.html#line601">line 601</a>
         </div>
         
     </div>
@@ -2909,7 +3109,7 @@ ttb.login(payload)
     
         
         <div class="tag-source">
-            <a href="ttbsandbox_lib_ttbsdk.js.html">ttbsandbox/lib/ttbsdk.js</a>, <a href="ttbsandbox_lib_ttbsdk.js.html#line534">line 534</a>
+            <a href="ttbsandbox_lib_ttbsdk.js.html">ttbsandbox/lib/ttbsdk.js</a>, <a href="ttbsandbox_lib_ttbsdk.js.html#line554">line 554</a>
         </div>
         
     </div>
@@ -3129,7 +3329,7 @@ ttb.remoteLogin(payload)
     
         
         <div class="tag-source">
-            <a href="ttbsandbox_lib_ttbsdk.js.html">ttbsandbox/lib/ttbsdk.js</a>, <a href="ttbsandbox_lib_ttbsdk.js.html#line618">line 618</a>
+            <a href="ttbsandbox_lib_ttbsdk.js.html">ttbsandbox/lib/ttbsdk.js</a>, <a href="ttbsandbox_lib_ttbsdk.js.html#line638">line 638</a>
         </div>
         
     </div>
@@ -3256,7 +3456,7 @@ ttb.logout()
     
         
         <div class="tag-source">
-            <a href="ttbsandbox_lib_ttbsdk.js.html">ttbsandbox/lib/ttbsdk.js</a>, <a href="ttbsandbox_lib_ttbsdk.js.html#line808">line 808</a>
+            <a href="ttbsandbox_lib_ttbsdk.js.html">ttbsandbox/lib/ttbsdk.js</a>, <a href="ttbsandbox_lib_ttbsdk.js.html#line828">line 828</a>
         </div>
         
     </div>
@@ -3593,7 +3793,7 @@ ttb.orderReport(payload)
     
         
         <div class="tag-source">
-            <a href="ttbsandbox_lib_ttbsdk.js.html">ttbsandbox/lib/ttbsdk.js</a>, <a href="ttbsandbox_lib_ttbsdk.js.html#line869">line 869</a>
+            <a href="ttbsandbox_lib_ttbsdk.js.html">ttbsandbox/lib/ttbsdk.js</a>, <a href="ttbsandbox_lib_ttbsdk.js.html#line889">line 889</a>
         </div>
         
     </div>
@@ -4032,7 +4232,7 @@ ttb.propertyComps(payload)
     
         
         <div class="tag-source">
-            <a href="ttbsandbox_lib_ttbsdk.js.html">ttbsandbox/lib/ttbsdk.js</a>, <a href="ttbsandbox_lib_ttbsdk.js.html#line921">line 921</a>
+            <a href="ttbsandbox_lib_ttbsdk.js.html">ttbsandbox/lib/ttbsdk.js</a>, <a href="ttbsandbox_lib_ttbsdk.js.html#line941">line 941</a>
         </div>
         
     </div>
@@ -4367,7 +4567,7 @@ ttb.propertyDetails(payload, options)
     
         
         <div class="tag-source">
-            <a href="ttbsandbox_lib_ttbsdk.js.html">ttbsandbox/lib/ttbsdk.js</a>, <a href="ttbsandbox_lib_ttbsdk.js.html#line760">line 760</a>
+            <a href="ttbsandbox_lib_ttbsdk.js.html">ttbsandbox/lib/ttbsdk.js</a>, <a href="ttbsandbox_lib_ttbsdk.js.html#line780">line 780</a>
         </div>
         
     </div>
@@ -4655,7 +4855,7 @@ ttb.searchByOwnerName(payload)
     
         
         <div class="tag-source">
-            <a href="ttbsandbox_lib_ttbsdk.js.html">ttbsandbox/lib/ttbsdk.js</a>, <a href="ttbsandbox_lib_ttbsdk.js.html#line661">line 661</a>
+            <a href="ttbsandbox_lib_ttbsdk.js.html">ttbsandbox/lib/ttbsdk.js</a>, <a href="ttbsandbox_lib_ttbsdk.js.html#line681">line 681</a>
         </div>
         
     </div>
@@ -4898,7 +5098,7 @@ ttb.searchByParcelNumber(payload)
     
         
         <div class="tag-source">
-            <a href="ttbsandbox_lib_ttbsdk.js.html">ttbsandbox/lib/ttbsdk.js</a>, <a href="ttbsandbox_lib_ttbsdk.js.html#line714">line 714</a>
+            <a href="ttbsandbox_lib_ttbsdk.js.html">ttbsandbox/lib/ttbsdk.js</a>, <a href="ttbsandbox_lib_ttbsdk.js.html#line734">line 734</a>
         </div>
         
     </div>
@@ -5280,7 +5480,7 @@ ttb.searchBySiteAddress(payload)
     
         
         <div class="tag-source">
-            <a href="ttbsandbox_lib_ttbsdk.js.html">ttbsandbox/lib/ttbsdk.js</a>, <a href="ttbsandbox_lib_ttbsdk.js.html#line496">line 496</a>
+            <a href="ttbsandbox_lib_ttbsdk.js.html">ttbsandbox/lib/ttbsdk.js</a>, <a href="ttbsandbox_lib_ttbsdk.js.html#line516">line 516</a>
         </div>
         
     </div>
@@ -5444,7 +5644,7 @@ ttb.setVertical('xyz');</code></pre>
 
         <footer>
             Copyright © 2017 <a target="_blank" href="http://www.benutech.com/" target="_blank" title="Benutech official website">Benutech Inc.</a> All rights reserved.</a>
-           <!-- Documentation generated by <a target="_blank" href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Wed Dec 20 2017 03:53:50 GMT+0500 (PKT) -->
+           <!-- Documentation generated by <a target="_blank" href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Fri Dec 22 2017 23:03:19 GMT+0500 (PKT) -->
         </footer>
     </div>
 </div>

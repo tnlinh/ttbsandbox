@@ -8,6 +8,7 @@
   var ttb = new TTB({
     partnerKey: '1-7a32b4f2-62a8-4990-830b-2cf674504875', // official TTB - retrieve yours from support team.
     vertical: 'direct',
+    onSessionExpire: onSessionExpire,
     debug: true
   });
 
@@ -35,6 +36,33 @@
 
   };
 
+  /* util functions */
+
+  // to be invoked when the session is expired
+  function onSessionExpire(info) {
+    console.log('onSessionExpire', info);
+
+    // show the logged-in status bar
+    updateLoginStatus('WARNING', 'NO or EXPIRED SESSION - Please log in to resume using App.');
+
+    // auto-focus on the pass field.
+    $('#login__password').focus();
+  }
+
+  // updates the login alert message for success, failure, or warning.
+  function updateLoginStatus(type, message) {
+    var classes = {
+      SUCCESS: 'alert alert-success',
+      ERROR: 'alert alert-danger',
+      WARNING: 'alert alert-warning'
+    };
+
+    $('#logged-in')
+      .attr('class', classes[type])
+      .text(message)
+      .slideDown();
+  }
+
   /* authentication functions */
   window.login = function () {
     console.log('login clicked');
@@ -46,7 +74,7 @@
       }
     };
 
-    ttb.login(payload)
+    return ttb.login(payload)
       .done(function (res) {
         if (res.response.status === 'OK') {
           // user is successfully logged-in !!
@@ -57,23 +85,30 @@
           //$('[name="login__password"]').val('');
 
           // show the logged-in status bar
-          $('#logged-in').slideDown();
+          updateLoginStatus('SUCCESS', 'Logged in successfully !');
 
         } else {
           // your failure code here to consume res.response.data for validation errors info
           alert('login response - ' + JSON.stringify(res));
+
+          // show the logged-in status bar
+          updateLoginStatus('ERROR', res.response.data[0] || 'Login Failed. Please review credentials.');
         }
       })
       .fail(function (err) {
         // your failure code here
         alert('login response - ' + JSON.stringify(err));
+
+        // show the logged-in status bar
+        updateLoginStatus('ERROR', 'Could not connect to server. Please try again later.');
+
       });
   };
 
   window.logout = function () {
     console.log('logout clicked');
 
-    ttb.logout()
+    return ttb.logout()
       .done(function (res) {
         if (res.response.status === 'OK') {
           // user is successfully logged-out!!
@@ -81,7 +116,8 @@
           alert('logout response - ' + JSON.stringify(res.response.data));
 
           // hide the logged-in status bar
-          $('#logged-in').hide();
+          updateLoginStatus('WARNING', 'You are Logged out - Please log back in to resume using App.');
+
         } else {
           // your failure code here to consume res.response.data
           console.log(res.response.data);
@@ -92,7 +128,6 @@
         alert('logout response - ' + JSON.stringify(err));
       });
   };
-
 
   /* UI Widgets */
   window.showSelectSponsor = function () {
