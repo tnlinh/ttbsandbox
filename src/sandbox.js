@@ -140,9 +140,13 @@
 
     TTB.showSelectSponsor(payload, {
       ttb: ttb,
-      onSelect: function (info) {
+      onSelect: function (selectedSponsor) {
         // your success code here
-        alert('showSelectSponsor select - ' + JSON.stringify(info));
+        alert('showSelectSponsor select - ' + JSON.stringify(selectedSponsor));
+
+        // change the instance to selected sponsor
+        ttb.setSponsor(selectedSponsor);
+
       },
       onError: function (reason) {
         // your failure code here
