@@ -485,7 +485,6 @@
             _self.config.onSessionExpire({
               requestConfig: request,
               requestError: err,
-              url: options.url,
               retry: function () {
                 return $.ajax(request);
               }
