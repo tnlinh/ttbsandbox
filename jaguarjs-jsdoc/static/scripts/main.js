@@ -18,7 +18,7 @@ $(function () {
                 }
             });
         } else {
-            $el.find('.item, .itemMembers').show();
+            $el.find('li, .itemMembers, .item').show();
         }
 
         $el.find('.list').scrollTop(0);
