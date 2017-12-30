@@ -18,7 +18,7 @@
     autoFillAttr: 'data-ttb-field',
     modalTemplate: [
       '<div id={{modalId}} class="ttb-sdk-modal modal" role="dialog">',
-      ' <div class="modal-dialog">',
+      ' <div class="modal-dialog {{sizeClass}}">',
       '  <div class="modal-content">',
       '   <div class="modal-header">',
       '    <button type="button" class="close" data-dismiss="modal" title="Close">&times;</button>',
@@ -78,7 +78,7 @@
    * @param {Object} [config.onSessionExpire.info] - The info object that SDK passes to the callback to provide more control to recover the request failure.
    * @param {String} [config.onSessionExpire.info.requestError] - The AJAX error object passed to the error-handler of the API method that was failed.
    * @param {String} [config.onSessionExpire.info.requestConfig] - The configuration object passed to the request that was failed.
-   * @param {Function} [config.onSessionExpire.info.retry] - retry the failed call, while auto-passing exactly all the info e.g. payload(if any), and query params (if any)
+   * @param {Function} [config.onSessionExpire.info.retry] - retry the failed call, while auto-passing exactly all the info e.g. payload (if any), and query params (if any)
    * Returns the AJAX promise. - very useful to call and ready-up the feature once user logs-in back.
    *
    * @param {String} [config.autoFillAttr="data-ttb-field"] - The attribute to be used for auto-fill input fields when
@@ -145,6 +145,7 @@
    * @param {Object} options.title - The Title of the modal to be shown inside the modal header - can be plain text or HTML markup.
    * @param {Object} options.bodyContent - The body content - can be plain text or HTML markup.
    * @param {Object} [options.id="Dynamically generated number e.g. ttb-sdk-1234567890"] - A unique id to be assigned to the modal
+   * @param {Object} [options.sizeClass="modal-sm"] - modal dialog size class e.g. modal-lg, modal-md, modal-sm and custom as modal-full
    * @param {Function} [options.onLoad] - A callback function to be invoked when modal has been loaded into DOM. it uses <code>loaded.bs.modal</code> bootstrap modal event.
    * @param {Function} [options.onShown] - A callback function to be invoked when modal has been triggered and shown to user. it uses <code>shown.bs.modal</code> bootstrap modal event.
    * @param {Function} [options.onClose] - A callback function to be invoked when modal has been closed by the user. it uses <code>hidden.bs.modal</code> bootstrap modal event.
@@ -154,13 +155,15 @@
    *
    * */
   window.TTB._modal = function (options) {
-    var $modal, modalTemplate, modalId;
+    var $modal, modalTemplate;
 
-    modalId = options.id || (Date.now() + '');
+    options.id = options.id || (Date.now() + '');
+    options.sizeClass = options.sizeClass || 'modal-lg';
 
     // generate the modal template against given info
     modalTemplate = defaults.modalTemplate
-      .replace('{{modalId}}', modalId)
+      .replace('{{modalId}}', options.id)
+      .replace('{{sizeClass}}', options.sizeClass)
       .replace('{{title}}', options.title)
       .replace('{{bodyContent}}', options.bodyContent);
 

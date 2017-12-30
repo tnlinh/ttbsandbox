@@ -1,11 +1,30 @@
 
-.class-description p{
+body, h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+    font-family: "jaf-bernino-sans", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Verdana, sans-serif;
+}
+
+.class-description p {
     font-size: 14px;
     line-height: 1.7;
 }
 
-body, h1, h2, h3, h4, h5, h6,
-.h1, .h2, .h3, .h4, .h5, .h6
-{
-    font-family: "jaf-bernino-sans", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Verdana, sans-serif;
+.modal-full {
+    width: calc(100% - 30px);
+    margin: 15px auto;
+}
+
+#doc-modal .modal-body{
+    padding-top: 5px;
+}
+
+.doc-link-tab {
+    font-size: 14px;
+    float: right;
+    margin-right: 30px;
+    padding-right: 5px;
+    border-right: 1px solid;
+}
+.doc-link-tab:focus, .doc-link-tab:active {
+    text-decoration: none;
 }

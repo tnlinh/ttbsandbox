@@ -4,12 +4,24 @@
   /* Sandbox script */
 
   /* initialization stuff */
+  var DEFAULTS = {
+    SDK_DOC_URL: 'http://sdk.titletoolbox.com/TTB.html',
+    FULL_HEIGHT: $(window).height() - (56 + 30 + 35) // - modal-header height + modal-body top-bottom padding + top-bottom margin + extra space
+  };
+
   // setup ttb SDK
   var ttb = new TTB({
     partnerKey: '1-7a32b4f2-62a8-4990-830b-2cf674504875', // official TTB - retrieve yours from support team.
     vertical: 'direct',
     onSessionExpire: onSessionExpire,
     debug: true
+  });
+
+  // document ready event handler
+  $(function () {
+
+    // bind click events to documentation links
+    $('.doc-link').on('click', showDocumentation);
   });
 
   // to be invoked when google maps library gets successfully loaded
@@ -61,6 +73,24 @@
       .attr('class', classes[type])
       .text(message)
       .slideDown();
+  }
+
+  // open the documentation modal against the clicked method
+  function showDocumentation() {
+    console.log('showDocumentation clicked');
+
+    var $this = $(this);
+    var src = DEFAULTS.SDK_DOC_URL + $this.data('href');
+
+    window.TTB._modal({
+      id: 'doc-modal',
+      sizeClass: 'modal-full',
+      title: 'Documentation <a class="doc-link-tab" href="{{src}}" target="_blank">Open in a Tab</a>'.replace('{{src}}', src),
+      bodyContent: ['<iframe width="100%" height="{{height}}" frameborder="0" src="{{src}}"></iframe>'].join('')
+        .replace('{{src}}', src)
+        .replace('{{height}}', DEFAULTS.FULL_HEIGHT)
+
+    }).modal();
   }
 
   /* authentication functions */
