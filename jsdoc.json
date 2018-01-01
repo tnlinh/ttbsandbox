@@ -17,7 +17,7 @@
   "customOptions": {
     "rootDir": "ttbsandbox",
     "stylesheet": "/main.css",
-    "footer": "Copyright © 2017 <a href=\"http://www.benutech.com/\" target=\"_blank\" title=\"Benutech official website\">Benutech Inc.</a> All rights reserved."
+    "footer": "Copyright © 2018 <a href=\"http://www.benutech.com/\" target=\"_blank\" title=\"Benutech official website\">Benutech Inc.</a> All rights reserved."
   },
   "opts": {
     "template": "jaguarjs-jsdoc",
