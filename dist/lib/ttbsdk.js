@@ -320,12 +320,12 @@
               '<td><img src="{{logoUrl}}" class="img-responsive" alt="Sponsor Logo" style="background-color: rgb(61, 156, 226)"></td>',
               '<td>{{name}}</td>',
               '<td><a href="{{website}}" target="_blank">{{website}}</a></td>',
-              '<td><button class="btn btn-primary pull-right" data-vertical="{{vertical}}">Select</button></td>',
+              '<td><button class="btn btn-primary pull-right" data-sponsor="{{sponsor}}">Select</button></td>',
               '</tr>'].join('')
               .replace('{{logoUrl}}', sponsors[i].site_url + '/' + sponsors[i].company_info.logo_url)
               .replace('{{name}}', sponsors[i].company_info.company_name)
               .replace(/(\{\{website}})/g, sponsors[i].company_info.company_website)
-              .replace('{{vertical}}', sponsors[i].vertical_name)
+              .replace('{{sponsor}}', sponsors[i].vertical_name)
             );
           }
 
@@ -352,7 +352,7 @@
 
           // register the click handler for sponsor selection
           $('#' + modalId + ' tbody').on('click', 'button', function (e) {
-            var selectedSponsor = $(this).attr('data-vertical');
+            var selectedSponsor = $(this).attr('data-sponsor');
 
             // pass the selectedSponsor to on-select callback if provided.
             options.onSelect && options.onSelect(selectedSponsor);
@@ -505,9 +505,9 @@
 
     /**
      * This method is use to switch to a different sponsor (Title Company) and so generates a new <code>baseURL</code>
-     * based on passed <code/>vertical</code> with existing <code>baseURLPattern</code>.
+     * based on passed <code/>sponsor</code> with existing <code>baseURLPattern</code>.
      *
-     * @param {String} vertical - The Title Company Sponsor name to be used in generating baseURL. - can retrieve
+     * @param {String} sponsor - The Title Company Sponsor name to be used in generating baseURL. - can retrieve
      * from <code>TTB.getSponsors()</code>
      *
      * @return {String} baseURL - The newly generated <code>baseURL</code>.
@@ -515,11 +515,11 @@
      * @example
      * var ttb = new TTB({ ... }); // skip if already instantiated.
      *
-     * ttb.setVertical('xyz');
+     * ttb.setSponsor('xyz');
      *
      * */
-    setSponsor: function (vertical) {
-      return this.baseURL = this.baseURLPattern.replace('{{sponsor}}', vertical);
+    setSponsor: function (sponsor) {
+      return this.baseURL = this.baseURLPattern.replace('{{sponsor}}', sponsor);
     },
 
 

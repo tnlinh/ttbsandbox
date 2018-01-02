@@ -27,34 +27,68 @@
 
   <div class="row">
 
+    <!--<div class="col-xs-12">-->
+      <!--<h2>Login</h2>-->
+      <!--<div>-->
+        <!--<a class="doc-link" href="javascript:" data-href="#login">Click here</a> to see documentation.-->
+      <!--</div>-->
+      <!--<div class="playground row">-->
+        <!--<div class="col-xs-3">-->
+          <!--<div class="form-group">-->
+            <!--<label for="login__username">Username:</label>-->
+            <!--<input type="text" class="form-control" placeholder="" value="ttbhelp@benutech.com"-->
+                   <!--id="login__username" name="login__username">-->
+          <!--</div>-->
+        <!--</div>-->
+        <!--<div class="col-xs-3">-->
+          <!--<div class="form-group">-->
+            <!--<label for="propertyDetails__state_fips">Password:</label>-->
+            <!--<input type="password" class="form-control" placeholder=""-->
+                   <!--id="login__password" name="login__password" autofocus>-->
+          <!--</div>-->
+        <!--</div>-->
+        <!--<div class="col-xs-3">-->
+          <!--<div class="form-group" style="margin-top: 24px;">-->
+            <!--<button id="login__submit" class="btn btn-primary" onclick="login()">Login</button>-->
+          <!--</div>-->
+        <!--</div>-->
+      <!--</div>-->
+    <!--</div>-->
+
+
     <div class="col-xs-12">
-      <h2>Login</h2>
+      <h2>Remote Login</h2>
       <div>
-        <a class="doc-link" href="javascript:" data-href="#login">Click here</a> to see documentation.
+        <a class="doc-link" href="javascript:" data-href="#loginRemote">Click here</a> to see documentation.
       </div>
       <div class="playground row">
         <div class="col-xs-3">
           <div class="form-group">
-            <label for="login__username">Username:</label>
-            <input type="text" class="form-control" placeholder="" value="ttbhelp@benutech.com"
-                   id="login__username" name="login__username">
+            <label for="loginRemote__stk">STK (Secure Token):</label>
+            <input type="text" class="form-control" placeholder=""
+                   id="loginRemote__stk" name="loginRemote__stk" autofocus>
           </div>
         </div>
         <div class="col-xs-3">
           <div class="form-group">
-            <label for="propertyDetails__state_fips">Password:</label>
-            <input type="password" class="form-control" placeholder=""
-                   id="login__password" name="login__password" autofocus>
+            <label for="loginRemote__getUserUrl">getuser_url (Optional):</label>
+            <input type="text" class="form-control" placeholder=""
+                   id="loginRemote__getUserUrl" name="loginRemote__getUserUrl">
           </div>
         </div>
         <div class="col-xs-3">
           <div class="form-group" style="margin-top: 24px;">
-            <button id="login__submit" class="btn btn-primary" onclick="login()">Login</button>
+            <button id="loginRemote__submit" class="btn btn-primary" onclick="loginRemote()">Login Remote</button>
           </div>
         </div>
-        <div class="clearfix"></div>
+      </div>
+    </div>
+
+    <!-- LOGIN status -->
+    <div class="col-xs-12">
+      <div class="row">
         <div class="col-xs-6">
-          <p id="logged-in" class="alert" style="display: none">Logged in successful !</p>
+          <p id="authentication-status" class="alert" style="display: none"></p>
         </div>
       </div>
     </div>
@@ -66,6 +100,27 @@
       </div>
       <div class="playground">
         <button class="btn btn-primary" onclick="logout()">Logout</button>
+      </div>
+    </div>
+
+    <div class="col-xs-12">
+      <h2>Set Sponsor (Util)</h2>
+      <div>
+        <a class="doc-link" href="javascript:" data-href="#setSponsor">Click here</a> to see documentation.
+      </div>
+      <div class="playground row">
+        <div class="col-xs-3">
+          <div class="form-group">
+            <label for="setSponsor__sponsor">Sponsor:</label>
+            <input type="text" class="form-control" placeholder=""
+                   id="setSponsor__sponsor" name="setSponsor__sponsor">
+          </div>
+        </div>
+        <div class="col-xs-3">
+          <div class="form-group" style="margin-top: 24px;">
+            <button id="setSponsor__submit" class="btn btn-primary" onclick="setSponsor()">Set Sponsor</button>
+          </div>
+        </div>
       </div>
     </div>
 

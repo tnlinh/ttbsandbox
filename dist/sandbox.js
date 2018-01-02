@@ -58,7 +58,7 @@
     updateLoginStatus('WARNING', 'NO or EXPIRED SESSION - Please log in to resume using App.');
 
     // auto-focus on the pass field.
-    $('#login__password').focus();
+    $('#loginRemote__stk').focus();
   }
 
   // updates the login alert message for success, failure, or warning.
@@ -69,7 +69,7 @@
       WARNING: 'alert alert-warning'
     };
 
-    $('#logged-in')
+    $('#authentication-status')
       .attr('class', classes[type])
       .text(message)
       .slideDown();
@@ -135,6 +135,45 @@
       });
   };
 
+  window.loginRemote = function () {
+    console.log('loginRemote clicked');
+
+    var payload = {
+      stk: $('[name="loginRemote__stk"]').val(),
+      getuserUrl: $('[name="loginRemote__getUserUrl"]').val()
+    };
+
+    return ttb.loginRemote(payload)
+      .done(function (res) {
+        if (res.response.status === 'OK') {
+          // user is successfully logged-in !!
+          // your success code here to consume res.response.data for logged-in user info
+          alert('loginRemote response - ' + JSON.stringify(res.response.data));
+
+          // empty the password field
+          //$('[name="login__password"]').val('');
+
+          // show the logged-in status bar
+          updateLoginStatus('SUCCESS', 'Logged in successfully !');
+
+        } else {
+          // your failure code here to consume res.response.data for validation errors info
+          alert('loginRemote response - ' + JSON.stringify(res));
+
+          // show the logged-in status bar
+          updateLoginStatus('ERROR', res.response.data[0] || 'Login Failed. Please review credentials.');
+        }
+      })
+      .fail(function (err) {
+        // your failure code here
+        alert('loginRemote response - ' + JSON.stringify(err));
+
+        // show the logged-in status bar
+        updateLoginStatus('ERROR', 'Could not connect to server. Please try again later.');
+
+      });
+  };
+
   window.logout = function () {
     console.log('logout clicked');
 
@@ -158,6 +197,16 @@
         alert('logout response - ' + JSON.stringify(err));
       });
   };
+
+  /* UTIL methods */
+  window.setSponsor = function () {
+    console.log('setSponsor clicked');
+
+    var sponsor = $('[name="setSponsor__sponsor"]').val();
+    return ttb.setSponsor(sponsor);
+  };
+
+
 
   /* UI Widgets */
   window.showSelectSponsor = function () {
