@@ -46,3 +46,7 @@ body, h1, h2, h3, h4, h5, h6,
     margin-left: 20px;
     padding-left: 20px;
 }
+#res-modal .pretty-json .jsontree_tree{
+    margin-left: 0;
+    padding-left: 0;
+}
