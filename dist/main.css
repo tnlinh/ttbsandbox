@@ -28,3 +28,13 @@ body, h1, h2, h3, h4, h5, h6,
 .doc-link-tab:focus, .doc-link-tab:active {
     text-decoration: none;
 }
+
+#res-modal .modal-title .success{
+    color: #3c763d;
+}
+#res-modal .modal-title .failure{
+    color: #a94442;
+}
+#res-modal .pretty-json{
+    max-height: 600px;
+}

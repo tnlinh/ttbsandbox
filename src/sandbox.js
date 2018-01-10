@@ -93,6 +93,29 @@
     }).modal();
   }
 
+  // shows the response JSON in a pretty format modal.
+  function showResponse(res, success) {
+    var prettyJSON, alertClass, title;
+
+    console.log('showResponse clicked');
+
+    title = success ? 'successful !' : 'failed !';
+    //alertClass = success ? 'success' : 'failure';
+
+    prettyJSON = JSON.stringify(res, null, 2);
+
+    window.TTB._modal({
+      id: 'res-modal',
+      //sizeClass: 'modal-full',
+
+      title: '<div class="text-uppercase {{alertClass}}">{{title}}</div>'
+        //.replace('{{alertClass}}', alertClass)
+        .replace('{{title}}', title),
+
+      bodyContent: '<pre class="pretty-json">{{prettyJSON}}</pre>'.replace('{{prettyJSON}}', prettyJSON)
+    }).modal();
+  }
+
   /* authentication functions */
   window.login = function () {
     console.log('login clicked');
@@ -109,7 +132,8 @@
         if (res.response.status === 'OK') {
           // user is successfully logged-in !!
           // your success code here to consume res.response.data for logged-in user info
-          alert('login response - ' + JSON.stringify(res.response.data));
+          //alert('login response - ' + JSON.stringify(res.response.data));
+          showResponse(res, true);
 
           // empty the password field
           //$('[name="login__password"]').val('');
@@ -119,7 +143,8 @@
 
         } else {
           // your failure code here to consume res.response.data for validation errors info
-          alert('login response - ' + JSON.stringify(res));
+          //alert('login response - ' + JSON.stringify(res));
+          showResponse(res, false);
 
           // show the logged-in status bar
           updateLoginStatus('ERROR', res.response.data[0] || 'Login Failed. Please review credentials.');
@@ -127,7 +152,8 @@
       })
       .fail(function (err) {
         // your failure code here
-        alert('login response - ' + JSON.stringify(err));
+        //alert('login response - ' + JSON.stringify(err));
+        showResponse(res, false);
 
         // show the logged-in status bar
         updateLoginStatus('ERROR', 'Could not connect to server. Please try again later.');
