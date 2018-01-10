@@ -95,14 +95,26 @@
 
   // shows the response JSON in a pretty format modal.
   function showResponse(res, success) {
-    var prettyJSON, alertClass, title;
+    var title;
 
     console.log('showResponse clicked');
 
     title = success ? 'successful !' : 'failed !';
-    //alertClass = success ? 'success' : 'failure';
 
-    prettyJSON = JSON.stringify(res, null, 2);
+    setTimeout(function () {
+
+      // JSON tree formatter
+      var wrapper = document.querySelector('#res-modal .pretty-json');
+
+      // Create json-tree
+      var tree = jsonTree.create(res, wrapper);
+
+      // Expand all (or selected) child nodes of root (optional)
+      tree.expand(function (node) {
+        return node.childNodes.length < 2 || node.label === 'phoneNumbers';
+      });
+
+    }, 500);
 
     window.TTB._modal({
       id: 'res-modal',
@@ -112,7 +124,12 @@
         //.replace('{{alertClass}}', alertClass)
         .replace('{{title}}', title),
 
-      bodyContent: '<pre class="pretty-json">{{prettyJSON}}</pre>'.replace('{{prettyJSON}}', prettyJSON)
+      bodyContent: '<div class="pretty-json"></div>',
+
+      onLoad: function () {
+        console.log('onLoad');
+
+      }
     }).modal();
   }
 

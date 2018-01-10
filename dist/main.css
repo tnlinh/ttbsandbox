@@ -37,4 +37,12 @@ body, h1, h2, h3, h4, h5, h6,
 }
 #res-modal .pretty-json{
     max-height: 600px;
+    overflow: scroll;
+}
+#res-modal .pretty-json ul{
+    list-style: none;
+}
+#res-modal .pretty-json .jsontree_child-nodes{
+    margin-left: 20px;
+    padding-left: 20px;
 }

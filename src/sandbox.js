@@ -95,24 +95,41 @@
 
   // shows the response JSON in a pretty format modal.
   function showResponse(res, success) {
-    var prettyJSON, alertClass, title;
+    var title, modalId;
 
     console.log('showResponse clicked');
 
+    modalId = 'res-modal';
     title = success ? 'successful !' : 'failed !';
-    //alertClass = success ? 'success' : 'failure';
 
-    prettyJSON = JSON.stringify(res, null, 2);
+    // remove any previous attempt modal
+    if ($('#' + modalId).length) {
+      $('#' + modalId).remove();
+    }
+
+    var renderJSONTree = function () {
+      // JSON tree formatter
+      var wrapper = document.querySelector('#res-modal .pretty-json');
+
+      // Create json-tree
+      var tree = jsonTree.create(res, wrapper);
+
+      // Expand all by default
+      tree.expand(0);
+    };
 
     window.TTB._modal({
-      id: 'res-modal',
+      id: modalId,
+
       //sizeClass: 'modal-full',
 
       title: '<div class="text-uppercase {{alertClass}}">{{title}}</div>'
         //.replace('{{alertClass}}', alertClass)
         .replace('{{title}}', title),
 
-      bodyContent: '<pre class="pretty-json">{{prettyJSON}}</pre>'.replace('{{prettyJSON}}', prettyJSON)
+      bodyContent: '<div class="pretty-json"></div>',
+
+      onBeforeShow: renderJSONTree
     }).modal();
   }
 

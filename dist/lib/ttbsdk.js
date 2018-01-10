@@ -172,6 +172,8 @@
     //return $(document.body).append(modalTemplate);
     $modal = $(modalTemplate).appendTo(document.body);
 
+    $modal.modal();
+
     options.onLoad && $modal.on('loaded.bs.modal', options.onLoad);
     options.onShown && $modal.on('shown.bs.modal', options.onShown);
     options.onBeforeClose && $modal.on('hide.bs.modal', options.onBeforeClose);
