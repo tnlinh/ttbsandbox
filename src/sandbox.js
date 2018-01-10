@@ -57,8 +57,8 @@
     // show the logged-in status bar
     updateLoginStatus('WARNING', 'NO or EXPIRED SESSION - Please log in to resume using App.');
 
-    // auto-focus on the pass field.
-    $('#loginRemote__stk').focus();
+    // auto-focus on the password field.
+    $('#updateLoginStatus').focus();
   }
 
   // updates the login alert message for success, failure, or warning.
