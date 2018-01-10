@@ -153,7 +153,7 @@
       .fail(function (err) {
         // your failure code here
         //alert('login response - ' + JSON.stringify(err));
-        showResponse(res, false);
+        showResponse(err, false);
 
         // show the logged-in status bar
         updateLoginStatus('ERROR', 'Could not connect to server. Please try again later.');
@@ -174,7 +174,8 @@
         if (res.response.status === 'OK') {
           // user is successfully logged-in !!
           // your success code here to consume res.response.data for logged-in user info
-          alert('loginRemote response - ' + JSON.stringify(res.response.data));
+          //alert('loginRemote response - ' + JSON.stringify(res.response.data));
+          showResponse(res, true);
 
           // empty the password field
           //$('[name="login__password"]').val('');
@@ -184,7 +185,8 @@
 
         } else {
           // your failure code here to consume res.response.data for validation errors info
-          alert('loginRemote response - ' + JSON.stringify(res));
+          //alert('loginRemote response - ' + JSON.stringify(res));
+          showResponse(res, false);
 
           // show the logged-in status bar
           updateLoginStatus('ERROR', res.response.data[0] || 'Login Failed. Please review credentials.');
@@ -192,7 +194,8 @@
       })
       .fail(function (err) {
         // your failure code here
-        alert('loginRemote response - ' + JSON.stringify(err));
+        //alert('loginRemote response - ' + JSON.stringify(err));
+        showResponse(err, false);
 
         // show the logged-in status bar
         updateLoginStatus('ERROR', 'Could not connect to server. Please try again later.');
@@ -208,19 +211,24 @@
         if (res.response.status === 'OK') {
           // user is successfully logged-out!!
           // your success code here to clear any cached info etc from the web page
-          alert('logout response - ' + JSON.stringify(res.response.data));
+          //alert('logout response - ' + JSON.stringify(res.response.data));
+          showResponse(res, true);
 
           // hide the logged-in status bar
           updateLoginStatus('WARNING', 'You are Logged out - Please log back in to resume using App.');
 
         } else {
           // your failure code here to consume res.response.data
-          console.log(res.response.data);
+          //console.log(res.response.data);
+          showResponse(res, false);
+
         }
       })
       .fail(function (err) {
         // your failure code here
-        alert('logout response - ' + JSON.stringify(err));
+        //alert('logout response - ' + JSON.stringify(err));
+        showResponse(err, false);
+
       });
   };
 
@@ -247,7 +255,8 @@
       ttb: ttb,
       onSelect: function (selectedSponsor) {
         // your success code here
-        alert('showSelectSponsor select - ' + JSON.stringify(selectedSponsor));
+        //alert('showSelectSponsor select - ' + JSON.stringify(selectedSponsor));
+        showResponse(selectedSponsor, true);
 
         // change the instance to selected sponsor
         ttb.setSponsor(selectedSponsor);
@@ -255,7 +264,8 @@
       },
       onError: function (reason) {
         // your failure code here
-        alert('showSelectSponsor error - ' + JSON.stringify(reason));
+        //alert('showSelectSponsor error - ' + JSON.stringify(reason));
+        showResponse(reason, false);
       }
     });
   };
@@ -270,17 +280,19 @@
         if (res instanceof Array) {
 
           // your success code here to consume res as fields list.
-          console.log(res);
+          //alert('getSearchFields response - ' + JSON.stringify(res));
+          showResponse(res, true);
 
-          alert('getSearchFields response - ' + JSON.stringify(res));
         } else {
           // your failure code here to consume res.response.data
-          alert('getSearchFields response - ' + JSON.stringify(res));
+          //alert('getSearchFields response - ' + JSON.stringify(res));
+          showResponse(res, false);
         }
       })
       .fail(function (err) {
         // your failure code here
-        alert('getSearchFields response - ' + JSON.stringify(err));
+        //alert('getSearchFields response - ' + JSON.stringify(err));
+        showResponse(err, false);
       });
   };
 
@@ -289,13 +301,18 @@
 
     ttb.getTypesReport()
       .done(function (res) {
+
         if (res.response.status === 'OK') {
           // your success code here to consume res.response.data
-          alert('getTypesReport response - ' + JSON.stringify(res.response.data));
+          //alert('getTypesReport response - ' + JSON.stringify(res.response.data));
+          showResponse(res, true);
+
         } else {
           // your failure code here to consume res.response.data
-          alert('getTypesReport response - ' + JSON.stringify(res));
+          //alert('getTypesReport response - ' + JSON.stringify(res));
+          showResponse(res, false);
         }
+
       })
       .fail(function (err) {
         // your failure code here
@@ -354,15 +371,21 @@
       .done(function (res) {
         if (res.response.status === 'OK') {
           // your success code here to consume res.response.data
-          alert('globalSearch response - ' + JSON.stringify(res.response.data));
+          //alert('globalSearch response - ' + JSON.stringify(res.response.data));
+          showResponse(res, true);
+
         } else {
           // your failure code here to consume res.response.data
-          alert('globalSearch response - ' + JSON.stringify(res));
+          //alert('globalSearch response - ' + JSON.stringify(res));
+          showResponse(res, false);
+
         }
       })
       .fail(function (err) {
         // your failure code here
-        alert('globalSearch response - ' + JSON.stringify(err));
+        //alert('globalSearch response - ' + JSON.stringify(err));
+        showResponse(err, false);
+
       });
   };
 
@@ -396,15 +419,19 @@
       .done(function (res) {
         if (res.response.status === 'OK') {
           // your success code here to consume res.response.data
-          alert('globalSearchCount response - ' + JSON.stringify(res.response.data));
+          //alert('globalSearchCount response - ' + JSON.stringify(res.response.data));
+          showResponse(res, true);
+
         } else {
           // your failure code here to consume res.response.data
-          alert('globalSearchCount response - ' + JSON.stringify(res));
+          //alert('globalSearchCount response - ' + JSON.stringify(res));
+          showResponse(res, false);
         }
       })
       .fail(function (err) {
         // your failure code here
-        alert('globalSearchCount response - ' + JSON.stringify(err));
+        //alert('globalSearchCount response - ' + JSON.stringify(err));
+        showResponse(err, false);
       });
   };
 
@@ -422,15 +449,19 @@
       .done(function (res) {
         if (res.response.status === 'OK') {
           // your success code here to consume res.response.data
-          alert('orderReport response - ' + JSON.stringify(res.response.data));
+          //alert('orderReport response - ' + JSON.stringify(res.response.data));
+          showResponse(res, true);
+
         } else {
           // your failure code here to consume res.response.data
-          alert('orderReport response - ' + JSON.stringify(res));
+          //alert('orderReport response - ' + JSON.stringify(res));
+          showResponse(res, false);
         }
       })
       .fail(function (err) {
         // your failure code here
-        alert('orderReport response - ' + JSON.stringify(err));
+        //alert('orderReport response - ' + JSON.stringify(err));
+        showResponse(err, false);
       });
   };
 
@@ -452,15 +483,19 @@
       .done(function (res) {
         if (res.response.status === 'OK') {
           // your success code here to consume res.response.data
-          alert('propertyComps response - ' + JSON.stringify(res.response.data));
+          //alert('propertyComps response - ' + JSON.stringify(res.response.data));
+          showResponse(res, true);
+
         } else {
           // your failure code here to consume res.response.data
-          alert('propertyComps response - ' + JSON.stringify(res));
+          //alert('propertyComps response - ' + JSON.stringify(res));
+          showResponse(res, false);
         }
       })
       .fail(function (err) {
         // your failure code here
-        alert('propertyComps response - ' + JSON.stringify(err));
+        //alert('propertyComps response - ' + JSON.stringify(err));
+        showResponse(err, false);
       });
   };
 
@@ -480,15 +515,20 @@
       .done(function (res) {
         if (res.response.status === 'OK') {
           // your success code here to consume res.response.data
-          alert('propertyDetails response - ' + JSON.stringify(res.response.data));
+          //alert('propertyDetails response - ' + JSON.stringify(res.response.data));
+          showResponse(res, true);
+
         } else {
           // your failure code here to consume res.response.data
-          alert('propertyDetails response - ' + JSON.stringify(res));
+          //alert('propertyDetails response - ' + JSON.stringify(res));
+          showResponse(res, false);
         }
+
       })
       .fail(function (err) {
         // your failure code here
-        alert('propertyDetails response - ' + JSON.stringify(err));
+        //alert('propertyDetails response - ' + JSON.stringify(err));
+        showResponse(err, false);
       });
   };
 
@@ -505,15 +545,19 @@
       .done(function (res) {
         if (res.response.status === 'OK') {
           // your success code here to consume res.response.data
-          alert('searchByOwnerName response - ' + JSON.stringify(res.response.data));
+          //alert('searchByOwnerName response - ' + JSON.stringify(res.response.data));
+          showResponse(res, true);
+
         } else {
           // your failure code here to consume res.response.data
-          alert('searchByOwnerName response - ' + JSON.stringify(res));
+          //alert('searchByOwnerName response - ' + JSON.stringify(res));
+          showResponse(res, false);
         }
       })
       .fail(function (err) {
         // your failure code here
-        alert('searchByOwnerName response - ' + JSON.stringify(err));
+        //alert('searchByOwnerName response - ' + JSON.stringify(err));
+        showResponse(err, false);
       });
   };
 
@@ -529,15 +573,19 @@
       .done(function (res) {
         if (res.response.status === 'OK') {
           // your success code here to consume res.response.data
-          alert('searchByParcelNumber response - ' + JSON.stringify(res.response.data));
+          //alert('searchByParcelNumber response - ' + JSON.stringify(res.response.data));
+          showResponse(res, true);
+
         } else {
           // your failure code here to consume res.response.data
-          alert('searchByParcelNumber response - ' + JSON.stringify(res));
+          //alert('searchByParcelNumber response - ' + JSON.stringify(res));
+          showResponse(res, false);
         }
       })
       .fail(function (err) {
         // your failure code here
-        alert('searchByParcelNumber response - ' + JSON.stringify(err));
+        //alert('searchByParcelNumber response - ' + JSON.stringify(err));
+        showResponse(err, false);
       });
   };
 
@@ -561,15 +609,19 @@
       .done(function (res) {
         if (res.response.status === 'OK') {
           // your success code here to consume res.response.data
-          alert('searchBySiteAddress response - ' + JSON.stringify(res.response.data));
+          //alert('searchBySiteAddress response - ' + JSON.stringify(res.response.data));
+          showResponse(res, true);
+
         } else {
           // your failure code here to consume res.response.data
-          alert('searchBySiteAddress response - ' + JSON.stringify(res));
+          //alert('searchBySiteAddress response - ' + JSON.stringify(res));
+          showResponse(res, false);
         }
       })
       .fail(function (err) {
         // your failure code here
-        alert('searchBySiteAddress response - ' + JSON.stringify(err));
+        //alert('searchBySiteAddress response - ' + JSON.stringify(err));
+        showResponse(err, false);
       });
   };
 
