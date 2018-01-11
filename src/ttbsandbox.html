@@ -317,8 +317,26 @@
       <div>
         <a class="doc-link" href="javascript:" data-href="#searchByParcelNumber">Click here</a> to see documentation.
       </div>
-      <div class="playground">
-        <button class="btn btn-primary" onclick="searchByParcelNumber()">Search By Parcel Number</button>
+      <div class="playground row">
+        <div class="col-xs-3">
+          <div class="form-group">
+            <label for="searchByParcelNumber__parcel_number">Parcel Number:</label>
+            <input type="text" class="form-control" placeholder="" value="46327216"
+                   id="searchByParcelNumber__parcel_number" name="searchByParcelNumber__parcel_number">
+          </div>
+        </div>
+        <div class="col-xs-3">
+          <div class="form-group">
+            <label for="searchByParcelNumber__state_county_fips">State County FIPS:</label>
+            <input type="text" class="form-control" placeholder="" value="06059"
+                   id="searchByParcelNumber__state_county_fips" name="searchByParcelNumber__state_county_fips">
+          </div>
+        </div>
+        <div class="col-xs-3">
+          <div class="form-group" style="margin-top: 24px;">
+            <button id="searchByParcelNumber__submit" class="btn btn-primary" onclick="searchByParcelNumber()">Search By Parcel Number</button>
+          </div>
+        </div>
       </div>
     </div>
 

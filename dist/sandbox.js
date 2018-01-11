@@ -582,8 +582,8 @@
     console.log('searchByOwnerName clicked');
 
     var payload = {
-      parcel_number: "46327216",
-      state_county_fips: "06059"
+      parcel_number: $('[name="searchByParcelNumber__parcel_number"]').val(),
+      state_county_fips: $('[name="searchByParcelNumber__state_county_fips"]').val()
     };
 
     ttb.searchByParcelNumber(payload)
