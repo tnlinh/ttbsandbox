@@ -282,8 +282,33 @@
       <div>
         <a class="doc-link" href="javascript:" data-href="#searchByOwnerName">Click here</a> to see documentation.
       </div>
-      <div class="playground">
-        <button class="btn btn-primary" onclick="searchByOwnerName()">Search By Owner Name</button>
+      <div class="playground row">
+        <div class="col-xs-3">
+          <div class="form-group">
+            <label for="searchByOwnerName__first_name">First Name:</label>
+            <input type="text" class="form-control" placeholder="" value="Michael"
+                   id="searchByOwnerName__first_name" name="searchByOwnerName__first_name">
+          </div>
+        </div>
+        <div class="col-xs-3">
+          <div class="form-group">
+            <label for="searchByOwnerName__last_name">Last Name:</label>
+            <input type="text" class="form-control" placeholder="" value="Seltser"
+                   id="searchByOwnerName__last_name" name="searchByOwnerName__last_name">
+          </div>
+        </div>
+        <div class="col-xs-3">
+          <div class="form-group">
+            <label for="searchByOwnerName__state_county_fips">State County FIPS:</label>
+            <input type="text" class="form-control" placeholder="" value="33011"
+                   id="searchByOwnerName__state_county_fips" name="searchByOwnerName__state_county_fips">
+          </div>
+        </div>
+        <div class="col-xs-3">
+          <div class="form-group" style="margin-top: 24px;">
+            <button id="searchByOwnerName__submit" class="btn btn-primary" onclick="searchByOwnerName()">Search By Owner Name</button>
+          </div>
+        </div>
       </div>
     </div>
 

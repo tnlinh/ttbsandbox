@@ -553,9 +553,9 @@
     console.log('searchByOwnerName clicked');
 
     var payload = {
-      first_name: "Fariba",
-      last_name: "Siddiqi",
-      state_county_fips: "06059"
+      first_name: $('[name="searchByOwnerName__first_name"]').val(),
+      last_name: $('[name="searchByOwnerName__last_name"]').val(),
+      state_county_fips: $('[name="searchByOwnerName__state_county_fips"]').val()
     };
 
     ttb.searchByOwnerName(payload)
