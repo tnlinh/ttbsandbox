@@ -1,0 +1,19 @@
+{
+  "status": "OK",
+  "data": {
+    "User": {
+      "email": "ttbsandbox@benutech.com",
+      "first_name": "TTB",
+      "last_name": "Sandbox",
+      "uuid": "H231a912-4d17-4c71-bd28-c6f3392743b4",
+      "third_party_uuid": "1B95D1CD-5D64-4D40-A404-451FD0D7E686",
+      "address": "200 Baker",
+      "address_2": null,
+      "city": "Costa Mesa",
+      "state": "CA",
+      "zip": " 92606",
+      "company_name": "Benutech",
+      "stk": "1234567890"
+    }
+  }
+} 
