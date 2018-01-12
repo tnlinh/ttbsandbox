@@ -4,6 +4,9 @@ body, h1, h2, h3, h4, h5, h6,
     font-family: "jaf-bernino-sans", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Verdana, sans-serif;
 }
 
+#sandbox .main{
+    padding-top: 0;
+}
 #sandbox .main h2 {
     font-weight: 500;
     font-size: 30px;
