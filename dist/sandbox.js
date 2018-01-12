@@ -486,14 +486,14 @@
     console.log('propertyComps clicked');
 
     var payload = {
-      "sa_property_id": "0039025849",
-      "mm_fips_state_code": "06",
-      "date_transfer(+/-)": 12,
-      "distance_in_km": 1.6,
-      "nbr_bath(+/-)": 1,
-      "nbr_bedrms(+/-)": 1,
-      "sqft(+/-)": 0.2,
-      "yr_blt(+/-)": 20
+      "sa_property_id": $('[name="propertyComps__sa_property_id"]').val(),
+      "mm_fips_state_code": $('[name="propertyComps__state_fips"]').val(),
+      "date_transfer(+/-)": $('[name="propertyComps__date_transfer"]').val(),
+      "distance_in_km": $('[name="propertyComps__distance_in_km"]').val(),
+      "nbr_bath(+/-)": $('[name="propertyComps__nbr_bath"]').val(),
+      "nbr_bedrms(+/-)": $('[name="propertyComps__nbr_bedrms"]').val(),
+      "sqft(+/-)": $('[name="propertyComps__sqft"]').val(),
+      "yr_blt(+/-)": $('[name="propertyComps__yr_blt"]').val()
     };
 
     ttb.propertyComps(payload)
