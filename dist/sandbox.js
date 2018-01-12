@@ -22,6 +22,10 @@
 
     // bind click events to documentation links
     $('.doc-link').on('click', showDocumentation);
+
+    // bind navigation list search
+    $('#search').on('keyup', onNavigationSearch);
+
   });
 
   // to be invoked when google maps library gets successfully loaded
@@ -49,6 +53,30 @@
   };
 
   /* util functions */
+
+  // displays for the matching items only.
+  function onNavigationSearch() {
+    var value, $el, $items, regexp;
+
+    value = $(this).val();
+    $el = $('.navigation');
+    $items = $el.find('.itemMembers li');
+
+    if (value) {
+      regexp = new RegExp(value, 'i');
+
+      $items
+        .hide()
+        .filter(function (i, el) {
+          return regexp.test($(el).text());
+        })
+        .show();
+
+    } else {
+      $items.show();
+    }
+    //$el.find('.list').scrollTop(0);
+  }
 
   // to be invoked when the session is expired
   function onSessionExpire(info) {

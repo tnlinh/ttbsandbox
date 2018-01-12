@@ -4,6 +4,30 @@ body, h1, h2, h3, h4, h5, h6,
     font-family: "jaf-bernino-sans", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Verdana, sans-serif;
 }
 
+#sandbox .main h2 {
+    font-weight: 500;
+    font-size: 30px;
+    margin: 20px 0 10px 0;
+}
+#sandbox .applicationName {
+    font-family: inherit;
+    font-weight: inherit;
+    font-size: 24px;
+}
+#sandbox .navigation {
+    background: #2453ab;
+}
+#sandbox .search input {
+    background-color: #ffffff;
+    color: #000;
+}
+#sandbox .itemMembers {
+    display: block;
+}
+#sandbox li.item a {
+    color: #dad9d9;
+}
+
 .class-description p {
     font-size: 14px;
     line-height: 1.7;

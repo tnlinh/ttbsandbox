@@ -9,8 +9,10 @@
 
   <!--Dep Styles-->
   <!-- Latest compiled and minified CSS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <!--<link rel="stylesheet" href="main.css">-->
+  <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">-->
+  <!--<link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">-->
+  <link type="text/css" rel="stylesheet" href="styles/bootstrap.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/jaguar.css">
 
   <!--Main App Style-->
   <link rel="stylesheet" href="main.css">
@@ -18,487 +20,551 @@
 <body>
 
 <!--App Markup Content-->
-<div class="container">
-  <h1>TTB Sandbox</h1>
-  <p>
-    Playground for consuming TTB SDk methods. Check out complete official documentation
-    <a class="doc-link" href="javascript:" data-href="">here</a>.
-  </p>
+<div id="sandbox" class="clearfix">
 
-  <div class="row">
+  <!-- Main Navigation -->
+  <div class="navigation">
 
-    <div class="col-xs-12">
-      <h2>Login</h2>
-      <div>
-        <a class="doc-link" href="javascript:" data-href="#login">Click here</a> to see documentation.
-      </div>
-      <div class="playground row">
-        <div class="col-xs-3">
-          <div class="form-group">
-            <label for="login__username">Username:</label>
-            <input type="text" class="form-control" placeholder="" value="ttbsandbox@benutech.com"
-                   id="login__username" name="login__username">
-          </div>
-        </div>
-        <div class="col-xs-3">
-          <div class="form-group">
-            <label for="propertyDetails__state_fips">Password:</label>
-            <input type="password" class="form-control" placeholder=""
-                   id="login__password" name="login__password" autofocus>
-          </div>
-        </div>
-        <div class="col-xs-3">
-          <div class="form-group" style="margin-top: 24px;">
-            <button id="login__submit" class="btn btn-primary" onclick="login()">Login</button>
-          </div>
-        </div>
-      </div>
+    <h3 class="applicationName">Sandbox</h3>
+
+    <div class="search">
+      <input id="search" type="text" class="form-control input-sm" placeholder="Search" autofocus>
     </div>
 
+    <ul class="list">
+      <li class="item" data-name="TTB">
+        <!--<span class="title">-->
+            <!--<a>TTB</a>-->
+        <!--</span>-->
+        <!--<ul class="members itemMembers">-->
 
-    <div class="col-xs-12">
-      <h5> --- OR --- </h5>
-      <h2>Remote Login</h2>
-      <div>
-        <a class="doc-link" href="javascript:" data-href="#loginRemote">Click here</a> to see documentation.
-      </div>
-      <div class="playground row">
-        <div class="col-xs-3">
-          <div class="form-group">
-            <label for="loginRemote__stk">STK (Secure Token):</label>
-            <input type="text" class="form-control" placeholder=""
-                   id="loginRemote__stk" name="loginRemote__stk" autofocus>
-          </div>
-        </div>
-        <div class="col-xs-3">
-          <div class="form-group">
-            <label for="loginRemote__getUserUrl">getuser_url (Optional):</label>
-            <input type="text" class="form-control" placeholder=""
-                   id="loginRemote__getUserUrl" name="loginRemote__getUserUrl">
-          </div>
-        </div>
-        <div class="col-xs-3">
-          <div class="form-group" style="margin-top: 24px;">
-            <button id="loginRemote__submit" class="btn btn-primary" onclick="loginRemote()">Login Remote</button>
-          </div>
-        </div>
-      </div>
-    </div>
+          <!--<span class="subtitle">Members</span>-->
 
-    <!-- LOGIN status -->
-    <div class="col-xs-12">
+          <!--<li data-name="TTB#config"><a href="TTB.html#config">config</a></li>-->
+
+        <!--</ul>-->
+        <ul class="methods itemMembers">
+
+          <!--<span class="subtitle">Methods</span>-->
+
+          <li><a href="#login">Login</a></li>
+          <li><a href="#loginRemote">Remote Login</a></li>
+          <li><a href="#logout">Logout</a></li>
+          <li><a href="#setSponsor">Set Sponsor</a></li>
+          <li><a href="#showSelectSponsor">Show Select Sponsor</a></li>
+          <li><a href="#getSearchFields">Get Search Fields</a></li>
+          <li><a href="#orderReport">Order Report</a></li>
+          <li><a href="#orderReport">Order Report</a></li>
+          <li><a href="#propertyComps">Property Comps</a></li>
+          <li><a href="#propertyDetails">Property Details</a></li>
+          <li><a href="#searchByOwnerName">Search By Owner Name</a></li>
+          <li><a href="#searchByParcelNumber">Search By Parcel Number</a></li>
+          <li><a href="#searchBySiteAddress">Search By Site Address</a></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <div class="main">
+    <!--<h1 class="page-title">TitleToolBox SDK - Sandbox</h1>-->
+
+    <section>
+      <header>
+        <h2>
+          Sandbox - For TitleToolBox SDK
+        </h2>
+        <div class="class-description">
+          <p class="main-desc">
+          Playground for consuming TTB SDk methods. Check out complete official documentation
+          <a class="doc-link" href="javascript:" data-href="">here</a>.
+          </p>
+        </div>
+      </header>
+    </section>
+
+    <section>
       <div class="row">
-        <div class="col-xs-6">
-          <p id="authentication-status" class="alert" style="display: none"></p>
-        </div>
-      </div>
-    </div>
 
-    <div class="col-xs-12">
-      <h2>Logout</h2>
-      <div>
-        <a class="doc-link" href="javascript:" data-href="#logout">Click here</a> to see documentation.
-      </div>
-      <div class="playground">
-        <button class="btn btn-primary" onclick="logout()">Logout</button>
-      </div>
-    </div>
-
-    <div class="col-xs-12">
-      <h2>Set Sponsor (Util)</h2>
-      <div>
-        <a class="doc-link" href="javascript:" data-href="#setSponsor">Click here</a> to see documentation.
-      </div>
-      <div class="playground row">
-        <div class="col-xs-3">
-          <div class="form-group">
-            <label for="setSponsor__sponsor">Sponsor:</label>
-            <input type="text" class="form-control" placeholder=""
-                   id="setSponsor__sponsor" name="setSponsor__sponsor">
+        <div class="col-xs-12">
+          <h2 id="login">Login</h2>
+          <div>
+            <a class="doc-link" href="javascript:" data-href="#login">Click here</a> to see documentation.
           </div>
-        </div>
-        <div class="col-xs-3">
-          <div class="form-group" style="margin-top: 24px;">
-            <button id="setSponsor__submit" class="btn btn-primary" onclick="setSponsor()">Set Sponsor</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-xs-12">
-      <h2>Show Select Sponsor</h2>
-      <div>
-        <a class="doc-link" href="javascript:" data-href="#.showSelectSponsor">Click here</a> to see documentation.
-      </div>
-      <div class="playground row">
-        <div class="col-xs-3">
-          <div class="form-group">
-            <label for="showSelectSponsor__email">User's email</label>
-            <input type="text" class="form-control" placeholder="" value="ttbhelp@benutech.com"
-                   id="showSelectSponsor__email" name="showSelectSponsor__email">
-          </div>
-        </div>
-        <div class="col-xs-3">
-          <div class="form-group">
-            <label for="showSelectSponsor__zip">User's Zip Code:</label>
-            <input type="text" class="form-control" placeholder="" value="92801"
-                   id="showSelectSponsor__zip" name="showSelectSponsor__zip">
-          </div>
-        </div>
-        <div class="col-xs-3">
-          <div class="form-group" style="margin-top: 24px;">
-            <button id="showSelectSponsor__submit" class="btn btn-primary" onclick="showSelectSponsor()">Show Select Sponsor</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-xs-12">
-      <h2>Get Search Fields</h2>
-      <div>
-        <a class="doc-link" href="javascript:" data-href="#getSearchFields">Click here</a> to see documentation.
-      </div>
-      <div class="playground">
-        <button class="btn btn-primary" onclick="getSearchFields()">Get Search Fields</button>
-      </div>
-    </div>
-
-    <div class="col-xs-12">
-      <h2>Get Type Report</h2>
-      <div>
-        <a class="doc-link" href="javascript:" data-href="#getTypesReport">Click here</a> to see documentation.
-      </div>
-      <div class="playground">
-        <button class="btn btn-primary" onclick="getTypesReport()">Get Type Report</button>
-      </div>
-    </div>
-
-    <!--<div class="col-xs-12">-->
-      <!--<h2>Global Search</h2>-->
-      <!--<div>-->
-        <!--<a class="doc-link" href="javascript:" data-href="#globalSearch">Click here</a> to see documentation.-->
-      <!--</div>-->
-      <!--<div class="playground">-->
-        <!--<button class="btn btn-primary" onclick="globalSearch()">Global Search</button>-->
-      <!--</div>-->
-    <!--</div>-->
-
-    <!--<div class="col-xs-12">-->
-      <!--<h2>Global Search Count</h2>-->
-      <!--<div>-->
-        <!--<a class="doc-link" href="javascript:" data-href="#globalSearchCount">Click here</a> to see documentation.-->
-      <!--</div>-->
-      <!--<div class="playground">-->
-        <!--<button class="btn btn-primary" onclick="globalSearchCount()">Global Search Count</button>-->
-      <!--</div>-->
-    <!--</div>-->
-
-    <div class="col-xs-12">
-      <h2>Order Report</h2>
-      <div>
-        <a class="doc-link" href="javascript:" data-href="#orderReport">Click here</a> to see documentation.
-      </div>
-      <div class="playground">
-        <button class="btn btn-primary" onclick="orderReport()">Order Report</button>
-      </div>
-    </div>
-
-    <div class="col-xs-12">
-      <h2>Property Comps</h2>
-      <div>
-        <a class="doc-link" href="javascript:" data-href="#propertyComps">Click here</a> to see documentation.
-      </div>
-      <div class="playground row">
-        <div class="col-xs-3">
-          <div class="form-group">
-            <label for="propertyComps__sa_property_id">Property ID:</label>
-            <input type="text" class="form-control" placeholder="" value="0039025849"
-                   id="propertyComps__sa_property_id" name="propertyComps__sa_property_id">
-          </div>
-        </div>
-        <div class="col-xs-9">
-          <div class="row">
+          <div class="playground row">
             <div class="col-xs-3">
               <div class="form-group">
-                <label for="propertyComps__state_fips">State FIPS:</label>
-                <input type="text" class="form-control" placeholder="" value="06"
-                       id="propertyComps__state_fips" name="propertyComps__state_fips">
+                <label for="login__username">Username:</label>
+                <input type="text" class="form-control" placeholder="" value="ttbsandbox@benutech.com"
+                       id="login__username" name="login__username">
+              </div>
+            </div>
+            <div class="col-xs-3">
+              <div class="form-group">
+                <label for="propertyDetails__state_fips">Password:</label>
+                <input type="password" class="form-control" placeholder=""
+                       id="login__password" name="login__password" autofocus>
+              </div>
+            </div>
+            <div class="col-xs-3">
+              <div class="form-group" style="margin-top: 24px;">
+                <button id="login__submit" class="btn btn-primary" onclick="login()">Login</button>
               </div>
             </div>
           </div>
         </div>
-        <div class="col-xs-2">
-          <div class="form-group">
-            <label for="propertyComps__date_transfer">Date Transfer (+/-):</label>
-            <input type="number" class="form-control" placeholder="" value="12"
-                   id="propertyComps__date_transfer" name="propertyComps__date_transfer">
-          </div>
-        </div>
-        <div class="col-xs-2">
-          <div class="form-group">
-            <label for="propertyComps__distance_in_km">Distance (km):</label>
-            <input type="text" class="form-control" placeholder="" value="06059"
-                   id="propertyComps__distance_in_km" name="propertyComps__distance_in_km">
-          </div>
-        </div>
-        <div class="col-xs-2">
-          <div class="form-group">
-            <label for="propertyComps__nbr_bath"># Baths (+/-):</label>
-            <input type="number" class="form-control" placeholder="" value="1"
-                   id="propertyComps__nbr_bath" name="propertyComps__nbr_bath">
-          </div>
-        </div>
-        <div class="col-xs-2">
-          <div class="form-group">
-            <label for="propertyComps__nbr_bedrms"># Beds (+/-):</label>
-            <input type="number" class="form-control" placeholder="" value="1"
-                   id="propertyComps__nbr_bedrms" name="propertyComps__nbr_bedrms">
-          </div>
-        </div>
-        <div class="col-xs-2">
-          <div class="form-group">
-            <label for="propertyComps__sqft">Sqft (+/-):</label>
-            <input type="number" class="form-control" placeholder="" value="0.2"
-                   id="propertyComps__sqft" name="propertyComps__sqft">
-          </div>
-        </div>
-        <div class="col-xs-2">
-          <div class="form-group">
-            <label for="propertyComps__yr_blt">Year Built (+/-):</label>
-            <input type="number" class="form-control" placeholder="" value="20"
-                   id="propertyComps__yr_blt" name="propertyComps__yr_blt">
-          </div>
-        </div>
-        <div class="col-xs-3">
-          <div class="form-group" style="margin-top: 24px;">
-            <button id="propertyComps__submit" class="btn btn-primary" onclick="propertyComps()">Property Comps</button>
-          </div>
-        </div>
-      </div>
-    </div>
 
-    <div class="col-xs-12">
-      <h2>Property Details</h2>
-      <div>
-        <a class="doc-link" href="javascript:" data-href="#propertyDetails">Click here</a> to see documentation.
-      </div>
-      <div class="playground row">
-        <div class="col-xs-3">
-          <div class="form-group">
-            <label for="propertyDetails__property_id">Property ID:</label>
-            <input type="text" class="form-control" placeholder="" value="0024172993"
-                   id="propertyDetails__property_id" name="propertyDetails__property_id">
-          </div>
-        </div>
-        <div class="col-xs-3">
-          <div class="form-group">
-            <label for="propertyDetails__state_fips">State FIPS:</label>
-            <input type="text" class="form-control" placeholder="" value="06"
-                   id="propertyDetails__state_fips" name="propertyDetails__state_fips">
-          </div>
-        </div>
-        <div class="col-xs-3">
-          <div class="form-group" style="margin-top: 24px;">
-            <button id="propertyDetails__submit" class="btn btn-primary" onclick="propertyDetails()">Property Details</button>
-          </div>
-        </div>
+
         <div class="col-xs-12">
-          <hr>
-          <h5>Property Details Form To be auto filled - Hit "Property Details" blue button once login.</h5>
-          <form id="propertyDetails__form">
-            <fieldset>
-              <!--<legend>Property Details Form (to be auto filled)</legend>-->
+          <h5> --- OR --- </h5>
+          <h2 id="loginRemote">Remote Login</h2>
+          <div>
+            <a class="doc-link" href="javascript:" data-href="#loginRemote">Click here</a> to see documentation.
+          </div>
+          <div class="playground row">
+            <div class="col-xs-3">
+              <div class="form-group">
+                <label for="loginRemote__stk">STK (Secure Token):</label>
+                <input type="text" class="form-control" placeholder=""
+                       id="loginRemote__stk" name="loginRemote__stk" autofocus>
+              </div>
+            </div>
+            <div class="col-xs-3">
+              <div class="form-group">
+                <label for="loginRemote__getUserUrl">getuser_url (Optional):</label>
+                <input type="text" class="form-control" placeholder=""
+                       id="loginRemote__getUserUrl" name="loginRemote__getUserUrl">
+              </div>
+            </div>
+            <div class="col-xs-3">
+              <div class="form-group" style="margin-top: 24px;">
+                <button id="loginRemote__submit" class="btn btn-primary" onclick="loginRemote()">Login Remote</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- LOGIN status -->
+        <div class="col-xs-12">
+          <div class="row">
+            <div class="col-xs-6">
+              <p id="authentication-status" class="alert" style="display: none"></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-xs-12">
+          <h2 id="logout">Logout</h2>
+          <div>
+            <a class="doc-link" href="javascript:" data-href="#logout">Click here</a> to see documentation.
+          </div>
+          <div class="playground">
+            <button class="btn btn-primary" onclick="logout()">Logout</button>
+          </div>
+        </div>
+
+        <div class="col-xs-12">
+          <h2 id="setSponsor">Set Sponsor (Util)</h2>
+          <div>
+            <a class="doc-link" href="javascript:" data-href="#setSponsor">Click here</a> to see documentation.
+          </div>
+          <div class="playground row">
+            <div class="col-xs-3">
+              <div class="form-group">
+                <label for="setSponsor__sponsor">Sponsor:</label>
+                <input type="text" class="form-control" placeholder=""
+                       id="setSponsor__sponsor" name="setSponsor__sponsor">
+              </div>
+            </div>
+            <div class="col-xs-3">
+              <div class="form-group" style="margin-top: 24px;">
+                <button id="setSponsor__submit" class="btn btn-primary" onclick="setSponsor()">Set Sponsor</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-xs-12">
+          <h2 id="showSelectSponsor">Show Select Sponsor</h2>
+          <div>
+            <a class="doc-link" href="javascript:" data-href="#.showSelectSponsor">Click here</a> to see documentation.
+          </div>
+          <div class="playground row">
+            <div class="col-xs-3">
+              <div class="form-group">
+                <label for="showSelectSponsor__email">User's email</label>
+                <input type="text" class="form-control" placeholder="" value="ttbhelp@benutech.com"
+                       id="showSelectSponsor__email" name="showSelectSponsor__email">
+              </div>
+            </div>
+            <div class="col-xs-3">
+              <div class="form-group">
+                <label for="showSelectSponsor__zip">User's Zip Code:</label>
+                <input type="text" class="form-control" placeholder="" value="92801"
+                       id="showSelectSponsor__zip" name="showSelectSponsor__zip">
+              </div>
+            </div>
+            <div class="col-xs-3">
+              <div class="form-group" style="margin-top: 24px;">
+                <button id="showSelectSponsor__submit" class="btn btn-primary" onclick="showSelectSponsor()">Show Select Sponsor</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-xs-12">
+          <h2 id="getSearchFields">Get Search Fields</h2>
+          <div>
+            <a class="doc-link" href="javascript:" data-href="#getSearchFields">Click here</a> to see documentation.
+          </div>
+          <div class="playground">
+            <button class="btn btn-primary" onclick="getSearchFields()">Get Search Fields</button>
+          </div>
+        </div>
+
+        <div class="col-xs-12">
+          <h2>Get Type Report</h2>
+          <div>
+            <a class="doc-link" href="javascript:" data-href="#getTypesReport">Click here</a> to see documentation.
+          </div>
+          <div class="playground">
+            <button class="btn btn-primary" onclick="getTypesReport()">Get Type Report</button>
+          </div>
+        </div>
+
+        <!--<div class="col-xs-12">-->
+        <!--<h2>Global Search</h2>-->
+        <!--<div>-->
+        <!--<a class="doc-link" href="javascript:" data-href="#globalSearch">Click here</a> to see documentation.-->
+        <!--</div>-->
+        <!--<div class="playground">-->
+        <!--<button class="btn btn-primary" onclick="globalSearch()">Global Search</button>-->
+        <!--</div>-->
+        <!--</div>-->
+
+        <!--<div class="col-xs-12">-->
+        <!--<h2>Global Search Count</h2>-->
+        <!--<div>-->
+        <!--<a class="doc-link" href="javascript:" data-href="#globalSearchCount">Click here</a> to see documentation.-->
+        <!--</div>-->
+        <!--<div class="playground">-->
+        <!--<button class="btn btn-primary" onclick="globalSearchCount()">Global Search Count</button>-->
+        <!--</div>-->
+        <!--</div>-->
+
+        <div class="col-xs-12">
+          <h2 id="orderReport">Order Report</h2>
+          <div>
+            <a class="doc-link" href="javascript:" data-href="#orderReport">Click here</a> to see documentation.
+          </div>
+          <div class="playground">
+            <button class="btn btn-primary" onclick="orderReport()">Order Report</button>
+          </div>
+        </div>
+
+        <div class="col-xs-12">
+          <h2 id="propertyComps">Property Comps</h2>
+          <div>
+            <a class="doc-link" href="javascript:" data-href="#propertyComps">Click here</a> to see documentation.
+          </div>
+          <div class="playground row">
+
+            <div class="col-xs-12">
               <div class="row">
                 <div class="col-xs-3">
                   <div class="form-group">
-                    <label for="propertyDetails__year_built">Year Built:</label>
-                    <input type="text" class="form-control" placeholder=""
-                           data-ttb-field="GeneralInfo['Year Built']"
-                           id="propertyDetails__year_built" name="propertyDetails__year_built">
+                    <label for="propertyComps__sa_property_id">Property ID:</label>
+                    <input type="text" class="form-control" placeholder="" value="0039025849"
+                           id="propertyComps__sa_property_id" name="propertyComps__sa_property_id">
                   </div>
                 </div>
                 <div class="col-xs-3">
                   <div class="form-group">
-                    <label for="propertyDetails__bedrooms">Bedrooms:</label>
-                    <input type="text" class="form-control" placeholder=""
-                           data-ttb-field="GeneralInfo.Bedrooms"
-                           id="propertyDetails__bedrooms" name="propertyDetails__bedrooms">
-                  </div>
-                </div>
-                <div class="col-xs-3">
-                  <div class="form-group">
-                    <label for="propertyDetails__bathrooms">Bathrooms:</label>
-                    <input type="text" class="form-control" placeholder=""
-                           data-ttb-field="GeneralInfo.Bathrooms"
-                           id="propertyDetails__bathrooms" name="propertyDetails__bathrooms">
+                    <label for="propertyComps__state_fips">State FIPS:</label>
+                    <input type="text" class="form-control" placeholder="" value="06"
+                           id="propertyComps__state_fips" name="propertyComps__state_fips">
                   </div>
                 </div>
               </div>
-            </fieldset>
-          </form>
-          <hr>
-        </div>
-      </div>
-    </div>
+            </div>
 
-    <div class="col-xs-12">
-      <h2>Search By Owner Name</h2>
-      <div>
-        <a class="doc-link" href="javascript:" data-href="#searchByOwnerName">Click here</a> to see documentation.
-      </div>
-      <div class="playground row">
-        <div class="col-xs-3">
-          <div class="form-group">
-            <label for="searchByOwnerName__first_name">First Name:</label>
-            <input type="text" class="form-control" placeholder="" value="Michael"
-                   id="searchByOwnerName__first_name" name="searchByOwnerName__first_name">
-          </div>
-        </div>
-        <div class="col-xs-3">
-          <div class="form-group">
-            <label for="searchByOwnerName__last_name">Last Name:</label>
-            <input type="text" class="form-control" placeholder="" value="Seltser"
-                   id="searchByOwnerName__last_name" name="searchByOwnerName__last_name">
-          </div>
-        </div>
-        <div class="col-xs-3">
-          <div class="form-group">
-            <label for="searchByOwnerName__state_county_fips">State County FIPS:</label>
-            <input type="text" class="form-control" placeholder="" value="33011"
-                   id="searchByOwnerName__state_county_fips" name="searchByOwnerName__state_county_fips">
-          </div>
-        </div>
-        <div class="col-xs-3">
-          <div class="form-group" style="margin-top: 24px;">
-            <button id="searchByOwnerName__submit" class="btn btn-primary" onclick="searchByOwnerName()">Search By Owner Name</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-xs-12">
-      <h2>Search By Parcel Number</h2>
-      <div>
-        <a class="doc-link" href="javascript:" data-href="#searchByParcelNumber">Click here</a> to see documentation.
-      </div>
-      <div class="playground row">
-        <div class="col-xs-3">
-          <div class="form-group">
-            <label for="searchByParcelNumber__parcel_number">Parcel Number:</label>
-            <input type="text" class="form-control" placeholder="" value="46327216"
-                   id="searchByParcelNumber__parcel_number" name="searchByParcelNumber__parcel_number">
-          </div>
-        </div>
-        <div class="col-xs-3">
-          <div class="form-group">
-            <label for="searchByParcelNumber__state_county_fips">State County FIPS:</label>
-            <input type="text" class="form-control" placeholder="" value="06059"
-                   id="searchByParcelNumber__state_county_fips" name="searchByParcelNumber__state_county_fips">
-          </div>
-        </div>
-        <div class="col-xs-3">
-          <div class="form-group" style="margin-top: 24px;">
-            <button id="searchByParcelNumber__submit" class="btn btn-primary" onclick="searchByParcelNumber()">Search By Parcel Number</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-xs-12">
-      <h2>Search By Site Address</h2>
-      <div>
-        <a class="doc-link" href="javascript:" data-href="#searchBySiteAddress">Click here</a> to see documentation.
-      </div>
-      <div class="playground row">
-
-        <!-- the google autocomplete component-->
-        <div class="col-xs-12">
-          <br>
-          <label for="googleBuildAddress__autocomplete">Google Auto-complete place complete:</label><br>
-          <input type="text" id="googleBuildAddress__autocomplete" placeholder="Enter your address" style="width: 500px">
-          <button class="btn btn-primary" onclick="searchBySiteAddress()">Search By Site Address</button>
-        </div>
-
-        <div class="col-xs-12">
-          <hr>
-          <h5>Search By Site Address - To be auto filled - Hit "Search By Site Address" blue button once login.</h5>
-
-          <!-- the form to be auto-filled using google autocomplete -->
-          <form id="searchBySiteAddress__form">
-            <fieldset>
-              <!--<legend>Property Details Form (to be auto filled)</legend>-->
-              <div class="row">
-
-                <div class="col-xs-2">
-                  <div class="form-group">
-                    <label for="propertyDetails__site_street_number">Street Number:</label>
-                    <input type="text" class="form-control" placeholder=""
-                           data-ttb-field="site_street_number"
-                           id="propertyDetails__site_street_number" name="propertyDetails__site_street_number">
-                  </div>
-                </div>
-                <div class="col-xs-2">
-                  <div class="form-group">
-                    <label for="propertyDetails__site_route">Street Name:</label>
-                    <input type="text" class="form-control" placeholder=""
-                           data-ttb-field="site_route"
-                           id="propertyDetails__site_route" name="propertyDetails__site_route">
-                  </div>
-                </div>
-                <div class="col-xs-2">
-                  <div class="form-group">
-                    <label for="propertyDetails__site_city">Site City:</label>
-                    <input type="text" class="form-control" placeholder=""
-                           data-ttb-field="site_city"
-                           id="propertyDetails__site_city" name="propertyDetails__site_city">
-                  </div>
-                </div>
-                <div class="col-xs-2">
-                  <div class="form-group">
-                    <label for="propertyDetails__site_state">Site State:</label>
-                    <input type="text" class="form-control" placeholder=""
-                           data-ttb-field="site_state"
-                           id="propertyDetails__site_state" name="propertyDetails__site_state">
-                  </div>
-                </div>
-                <div class="col-xs-2">
-                  <div class="form-group">
-                    <label for="propertyDetails__site_zip">Site Zip:</label>
-                    <input type="text" class="form-control" placeholder=""
-                           data-ttb-field="site_zip"
-                           id="propertyDetails__site_zip" name="propertyDetails__site_zip">
-                  </div>
-                </div>
-                <div class="col-xs-2">
-                  <div class="form-group">
-                    <label for="propertyDetails__site_county">Site County:</label>
-                    <input type="text" class="form-control" placeholder=""
-                           data-ttb-field="site_county"
-                           id="propertyDetails__site_county" name="propertyDetails__site_county">
-                  </div>
-                </div>
-                <div class="col-xs-2">
-                  <div class="form-group">
-                    <label for="propertyDetails__site_unit">Site Unit:</label>
-                    <input type="text" class="form-control" placeholder=""
-                           data-ttb-field="site_unit"
-                           id="propertyDetails__site_unit" name="propertyDetails__site_unit">
-                  </div>
-                </div>
+            <div class="col-xs-3">
+              <div class="form-group">
+                <label for="propertyComps__date_transfer">Date Transfer (+/-):</label>
+                <input type="number" class="form-control" placeholder="" value="12"
+                       id="propertyComps__date_transfer" name="propertyComps__date_transfer">
               </div>
-            </fieldset>
-          </form>
+            </div>
+            <div class="col-xs-3">
+              <div class="form-group">
+                <label for="propertyComps__distance_in_km">Distance (km):</label>
+                <input type="text" class="form-control" placeholder="" value="06059"
+                       id="propertyComps__distance_in_km" name="propertyComps__distance_in_km">
+              </div>
+            </div>
+            <div class="col-xs-3">
+              <div class="form-group">
+                <label for="propertyComps__nbr_bath"># Baths (+/-):</label>
+                <input type="number" class="form-control" placeholder="" value="1"
+                       id="propertyComps__nbr_bath" name="propertyComps__nbr_bath">
+              </div>
+            </div>
+            <div class="col-xs-3">
+              <div class="form-group">
+                <label for="propertyComps__nbr_bedrms"># Beds (+/-):</label>
+                <input type="number" class="form-control" placeholder="" value="1"
+                       id="propertyComps__nbr_bedrms" name="propertyComps__nbr_bedrms">
+              </div>
+            </div>
+            <div class="col-xs-3">
+              <div class="form-group">
+                <label for="propertyComps__sqft">Sqft (+/-):</label>
+                <input type="number" class="form-control" placeholder="" value="0.2"
+                       id="propertyComps__sqft" name="propertyComps__sqft">
+              </div>
+            </div>
+            <div class="col-xs-3">
+              <div class="form-group">
+                <label for="propertyComps__yr_blt">Year Built (+/-):</label>
+                <input type="number" class="form-control" placeholder="" value="20"
+                       id="propertyComps__yr_blt" name="propertyComps__yr_blt">
+              </div>
+            </div>
+            <div class="col-xs-3">
+              <div class="form-group" style="margin-top: 24px;">
+                <button id="propertyComps__submit" class="btn btn-primary" onclick="propertyComps()">Property Comps</button>
+              </div>
+            </div>
+          </div>
         </div>
+
+        <div class="col-xs-12">
+          <h2 id="propertyDetails">Property Details</h2>
+          <div>
+            <a class="doc-link" href="javascript:" data-href="#propertyDetails">Click here</a> to see documentation.
+          </div>
+          <div class="playground row">
+            <div class="col-xs-3">
+              <div class="form-group">
+                <label for="propertyDetails__property_id">Property ID:</label>
+                <input type="text" class="form-control" placeholder="" value="0024172993"
+                       id="propertyDetails__property_id" name="propertyDetails__property_id">
+              </div>
+            </div>
+            <div class="col-xs-3">
+              <div class="form-group">
+                <label for="propertyDetails__state_fips">State FIPS:</label>
+                <input type="text" class="form-control" placeholder="" value="06"
+                       id="propertyDetails__state_fips" name="propertyDetails__state_fips">
+              </div>
+            </div>
+            <div class="col-xs-3">
+              <div class="form-group" style="margin-top: 24px;">
+                <button id="propertyDetails__submit" class="btn btn-primary" onclick="propertyDetails()">Property Details</button>
+              </div>
+            </div>
+            <div class="col-xs-12">
+              <hr>
+              <h5>Property Details Form To be auto filled - Hit "Property Details" blue button once login.</h5>
+              <form id="propertyDetails__form">
+                <fieldset>
+                  <!--<legend>Property Details Form (to be auto filled)</legend>-->
+                  <div class="row">
+                    <div class="col-xs-3">
+                      <div class="form-group">
+                        <label for="propertyDetails__year_built">Year Built:</label>
+                        <input type="text" class="form-control" placeholder=""
+                               data-ttb-field="GeneralInfo['Year Built']"
+                               id="propertyDetails__year_built" name="propertyDetails__year_built">
+                      </div>
+                    </div>
+                    <div class="col-xs-3">
+                      <div class="form-group">
+                        <label for="propertyDetails__bedrooms">Bedrooms:</label>
+                        <input type="text" class="form-control" placeholder=""
+                               data-ttb-field="GeneralInfo.Bedrooms"
+                               id="propertyDetails__bedrooms" name="propertyDetails__bedrooms">
+                      </div>
+                    </div>
+                    <div class="col-xs-3">
+                      <div class="form-group">
+                        <label for="propertyDetails__bathrooms">Bathrooms:</label>
+                        <input type="text" class="form-control" placeholder=""
+                               data-ttb-field="GeneralInfo.Bathrooms"
+                               id="propertyDetails__bathrooms" name="propertyDetails__bathrooms">
+                      </div>
+                    </div>
+                  </div>
+                </fieldset>
+              </form>
+              <hr>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-xs-12">
+          <h2 id="searchByOwnerName">Search By Owner Name</h2>
+          <div>
+            <a class="doc-link" href="javascript:" data-href="#searchByOwnerName">Click here</a> to see documentation.
+          </div>
+          <div class="playground row">
+            <div class="col-xs-3">
+              <div class="form-group">
+                <label for="searchByOwnerName__first_name">First Name:</label>
+                <input type="text" class="form-control" placeholder="" value="Michael"
+                       id="searchByOwnerName__first_name" name="searchByOwnerName__first_name">
+              </div>
+            </div>
+            <div class="col-xs-3">
+              <div class="form-group">
+                <label for="searchByOwnerName__last_name">Last Name:</label>
+                <input type="text" class="form-control" placeholder="" value="Seltser"
+                       id="searchByOwnerName__last_name" name="searchByOwnerName__last_name">
+              </div>
+            </div>
+            <div class="col-xs-3">
+              <div class="form-group">
+                <label for="searchByOwnerName__state_county_fips">State County FIPS:</label>
+                <input type="text" class="form-control" placeholder="" value="33011"
+                       id="searchByOwnerName__state_county_fips" name="searchByOwnerName__state_county_fips">
+              </div>
+            </div>
+            <div class="col-xs-3">
+              <div class="form-group" style="margin-top: 24px;">
+                <button id="searchByOwnerName__submit" class="btn btn-primary" onclick="searchByOwnerName()">Search By Owner Name</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-xs-12">
+          <h2 id="searchByParcelNumber">Search By Parcel Number</h2>
+          <div>
+            <a class="doc-link" href="javascript:" data-href="#searchByParcelNumber">Click here</a> to see documentation.
+          </div>
+          <div class="playground row">
+            <div class="col-xs-3">
+              <div class="form-group">
+                <label for="searchByParcelNumber__parcel_number">Parcel Number:</label>
+                <input type="text" class="form-control" placeholder="" value="46327216"
+                       id="searchByParcelNumber__parcel_number" name="searchByParcelNumber__parcel_number">
+              </div>
+            </div>
+            <div class="col-xs-3">
+              <div class="form-group">
+                <label for="searchByParcelNumber__state_county_fips">State County FIPS:</label>
+                <input type="text" class="form-control" placeholder="" value="06059"
+                       id="searchByParcelNumber__state_county_fips" name="searchByParcelNumber__state_county_fips">
+              </div>
+            </div>
+            <div class="col-xs-3">
+              <div class="form-group" style="margin-top: 24px;">
+                <button id="searchByParcelNumber__submit" class="btn btn-primary" onclick="searchByParcelNumber()">Search By Parcel Number</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-xs-12">
+          <h2 id="searchBySiteAddress">Search By Site Address</h2>
+          <div>
+            <a class="doc-link" href="javascript:" data-href="#searchBySiteAddress">Click here</a> to see documentation.
+          </div>
+          <div class="playground row">
+
+            <!-- the google autocomplete component-->
+            <div class="col-xs-6">
+              <div class="form-group">
+                <label for="googleBuildAddress__autocomplete">Google Auto-complete place complete:</label><br>
+                <input type="text" id="googleBuildAddress__autocomplete"
+                       class="form-control" placeholder="Enter your address" style="width: 500px">
+              </div>
+            </div>
+            <div class="col-xs-6">
+              <button class="btn btn-primary" onclick="searchBySiteAddress()" style="margin-top: 24px;">Search By Site Address</button>
+            </div>
+
+            <div class="col-xs-12">
+              <hr>
+              <h5>Search By Site Address - To be auto filled - Hit "Search By Site Address" blue button once login.</h5>
+
+              <!-- the form to be auto-filled using google autocomplete -->
+              <form id="searchBySiteAddress__form">
+                <fieldset>
+                  <!--<legend>Property Details Form (to be auto filled)</legend>-->
+                  <div class="row">
+
+                    <div class="col-xs-2">
+                      <div class="form-group">
+                        <label for="propertyDetails__site_street_number">Street Number:</label>
+                        <input type="text" class="form-control" placeholder=""
+                               data-ttb-field="site_street_number"
+                               id="propertyDetails__site_street_number" name="propertyDetails__site_street_number">
+                      </div>
+                    </div>
+                    <div class="col-xs-2">
+                      <div class="form-group">
+                        <label for="propertyDetails__site_route">Street Name:</label>
+                        <input type="text" class="form-control" placeholder=""
+                               data-ttb-field="site_route"
+                               id="propertyDetails__site_route" name="propertyDetails__site_route">
+                      </div>
+                    </div>
+                    <div class="col-xs-2">
+                      <div class="form-group">
+                        <label for="propertyDetails__site_city">Site City:</label>
+                        <input type="text" class="form-control" placeholder=""
+                               data-ttb-field="site_city"
+                               id="propertyDetails__site_city" name="propertyDetails__site_city">
+                      </div>
+                    </div>
+                    <div class="col-xs-2">
+                      <div class="form-group">
+                        <label for="propertyDetails__site_state">Site State:</label>
+                        <input type="text" class="form-control" placeholder=""
+                               data-ttb-field="site_state"
+                               id="propertyDetails__site_state" name="propertyDetails__site_state">
+                      </div>
+                    </div>
+                    <div class="col-xs-2">
+                      <div class="form-group">
+                        <label for="propertyDetails__site_zip">Site Zip:</label>
+                        <input type="text" class="form-control" placeholder=""
+                               data-ttb-field="site_zip"
+                               id="propertyDetails__site_zip" name="propertyDetails__site_zip">
+                      </div>
+                    </div>
+                    <div class="col-xs-2">
+                      <div class="form-group">
+                        <label for="propertyDetails__site_county">Site County:</label>
+                        <input type="text" class="form-control" placeholder=""
+                               data-ttb-field="site_county"
+                               id="propertyDetails__site_county" name="propertyDetails__site_county">
+                      </div>
+                    </div>
+                    <div class="col-xs-2">
+                      <div class="form-group">
+                        <label for="propertyDetails__site_unit">Site Unit:</label>
+                        <input type="text" class="form-control" placeholder=""
+                               data-ttb-field="site_unit"
+                               id="propertyDetails__site_unit" name="propertyDetails__site_unit">
+                      </div>
+                    </div>
+                  </div>
+                </fieldset>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-xs-12">
+          <hr>
+          <p>Copyright © 2018
+            <a href="http://www.benutech.com/" title="Click to open Benutech Official Website" target="_blank">Benutech Inc.</a>
+            All rights reserved.</p>
+        </div>
+
       </div>
-    </div>
-
-    <div class="col-xs-12">
-      <hr>
-      <p>Copyright © 2018
-        <a href="http://www.benutech.com/" title="Click to open Benutech Official Website" target="_blank">Benutech Inc.</a>
-        All rights reserved.</p>
-    </div>
-
+    </section>
   </div>
 </div>
 
